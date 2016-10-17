@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Barometr.Infrastructure
 {
-    public class ProfileRepository : GenericRepository<Profile>
+    public class DrinkRepository : GenericRepository<Drink>
     {
-        public ProfileRepository(ApplicationDbContext db) : base(db)
+        public DrinkRepository(ApplicationDbContext db) : base(db)
         {
         }
 
-        public IQueryable<Profile> GetProfiles()
+        public IQueryable<Drink> GetDrinks()
         {
-            return _db.Profiles;
+            return _db.Drinks;
         }
 
-        
+
     }
 }
