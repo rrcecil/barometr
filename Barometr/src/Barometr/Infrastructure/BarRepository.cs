@@ -11,6 +11,7 @@ namespace Barometr.Infrastructure
     {
         public BarRepository(ApplicationDbContext db) : base(db)
         {
+
         }
 
         public IQueryable<Bar> GetBars()

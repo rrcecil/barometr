@@ -14,7 +14,7 @@ namespace Barometr.Services
         public BarService(BarRepository repo, ReviewRepository reviewRepo )
         {
             _barRepo = repo;
-            _reviewRepo = reviewRepo;
+            _reviewRepo = reviewRepo;    
         }
         public IList<BarDTO> GetBarDTO()
         {
