@@ -17,7 +17,10 @@ namespace Barometr.Infrastructure
         {
             return _db.Bars;
         }
-
+        public Bar GetBarById(int id)
+        {
+            return _db.Bars.FirstOrDefault(b => b.Id == id);
+        }
 
     }
 }
