@@ -121,6 +121,40 @@ namespace Barometr.Controllers
             return BadRequest(this.ModelState);
         }
 
+        //
+        // POST: /Account/Register
+        [HttpPost("RegisterUserAdmin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterUserAdmin([FromBody]RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                    // Send an email with this link
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                    //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+
+                    //Give the user User Admin accesibility
+                    await _userManager.AddClaimAsync(user, new Claim("IsUserAdmin", "true"));
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation(3, "User created a new account with password.");
+                    var userViewModel = await GetUser(user.UserName);
+                    return Ok(userViewModel);
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed
+            return BadRequest(this.ModelState);
+        }
+
 
 
         [HttpGet("checkAuthentication")]

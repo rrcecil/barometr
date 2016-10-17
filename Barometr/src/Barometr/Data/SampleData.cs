@@ -19,35 +19,21 @@ namespace Barometr.Data
             context.Database.EnsureCreated();
 
             // Ensure Stephen (IsAdmin)
-            var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
-            if (stephen == null)
+            var admin = await userManager.FindByNameAsync("Admin@Barometr.com");
+            if (admin == null)
             {
                 // create user
-                stephen = new ApplicationUser
+                admin = new ApplicationUser
                 {
-                    UserName = "Stephen.Walther@CoderCamps.com",
-                    Email = "Stephen.Walther@CoderCamps.com"
+                    UserName = "Admin@Barometr.com",
+                    Email = "Admin@Barometr.com"
                 };
-                await userManager.CreateAsync(stephen, "Secret123!");
+                await userManager.CreateAsync(admin, "Password123!");
 
                 // add claims
-                await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
+                await userManager.AddClaimAsync(admin, new Claim("IsAdmin", "true"));
+                await userManager.AddClaimAsync(admin, new Claim("IsUserAdmin", "true"));
             }
-
-            // Ensure Mike (not IsAdmin)
-            var mike = await userManager.FindByNameAsync("Mike@CoderCamps.com");
-            if (mike == null)
-            {
-                // create user
-                mike = new ApplicationUser
-                {
-                    UserName = "Mike@CoderCamps.com",
-                    Email = "Mike@CoderCamps.com"
-                };
-                await userManager.CreateAsync(mike, "Secret123!");
-            }
-
-
         }
 
     }
