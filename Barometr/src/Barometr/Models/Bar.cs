@@ -11,5 +11,7 @@ namespace Barometr.Models
         public string Name { get; set; }
         public string LatLong { get; set; }
         public string HappyHour { get; set; } // property?
+
+        public ICollection<Review> Reviews { get; set; }
     }
 }
