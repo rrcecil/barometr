@@ -12,6 +12,6 @@ namespace Barometr.ViewModels
         public string Name { get; set; }
         public string Type { get; set; }
         public ICollection<ReviewDTO> Reviews { get; set; }
-
+         
     }
 }

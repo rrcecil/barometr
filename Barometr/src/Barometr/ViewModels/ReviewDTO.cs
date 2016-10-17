@@ -13,5 +13,5 @@ namespace Barometr.ViewModels
         public string Type { get; set; }
         public string Username { get; set; }
 
-    }
+    } 
 }

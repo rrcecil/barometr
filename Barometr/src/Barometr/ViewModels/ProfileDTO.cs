@@ -12,6 +12,6 @@ namespace Barometr.ViewModels
         public string Faction { get; set; }
         public string Location { get; set; }
         public DateTime DOB { get; set; }
-
+         
     }
 }
