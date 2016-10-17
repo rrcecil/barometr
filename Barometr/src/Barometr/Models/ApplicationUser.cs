@@ -13,5 +13,7 @@ namespace Barometr.Models
         public ICollection<UserBar> UserBar { get; set; }
 
         public ICollection<Review>Reviews { get; set; }
+
+        public Profile Profile { get; set; }
     }
 }

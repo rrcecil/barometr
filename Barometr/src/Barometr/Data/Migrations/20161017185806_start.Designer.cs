@@ -8,9 +8,10 @@ using Barometr.Data;
 namespace Barometr.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161017185806_start")]
+    partial class start
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -137,12 +138,7 @@ namespace Barometr.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Profiles");
                 });
@@ -323,13 +319,6 @@ namespace Barometr.Data.Migrations
                     b.HasOne("Barometr.Models.BarDrink")
                         .WithMany("Drinks")
                         .HasForeignKey("BarDrinkBarId", "BarDrinkDrinkId");
-                });
-
-            modelBuilder.Entity("Barometr.Models.Profile", b =>
-                {
-                    b.HasOne("Barometr.Models.ApplicationUser", "User")
-                        .WithOne("Profile")
-                        .HasForeignKey("Barometr.Models.Profile", "UserId");
                 });
 
             modelBuilder.Entity("Barometr.Models.Review", b =>
