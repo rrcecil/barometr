@@ -11,13 +11,17 @@ namespace Barometr.Infrastructure
     {
         public BarRepository(ApplicationDbContext db) : base(db)
         {
+
         }
 
         public IQueryable<Bar> GetBars()
         {
             return _db.Bars;
         }
-
+        public Bar GetBarById(int id)
+        {
+            return _db.Bars.FirstOrDefault(b => b.Id == id);
+        }
 
     }
 }
