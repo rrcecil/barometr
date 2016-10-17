@@ -17,11 +17,11 @@ namespace Barometr.Models
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
-        public string BarId { get; set; }
+        public int BarId { get; set; }
         [ForeignKey("BarId")]
         public Bar Bar { get; set; }
 
-        public string DrinkId { get; set; }
+        public int DrinkId { get; set; }
         [ForeignKey("DrinkId")]
         public Drink Drink { get; set; }
     }

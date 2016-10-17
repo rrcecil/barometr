@@ -14,6 +14,7 @@ namespace Barometr.Models
 
         [ForeignKey("BarId")]
         public Bar Bar { get; set; }
-        public string BarId { get; set; }
+        public int BarId { get; set; }
     }
+
 }
