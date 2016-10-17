@@ -62,6 +62,7 @@ namespace Barometr
                         services.AddAuthorization(options =>
                         {
                             options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
+                            options.AddPolicy("UserAdminOnly", policy => policy.RequireClaim("IsUserAdmin"));
                         });
             
         }
