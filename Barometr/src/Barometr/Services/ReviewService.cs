@@ -44,6 +44,16 @@ namespace Barometr.Services
             _repo.SaveChanges();
         }
 
+        public void UpdateReview(ReviewDTO r)
+        {
+            var review = _repo.List().FirstOrDefault(re => re.Id == r.Id);
+
+            review.Comment = r.Comment;
+            review.Rating = r.Rating;
+
+            _repo.SaveChanges();
+        }
+
         public void DeleteReview(ReviewDTO r)
         {
             _repo.Delete(ProjectToModel(r));

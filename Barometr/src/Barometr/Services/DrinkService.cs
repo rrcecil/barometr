@@ -46,10 +46,29 @@ namespace Barometr.Services
                 Name = d.Name,
                 Type = d.Type,
                 Ingredient = d.Ingredient,
-                Abv = d.Abv
+                Abv = d.Abv,
+                Id = d.Id
             };
         }
 
+        public void UpdateDrink(DrinkDTO d)
+        {
+            var drink = _drinkRepo.List().FirstOrDefault(dr => dr.Id == d.Id);
+
+            drink.Abv = d.Abv;
+            drink.Ingredient = d.Ingredient;
+            drink.Name = d.Name;
+            drink.Type = d.Type;
+
+            _drinkRepo.SaveChanges();
+        }
+
+        public void DeleteDrink(DrinkDTO d)
+        {
+
+            _drinkRepo.Delete(ProjectToModel(d));
+            _drinkRepo.SaveChanges();
+        }
 
         private DrinkDTO ProjectToViewModel(Drink d)
         {
