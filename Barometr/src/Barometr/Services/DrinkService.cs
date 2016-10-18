@@ -35,7 +35,6 @@ namespace Barometr.Services
 
         public void AddDrink (DrinkDTO d)
         {
-
             _drinkRepo.Add(ProjectToModel(d));
             _drinkRepo.SaveChanges();
         }
