@@ -61,17 +61,18 @@ public BarDTO GetBarById(int id)
             return bar;
         }
 
-        //update method
-        //public void UpdateBar(BarDTO bar)
-        //{
-        //    var orig = _barRepo.GetBarById(bar.Id);
-        //    orig.Name = bar.Name;
-        //    orig.Latitude = bar.Latitude;
-        //    orig.Longitude = bar.Longitude;
-        //    orig.HappyHour = bar.HappyHour;
-        //    _barRepo.SaveChanges();
-        //}
+       // update method
+        public void UpdateBar(BarDTO bar)
+        {
+            var orig = _barRepo.GetBarById(bar.Id);
+            orig.Name = bar.Name;
+            orig.Latitude = bar.Latitude;
+            orig.Longitude = bar.Longitude;
+            orig.HappyHour = bar.HappyHour;
+            _barRepo.SaveChanges();
+        }
 
-      
+
+    }    
 }
-}
+   

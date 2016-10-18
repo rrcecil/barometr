@@ -17,7 +17,10 @@ namespace Barometr.Infrastructure
         {
             return _db.Profiles;
         }
+        public Profile GetProfileById(int id)
+        {
+            return _db.Profiles.FirstOrDefault(p => p.Id == id);
+        }
 
-        
     }
 }
