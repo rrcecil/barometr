@@ -59,7 +59,7 @@ namespace Barometr.Services
             drink.Ingredient = d.Ingredient;
             drink.Name = d.Name;
             drink.Type = d.Type;
-
+             
             _drinkRepo.SaveChanges();
         }
 

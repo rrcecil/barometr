@@ -50,7 +50,7 @@ namespace Barometr.Services
 
             review.Comment = r.Comment;
             review.Rating = r.Rating;
-
+             
             _repo.SaveChanges();
         }
 
