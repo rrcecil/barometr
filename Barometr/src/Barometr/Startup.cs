@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Barometr.Data;
-using Barometr.Infrastructure;
 using Barometr.Models;
 using Barometr.Services;
 
@@ -57,17 +56,6 @@ namespace Barometr
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
-            //Repositories
-            services.AddScoped<BarRepository>();
-            services.AddScoped<DrinkRepository>();
-            services.AddScoped<ProfileRepository>();
-            services.AddScoped<ReviewRepository>();
-
-            //Services
-            services.AddScoped<BarService>();
-            services.AddScoped<DrinkService>();
-            services.AddScoped<ProfileService>();
-            services.AddScoped<ReviewService>();
 
 
             // add security policies
