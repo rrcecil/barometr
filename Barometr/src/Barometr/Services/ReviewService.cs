@@ -38,6 +38,37 @@ namespace Barometr.Services
             return result;
         }
 
+        public void AddReview(ReviewDTO r)
+        {
+            _repo.Add(ProjectToModel(r));
+            _repo.SaveChanges();
+        }
+
+        public void UpdateReview(ReviewDTO r)
+        {
+            var review = _repo.List().FirstOrDefault(re => re.Id == r.Id);
+
+            review.Comment = r.Comment;
+            review.Rating = r.Rating;
+
+            _repo.SaveChanges();
+        }
+
+        public void DeleteReview(ReviewDTO r)
+        {
+            _repo.Delete(ProjectToModel(r));
+            _repo.SaveChanges();
+        }
+        //TODO: Needs logic to determine if review is drink or bar review
+        private Review ProjectToModel(ReviewDTO r)
+        {
+            return new Review
+            {
+                Comment = r.Comment,
+                Rating = r.Rating,
+                Id = r.Id
+            };
+        }
         private ReviewDTO ProjectToViewModel(Review r)
         {
             return new ReviewDTO
