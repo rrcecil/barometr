@@ -1,6 +1,6 @@
 namespace Barometr.Controllers {
 
-    const apiURL = '/api/bars/';
+    const apiURL = '/api/bars';
 
     export class HomeController {
         //public bars;
@@ -26,31 +26,29 @@ namespace Barometr.Controllers {
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService) {
             $http.get(apiURL).then((res) => {
                 this.bars = res.data;
+
             });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
 
             });
-            $http.get('api/bars/reviews').then((res) => {
-                this.reviews = res.data;
-                console.log(this.reviews);
-            });
+
         }
 
-        public openReviewDialog(review) {
-            this.$uibModal.open({                
+        public openReviewDialog() {
+            this.$uibModal.open({
                 templateUrl: 'ngApp/views/reviewdialog.html',
                 controller: 'ReviewDialogController',
                 controllerAs: 'modal',
                 resolve: {
-                    review: () => review
+                    bars: () => this.bars
                 },
-                size: 'sm'
+                size: 'lg'
             });
         }
 
         public openDrinkDialog(drink) {
-            this.$uibModal.open({                
+            this.$uibModal.open({
                 templateUrl: 'ngApp/views/drinkdialog.html',
                 controller: 'DrinkDialogController',
                 controllerAs: 'modal',
@@ -59,10 +57,17 @@ namespace Barometr.Controllers {
                 },
                 size: 'sm'
             });
+        }
     }
-}
     export class ReviewDialogController {
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public review) { }
+        public reviews;
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
+        $http.get('api/reviews').then((res) => {
+            this.reviews = res.data;
+            console.log(this.bars);
+    });
+}
+
         public postReview(review) {
             this.$http.post(`api/bars`, review).then((res) => {
                 this.$state.reload();
