@@ -13,6 +13,12 @@ namespace Barometr {
                 controller: Barometr.Controllers.HomeController,
                 controllerAs: 'controller'
             })
+            .state('bar', {
+                url: '/bar',
+                templateUrl: '/ngApp/views/bar.html',
+                controller: Barometr.Controllers.BarController,
+                controllerAs: 'controller'
+            })
             .state('secret', {
                 url: '/secret',
                 templateUrl: '/ngApp/views/secret.html',
