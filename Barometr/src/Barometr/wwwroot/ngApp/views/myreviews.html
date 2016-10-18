@@ -1,0 +1,15 @@
+﻿<h2>My Reviews</h2>
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Comment</th>
+        <th>Rating</th>
+        <th>Type</th>
+    </tr>
+    <tr ng-repeat="review in controller.reviews">
+        <td>{{review.comment}}</td>
+        <td>{{review.rating}}</td>
+        <td>{{review.type}}</td>
+    </tr>
+</table>

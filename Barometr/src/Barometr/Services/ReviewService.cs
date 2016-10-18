@@ -4,6 +4,7 @@ using Barometr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 
 namespace Barometr.Services
@@ -79,6 +80,30 @@ namespace Barometr.Services
                 Type = r.Type,
                 Username = r.User.UserName
             };
+        }
+
+        public ICollection<ReviewDTO> GetReviewByName(string user)
+        {
+            var review = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new ReviewDTO
+            {
+                Comment = r.Comment,
+                Id = r.Id,
+                Rating = r.Rating,
+                Type = r.Type,
+                Username = r.User.UserName
+            }).ToList();
+
+            if (review.Count > 0)
+                return review;
+
+            var tempReview = new List<ReviewDTO>();
+            var rev = new ReviewDTO
+            {
+                Comment = "Your profile has no reviews."
+            };
+            tempReview.Add(rev);
+
+            return tempReview;
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿<h2>{{controller.profile.name}}'s Profile</h2>
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Name</th>
+        <th>Faction</th>
+        <th>Location</th>
+        <th>Date of Birth</th>
+        <th>Reviews</th>
+    </tr>
+    <tr>
+        <td>{{controller.profile.name}}</td>
+        <td>{{controller.profile.faction}}</td>
+        <td>{{controller.profile.location}}</td>
+        <td>{{controller.profile.dob}}</td>
+        <td><a ui-sref="myreviews"> My Reviews</a></td>
+    </tr>
+
+</table>

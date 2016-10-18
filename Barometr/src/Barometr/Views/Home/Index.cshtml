@@ -9,12 +9,16 @@
     <div class="container">
         <h1>Barometr</h1>
         <div>
-          <a href="/">Home</a> /
-           <a href="/about">About</a>
+          <a ui-sref="home">Home</a> /
+           <a ui-sref="about">About</a>
 
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+            / <a ui-sref="secret">Secret</a> /
+            <span ng-show="account.isLoggedIn()">
+                <a ui-sref="profile">Profile</a> /
+            </span>
+            
+           <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
+           <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
            <div ng-show="account.isLoggedIn()">
                [{{account.getUserName()}}]
            </div> 
@@ -35,7 +39,8 @@
     <!-- App Files-->
     <script src="/ngapp/app.js"></script>
     <script src="/ngapp/controllers/controllers.js"></script>
-    <script src="/ngapp/services/services.js"></script>
+    <script src="/ngapp/controllers/profileController.js"></script>
+<script src="/ngapp/services/services.js"></script>
 
 
     <!-- Security -->
