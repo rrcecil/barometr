@@ -1,0 +1,48 @@
+﻿    
+<!--clicking on bar name will take user to this page-barProfile(bar details)-->
+
+<h1>{{controller.bar.name}}</h1>
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <td>{{controller.bar.name}}</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td>{{controller.bar.category}}</td>
+    </tr>
+    <tr>
+        <th>Price</th> <!--expensive or not-->
+        <td>{{controller.bar.price | currency}}</td>
+    </tr>
+    <tr>
+        <th>Hours Of Operation</th>
+        <td>{{controller.bar.hours}}</td>
+    </tr>
+    <tr>
+        <th>Location</th>   <!--google map marker-->
+        <td>{{controller.bar.location}}</td>
+    </tr>
+    <tr>
+        <th>Contact Information</th>
+        <td>{{controller.bar.contact}}</td>
+    </tr>
+    <tr>
+        <th>Reviews</th> <!--snippet from a top user review-->
+        <td>{{controller.bar.reviews}}</td>
+    </tr>
+    <tr>
+        <th>Bar Menu</th> <!--link to bar menu-->
+        <td><a>{{controller.bar.menu}}</a></td>
+    </tr>
+
+    <tr>
+        <th>Top 3 drinkers</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Top 3 Popular Drinks </th>
+        <td></td>
+    </tr>
+
+</table>

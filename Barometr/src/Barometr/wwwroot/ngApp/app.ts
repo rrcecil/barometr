@@ -52,7 +52,13 @@ namespace Barometr {
                templateUrl: '/ngApp/views/search.html',
              controller: Barometr.Controllers.SearchController,
                controllerAs: 'controller'
-        });
+           })
+            .state('barProfile', {
+                url: '/barProfile',
+                templateUrl: '/ngApp/views/barProfile.html',
+                controller: Barometr.Controllers.barProfileController,
+                controllerAs: 'controller'
+            });
 
         // Handle request for non-existent route
         $urlRouterProvider.otherwise('/notFound');
