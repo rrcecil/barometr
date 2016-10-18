@@ -42,8 +42,9 @@ namespace Barometr.Services
 
             return profile;
         }
-        public void AddProfile(ProfileDTO profiledto)
+        public void AddProfile(ProfileDTO profiledto, string username)
         {
+            var user = _repo.GetUserByUsername(username);
             var profile = new Profile
             {
                 Id = profiledto.Id,
@@ -56,6 +57,18 @@ namespace Barometr.Services
             _repo.Add(profile);
             _repo.SaveChanges();
         }
+
+        //update method
+        public void UpdateProfile(ProfileDTO profile)
+        {
+            var orig = _repo.GetProfileById(profile.Id);
+            orig.Location = profile.Location;
+            orig.Faction = profile.Faction;
+            _repo.SaveChanges();
+
+        }
+
+
 
         //delete method
         //public void DeleteProfile(int id)
