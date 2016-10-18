@@ -46,7 +46,13 @@ namespace Barometr {
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
-            });
+            })
+           .state('search', {
+               url: '/search',
+               templateUrl: '/ngApp/views/search.html',
+             controller: Barometr.Controllers.SearchController,
+               controllerAs: 'controller'
+        });
 
         // Handle request for non-existent route
         $urlRouterProvider.otherwise('/notFound');

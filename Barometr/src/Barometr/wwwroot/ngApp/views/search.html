@@ -1,0 +1,11 @@
+﻿<div layout="column">
+  <!--Search Bar-->
+    <label>Search</label>
+    <input ng-model="search" ng-model-options="{debounce:1000}"class="glyphicon glyphicon-search" placeholder="Search"/>
+    <ul>
+        <li ng-repeat="bar in controller.bars | orderBy:'name'">  <!--filter by name-->
+        </li>
+        </ul>
+    </div>
+            
+        
