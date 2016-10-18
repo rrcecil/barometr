@@ -55,11 +55,11 @@ namespace Barometr
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            
 
-
-
-            // add security policies
-            services.AddAuthorization(options =>
+            
+                        // add security policies
+                        services.AddAuthorization(options =>
                         {
                             options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
                             options.AddPolicy("UserAdminOnly", policy => policy.RequireClaim("IsUserAdmin"));
