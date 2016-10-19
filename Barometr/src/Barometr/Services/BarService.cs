@@ -72,6 +72,24 @@ public BarDTO GetBarById(int id)
             _barRepo.SaveChanges();
         }
 
+        //delete method
+        public void DeleteBar(int id)
+        {
+            var orig = _barRepo.GetBarById(id);
+            _barRepo.Delete(orig);
+            _barRepo.SaveChanges();
+        }
+
+        //random method bar of the day
+        public int RandomBar()
+        {
+            Random rand = new Random((int)DateTime.Today.ToBinary()); 
+            //Random random = new Random();
+            int BarCount = (from b in _barRepo.List()
+                            select b).Count();
+            int randomBar = rand.Next(1, BarCount);
+            return randomBar;
+        }
 
     }    
 }
