@@ -23,10 +23,10 @@ namespace Barometr.Controllers {
         public drinks;
         public reviews;
 
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService) {
-            $http.get(apiURL).then((res) => {
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
+            $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
                 this.bars = res.data;
-
+                console.log(this.bars);
             });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
@@ -61,15 +61,18 @@ namespace Barometr.Controllers {
     }
     export class ReviewDialogController {
         public reviews;
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
+        public barId;
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
         $http.get('api/reviews').then((res) => {
             this.reviews = res.data;
             console.log(this.bars);
-    });
+            });
+        this.barId = this.$stateParams['id'];
 }
 
         public postReview(review) {
-            this.$http.post(`api/bars`, review).then((res) => {
+            review.barId = this.barId;
+            this.$http.post(`api/reviews`, review).then((res) => {
                 this.$state.reload();
             });
         }

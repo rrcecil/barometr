@@ -1,8 +1,8 @@
-﻿
+﻿<h1>{{controller.bars.name}}</h1>
 <ul>
-    <li ng-repeat="bar in controller.bars">
-        {{bar.name}}
-        {{bar.reviews}}
+    <li ng-repeat="review in controller.bars.reviews">
+        {{review.comment}}  -Rating: {{review.rating}}
     </li>
 </ul>
-<button ng-click="controller.openReviewDialog()">Reviews</button>
+
+<button ng-click="controller.openReviewDialog()">Write a Review</button>

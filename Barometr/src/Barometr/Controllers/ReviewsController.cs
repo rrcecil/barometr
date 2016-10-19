@@ -43,8 +43,10 @@ namespace Barometr.Controllers
         // POST api/values
         [HttpPost]
         public void Post([FromBody]ReviewDTO value)
+
         {
-            _service.AddReview(value);
+            var userName = User.Identity.Name;
+            _service.AddReview(value, userName);
         }
 
         // PUT api/values/5
@@ -58,7 +60,8 @@ namespace Barometr.Controllers
         [HttpDelete("{id}")]
         public void Delete(ReviewDTO value)
         {
-            _service.DeleteReview(value);
+            var userName = User.Identity.Name;
+            _service.DeleteReview(value, userName);
         }
     }
 }
