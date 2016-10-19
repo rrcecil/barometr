@@ -3,7 +3,8 @@ namespace Barometr {
     angular.module('Barometr', ['ui.router', 'ngResource', 'ui.bootstrap', 'google.places', 'ngGPlaces']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        ngGPlacesAPIProvider
     ) => {
         // Define routes
         $stateProvider
@@ -83,6 +84,11 @@ namespace Barometr {
 
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
+
+        ngGPlacesAPIProvider.setDefaults({
+            radius: 7000,
+            type: 'bar'
+        });
     });
 
     
