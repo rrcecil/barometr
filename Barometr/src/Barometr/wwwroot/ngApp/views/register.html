@@ -21,28 +21,34 @@
     <form ng-submit="controller.register()">
         <div>
             <label>Name:</label>
-            <input ng-model="controller.registerUser.name" />
+            <input ng-model="controller.registerUser.name" required />
         </div>
+        <br/>
         <div>
             <label>Email:</label>
-            <input ng-model="controller.registerUser.email"/>
+            <input ng-model="controller.registerUser.email" required/>
         </div>
+        <br />
         <div>
             <label>Password:</label>
-            <input ng-model="controller.registerUser.password"/>
+            <input ng-model="controller.registerUser.password" type="password" required/>
         </div>
+        <br />
         <div>
             <label>Confirm Password:</label>
-            <input ng-model="controller.registerUser.confirmPassword"/>
+            <input ng-model="controller.registerUser.confirmPassword" type="password" required/>
         </div>
+        <br />
         <div>
             <label>Location:</label>
             <input ng-model="controller.registerUser.location"/>
         </div>
+        <br />
         <div>
             <label>Date Of Birth</label>
-            <input type="datetime" ng-model="controller.registerUser.dob"/>
+            <input type="datetime" ng-model="controller.registerUser.dob" required/>
         </div>
+        
         <div>
             <br/>
             <label>Choose A Faction:</label>

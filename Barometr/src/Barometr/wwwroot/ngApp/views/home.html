@@ -1,4 +1,31 @@
 <h2>Home</h2>
-<p>
-    <a ui-sref="barProfile({id:bar.id})">Bar Details</a> <!--testing bar profile-->
-</p>
+<div class="container" style="height:auto; width:100%">
+    <div class="div1" style="float:left;height:100%;width:75%">
+        <p>
+            <a ui-sref="barProfile({id:bar.id})">Bar Details</a> <!--testing bar profile-->
+        <p>
+            <br />
+        <p>
+            <a ui-sref="profile({id:bar.id})">User Profile</a> <!--testing user profile-->
+        </p>
+        <br />
+        <p>
+
+            <a ui-sref="bar({id:bar.id})">Bar Reviews</a> <!--testing bar review modal-->
+        </p>
+    </div>
+
+    <div class="div2" style="float:right;height:100%;width:25%">
+        
+        <h2>Bar of the Day</h2>
+        <form ng-submit="controller.postRandomBar()">
+
+        </form>
+        <div>
+
+        </div>
+
+
+    </div>
+
+</div>
