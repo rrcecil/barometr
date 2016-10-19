@@ -25,6 +25,18 @@ namespace Barometr {
                 controller: Barometr.Controllers.SecretController,
                 controllerAs: 'controller'
             })
+            .state('profile', {
+                url: '/profile',
+                templateUrl: '/ngApp/views/profile.html',
+                controller: Barometr.Controllers.ProfileController,
+                controllerAs: 'controller'
+            })
+            .state('myreviews', {
+                url: '/myreviews',
+                templateUrl: '/ngApp/views/myreviews.html',
+                controller: Barometr.Controllers.ProfileReviewsController,
+                controllerAs: 'controller'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: '/ngApp/views/login.html',

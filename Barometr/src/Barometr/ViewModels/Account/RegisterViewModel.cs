@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Barometr.Models;
 
 namespace Barometr.ViewModels.Account
 {
@@ -23,5 +24,23 @@ namespace Barometr.ViewModels.Account
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        //Additional Registration Properties
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Faction")]
+        public string Faction { get; set; }
+
+        [Required]
+        [Display(Name = "Location")]
+        public string Location { get; set; }
+
+        [Required]
+        [Display(Name = "DateOfBirth")]
+        public DateTime DOB { get; set; }
     }
 }

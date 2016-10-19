@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Barometr.ViewModels;
 using Barometr.Services;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,9 +22,10 @@ namespace Barometr.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<ProfileDTO> Get()
+        [Authorize]
+        public ProfileDTO GetMyProfile()
         {
-            return _service.GetProfileDTO();
+            return _service.GetProfileByName(User.Identity.Name);
         }
 
         // GET api/values/5

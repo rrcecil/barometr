@@ -7,12 +7,19 @@ namespace Barometr.Services {
             // store user name
             this.$window.sessionStorage.setItem('userName', userInfo.userName);
 
+            // store user id
+            this.$window.sessionStorage.setItem('userId', userInfo.id);
+
             // store claims
             this.$window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
         }
 
         public getUserName() {
             return this.$window.sessionStorage.getItem('userName');
+        }
+
+        public getUserId() {
+            return this.$window.sessionStorage.getItem('userId');
         }
 
 
@@ -40,6 +47,7 @@ namespace Barometr.Services {
                     .then((result) => {
                         this.storeUserInfo(result.data);
                         resolve(result);
+                        console.log(result.data);
                     })
                     .catch((result) => {
                         var messages = this.flattenValidation(result.data);
