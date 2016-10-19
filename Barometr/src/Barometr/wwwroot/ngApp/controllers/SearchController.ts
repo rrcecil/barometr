@@ -8,7 +8,7 @@ namespace Barometr.Controllers {
         public neighborhoods;
         public bars;
 
-        constructor(public ngGPlacesAPI) {
+        constructor(public ngGPlacesAPI, public $http:ng.IHttpService) {
             this.options = {
                 types: ['establishment']
             };
@@ -27,7 +27,12 @@ namespace Barometr.Controllers {
             this.ngGPlacesAPI.nearbySearch({ latitude: hoodObj.latitude, longitude: hoodObj.longitude }).then((res) => {
                 this.bars = "";
                 this.bars = res;
+                console.log(this.bars);
             });
+        }
+
+        public addBar(bar) {
+            this.$http.post('api/bars', bar).then((res) => console.log(res))
         }
 
         public logThis() {
