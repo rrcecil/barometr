@@ -1,4 +1,5 @@
 ﻿using Barometr.Infrastructure;
+using Barometr.Models;
 using Barometr.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,23 @@ public BarDTO GetBarById(int id)
             }).FirstOrDefault();
             return bar;
         }
+
+        public void AddBar(BarDTO bardto)
+        {
+            
+            var bar = new Bar
+            {
+                Name = bardto.Name,
+                Latitude = bardto.Latitude,
+                Longitude = bardto.Longitude,
+                HappyHour = bardto.HappyHour,
+
+            };
+            _barRepo.Add(bar);
+            _barRepo.SaveChanges();
+
+        }
+
 
        // update method
         public void UpdateBar(BarDTO bar)
