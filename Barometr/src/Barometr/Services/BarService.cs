@@ -68,7 +68,7 @@ public BarDTO GetBarById(int id)
             orig.Name = bar.Name;
             orig.Latitude = bar.Latitude;
             orig.Longitude = bar.Longitude;
-            orig.HappyHour = bar.HappyHour;
+            orig.HappyHour = bar.HappyHour;      
             _barRepo.SaveChanges();
         }
 

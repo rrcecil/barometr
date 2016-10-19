@@ -1,11 +1,27 @@
-﻿<div layout="column">
+﻿<div flex layout>
   <!--Search Bar-->
-    <label>Search</label>
-    <input ng-model="search" ng-model-options="{debounce:1000}"class="glyphicon glyphicon-search" placeholder="Search"/>
-    <ul>
-        <li ng-repeat="bar in controller.bars | orderBy:'name'">  <!--filter by name-->
-        </li>
-        </ul>
+    <div flex="20">
+        <!--<input type="text" g-places-autocomplete options="controller.options" ng-model="controller.result" />
+        <input type="submit" ng-click="controller.logThis()" />-->
+        <form ng-submit="controller.getBars(selectedHood)">
+            <label for="hoodSelect">Neighborhood</label>
+            <select ng-model="selectedHood" id="hoodSelect">
+                <option value={{controller.neighborhoods.heights}}>Heights</option>
+                <option value="{{controller.neighborhoods.riceVillage}}">Rice Village</option>
+                <option value="{{controller.neighborhoods.pearland}}">Pearland</option>
+            </select>
+            <input type="submit" value="Search"/>
+        </form>
     </div>
+    <div flex="80">
+        <table class="table">
+            <tbody>
+                <tr ng-repeat="bar in controller.bars">
+                    <td>{{bar.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
             
         
