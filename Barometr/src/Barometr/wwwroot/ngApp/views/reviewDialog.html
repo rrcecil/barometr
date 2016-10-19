@@ -1,7 +1,11 @@
 ﻿<div class="modal-body" style="max-height: 100%">
-<form ng-submit="modal.postReview(dialog.review)">
-    <input ng-model="dialog.review.comment" placeholder="Review" />
-    <input type="submit" />
-</form>
-<hr />
+    <div class="container-fluid">
+            <form ng-submit="modal.postReview(dialog.review)">
+                <input ng-model="dialog.review.comment" placeholder="Review" />
+                <input-stars ng-model="dialog.review.rating" max="5"></input-stars>
+                <input type="submit" />
+            </form>
+
+    </div>
+    <hr />
 </div>
