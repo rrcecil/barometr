@@ -15,7 +15,7 @@ namespace Barometr {
                 controllerAs: 'controller'
             })
             .state('bar', {
-                url: '/bar',
+                url: '/bar/:id',
                 templateUrl: '/ngApp/views/bar.html',
                 controller: Barometr.Controllers.BarController,
                 controllerAs: 'controller'

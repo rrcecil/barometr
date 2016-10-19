@@ -12,6 +12,7 @@ namespace Barometr.ViewModels
         public int Rating { get; set; }
         public string Type { get; set; }
         public string Username { get; set; }
+        public int BarId { get; set; }
 
     } 
 }
