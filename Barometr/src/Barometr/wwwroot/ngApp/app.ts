@@ -13,6 +13,12 @@ namespace Barometr {
                 controller: Barometr.Controllers.HomeController,
                 controllerAs: 'controller'
             })
+            .state('bar', {
+                url: '/bar',
+                templateUrl: '/ngApp/views/bar.html',
+                controller: Barometr.Controllers.BarController,
+                controllerAs: 'controller'
+            })
             .state('secret', {
                 url: '/secret',
                 templateUrl: '/ngApp/views/secret.html',
@@ -58,6 +64,18 @@ namespace Barometr {
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
+            })
+           .state('search', {
+               url: '/search',
+               templateUrl: '/ngApp/views/search.html',
+             controller: Barometr.Controllers.SearchController,
+               controllerAs: 'controller'
+           })
+            .state('barProfile', {
+                url: '/barProfile',
+                templateUrl: '/ngApp/views/barProfile.html',
+                controller: Barometr.Controllers.barProfileController,
+                controllerAs: 'controller'
             });
 
         // Handle request for non-existent route
