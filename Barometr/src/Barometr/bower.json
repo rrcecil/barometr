@@ -11,6 +11,8 @@
     "angular-bootstrap": "1.x",
     "angular-animate": "1.x",
     "angular-touch": "1.x",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^0.3.1",
+    "angular-google-places-autocomplete": "^0.2.7",
+    "angularjs-google-places": "^0.1.0"
   }
 }
