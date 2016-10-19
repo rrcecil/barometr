@@ -105,7 +105,7 @@ public BarDTO GetBarById(int id)
             //Random random = new Random();
             int BarCount = (from b in _barRepo.List()
                             select b).Count();
-            int randomBar = rand.Next(1, BarCount);
+            int randomBar = rand.Next(1, BarCount+1);
             return randomBar;
         }
 
