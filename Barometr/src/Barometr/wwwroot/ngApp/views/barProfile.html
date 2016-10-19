@@ -1,40 +1,40 @@
 ﻿    
 <!--clicking on bar name will take user to this page-barProfile(bar details)-->
-<li ng-repeat="bar in controller.bars">
 
-    <h1>{{bar.name}}</h1>
-    <table class="table table-striped">
+
+    <h1>{{controller.bar.name}}</h1>
+    <table class="table table-striped table-hover">
         <tr>
             <th>Name</th>
-            <td>{{bar.name}}</td>
+            <td>{{controller.bar.name}}</td>
         </tr>
         <tr>
             <th>Category</th>
-            <td>{{bar.category}}</td>
+            <td>{{controller.bar.category}}</td>
         </tr>
         <tr>
             <th>Price</th> <!--expensive or not-->
-            <td>{{bar.price | currency}}</td>
+            <td>{{controller.bar.price | currency}}</td>
         </tr>
         <tr>
             <th>Hours Of Operation</th>
-            <td>{{bar.hours}}</td>
+            <td>{{controller.bar.hours}}</td>
         </tr>
         <tr>
             <th>Location</th>   <!--google map marker-->
-            <td>{{bar.location}}</td>
+            <td>{{controller.bar.location}}</td>
         </tr>
         <tr>
             <th>Contact Information</th>
-            <td>{{bar.contact}}</td>
+            <td>{{controller.bar.contact}}</td>
         </tr>
         <tr>
             <th>Reviews</th> <!--snippet from a top user review-->
-            <td>{{bar.reviews}}</td>
+            <td>{{controller.bar.reviews}}</td>
         </tr>
         <tr>
             <th>Bar Menu</th> <!--link to bar menu-->
-            <td><a>{{bar.menu}}</a></td>
+            <td><a>{{controller.bar.menu}}</a></td>
         </tr>
 
         <tr>
