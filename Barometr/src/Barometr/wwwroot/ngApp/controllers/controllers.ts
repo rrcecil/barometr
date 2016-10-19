@@ -91,6 +91,7 @@ namespace Barometr.Controllers {
         }
     }
     angular.module('Barometr').controller('ReviewDialogController', ReviewDialogController);
+    
 
     export class DrinkDialogController {
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public drink) { }

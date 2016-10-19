@@ -1,6 +1,6 @@
 namespace Barometr {
 
-    angular.module('Barometr', ['ui.router', 'ngResource', 'ui.bootstrap', 'google.places', 'ngGPlaces']).config((
+    angular.module('Barometr', ['ui.router', 'ngResource', 'ui.bootstrap', 'google.places', 'ngGPlaces', 'angular-input-stars']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
