@@ -172,23 +172,43 @@ namespace Barometr.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reviews",
+                name: "BarReviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BarId = table.Column<int>(nullable: false),
                     Comment = table.Column<string>(nullable: true),
-                    DrinkId = table.Column<int>(nullable: false),
                     Rating = table.Column<int>(nullable: false),
-                    Type = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.PrimaryKey("PK_BarReviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_AspNetUsers_UserId",
+                        name: "FK_BarReviews_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DrinkReviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Comment = table.Column<string>(nullable: true),
+                    DrinkId = table.Column<int>(nullable: false),
+                    Rating = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DrinkReviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DrinkReviews_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -307,6 +327,16 @@ namespace Barometr.Migrations
                 column: "DrinkId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BarReviews_BarId",
+                table: "BarReviews",
+                column: "BarId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BarReviews_UserId",
+                table: "BarReviews",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Drinks_BarId",
                 table: "Drinks",
                 column: "BarId");
@@ -317,25 +347,20 @@ namespace Barometr.Migrations
                 columns: new[] { "BarDrinkBarId", "BarDrinkDrinkId" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_DrinkReviews_DrinkId",
+                table: "DrinkReviews",
+                column: "DrinkId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DrinkReviews_UserId",
+                table: "DrinkReviews",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Profiles_UserId",
                 table: "Profiles",
                 column: "UserId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_BarId",
-                table: "Reviews",
-                column: "BarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_DrinkId",
-                table: "Reviews",
-                column: "DrinkId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_UserId",
-                table: "Reviews",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserBars_BarId",
@@ -378,16 +403,16 @@ namespace Barometr.Migrations
                 column: "UserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Reviews_Bars_BarId",
-                table: "Reviews",
+                name: "FK_BarReviews_Bars_BarId",
+                table: "BarReviews",
                 column: "BarId",
                 principalTable: "Bars",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Reviews_Drinks_DrinkId",
-                table: "Reviews",
+                name: "FK_DrinkReviews_Drinks_DrinkId",
+                table: "DrinkReviews",
                 column: "DrinkId",
                 principalTable: "Drinks",
                 principalColumn: "Id",
@@ -429,10 +454,13 @@ namespace Barometr.Migrations
                 table: "Drinks");
 
             migrationBuilder.DropTable(
-                name: "Profiles");
+                name: "BarReviews");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "DrinkReviews");
+
+            migrationBuilder.DropTable(
+                name: "Profiles");
 
             migrationBuilder.DropTable(
                 name: "UserBars");
