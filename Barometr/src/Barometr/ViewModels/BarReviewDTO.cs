@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Barometr.ViewModels
 {
-    public class ReviewDTO
+    public class BarReviewDTO
     {
         public int Id { get; set; }
         public string Comment { get; set; }

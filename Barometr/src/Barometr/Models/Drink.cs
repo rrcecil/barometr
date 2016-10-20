@@ -13,6 +13,6 @@ namespace Barometr.Models
         public string Name { get; set; }
         public string Type { get; set; }   // type beer or drink
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<DrinkReview> Reviews { get; set; }
     }
 }

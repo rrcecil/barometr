@@ -13,7 +13,8 @@ namespace Barometr.Data
         public DbSet<Bar> Bars { get; set; }
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Review> Reviews { get; set; }
+        public DbSet<BarReview> BarReviews { get; set; }
+        public DbSet<DrinkReview> DrinkReviews { get; set; }
         public DbSet<UserBar> UserBars { get; set; }
         public DbSet<BarDrink> BarDrinks { get; set; }
 
@@ -24,9 +25,10 @@ namespace Barometr.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<ApplicationUser>().HasMany(u => u.Reviews).WithOne(r => r.User).IsRequired();
+            builder.Entity<ApplicationUser>().HasMany(u => u.BarReviews).WithOne(r => r.User).IsRequired();
+            builder.Entity<ApplicationUser>().HasMany(u => u.DrinkReviews).WithOne(r => r.User).IsRequired();
             builder.Entity<Drink>().HasMany(d => d.Reviews).WithOne(r => r.Drink);
-
+            builder.Entity<Bar>().HasMany(b => b.Reviews).WithOne(r => r.Bar);
             builder.Entity<Profile>().HasOne(p => p.User).WithOne(u => u.Profile);
 
             builder.Entity<UserBar>().HasKey(x => new { x.BarId, x.UserId });

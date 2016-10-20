@@ -13,6 +13,6 @@ namespace Barometr.Models
         public decimal Longitude { get; set; }
         public string HappyHour { get; set; } // property?
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<BarReview> Reviews { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace Barometr.Services
     public class DrinkService
     {
         private DrinkRepository _drinkRepo;
-        private ReviewRepository _reviewRepo;
+        private DrinkReviewRepository _reviewRepo;
 
-        public DrinkService(DrinkRepository drinkRepo, ReviewRepository reviewRepo)
+        public DrinkService(DrinkRepository drinkRepo, DrinkReviewRepository reviewRepo)
         {
             _drinkRepo = drinkRepo;
             _reviewRepo = reviewRepo;
@@ -79,13 +79,12 @@ namespace Barometr.Services
                 Name = d.Name,
                 Abv = d.Abv,
                 Type = d.Type,
-                Reviews = _reviewRepo.List().Where(r => r.DrinkId == d.Id).Select(r => new ReviewDTO
+                Reviews = _reviewRepo.List().Where(r => r.DrinkId == d.Id).Select(r => new DrinkReviewDTO
                 {
                     Id = r.Id,
                     Comment = r.Comment,
                     Rating = r.Rating,
-                    Username = r.User.UserName,
-                    Type = r.Type
+                    Username = r.User.UserName
                 }).ToList()
             };
         }

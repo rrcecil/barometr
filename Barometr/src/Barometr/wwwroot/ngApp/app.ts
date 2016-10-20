@@ -79,7 +79,7 @@ namespace Barometr {
                controllerAs: 'controller'
            })
             .state('barProfile', {
-                url: '/barProfile',
+                url: '/barProfile/:id',
                 templateUrl: '/ngApp/views/barProfile.html',
                 controller: Barometr.Controllers.BarController,
                 controllerAs: 'controller'
@@ -94,7 +94,7 @@ namespace Barometr {
         ngGPlacesAPIProvider.setDefaults({
             radius: 7000,
             type: 'bar',
-            nearbySearchKeys: ['name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level']
+            nearbySearchKeys: ['name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level', 'geometry']
         });
     });
 

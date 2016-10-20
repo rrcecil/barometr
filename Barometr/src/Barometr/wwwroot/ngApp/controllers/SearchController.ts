@@ -32,6 +32,9 @@ namespace Barometr.Controllers {
         }
 
         public addBar(bar) {
+            bar.disabled = true;
+            bar.latitude = bar.geometry.location.lat();
+            bar.longitude = bar.geometry.location.lng();
             this.$http.post('api/bars', bar).then((res) => console.log(res))
         }
 
