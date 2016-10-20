@@ -10,10 +10,10 @@ namespace Barometr.Services
     public class UserMetricService
     {
         private UserMetricRepository _repo;
-        private ReviewRepository _reviewRepo;
+        private DrinkReviewRepository _reviewRepo;
         private BarRepository _barRepo;
         private DrinkRepository _drinkRepo;
-        public UserMetricService(UserMetricRepository repo, ReviewRepository reviewRepo, BarRepository barRepo, DrinkRepository drinkRepo)
+        public UserMetricService(UserMetricRepository repo, DrinkReviewRepository reviewRepo, BarRepository barRepo, DrinkRepository drinkRepo)
         {
             _repo = repo;
             _reviewRepo = reviewRepo;

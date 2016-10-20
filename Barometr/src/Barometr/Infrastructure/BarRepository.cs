@@ -36,7 +36,7 @@ namespace Barometr.Infrastructure
                     Latitude = .012M,
                     HappyHour = "5PM",
                     Menu = new List<Drink>(),
-                    Reviews = new List<Review>()
+                    Reviews = new List<BarReview>()
                 };
             }
             return bar;
