@@ -27,6 +27,13 @@ namespace Barometr.Controllers
         }
 
         // GET api/values/5
+        [HttpGet("menu")]
+        public ICollection<DrinkDTO> GetBarDrinks()
+        {
+            return _service.GetDrinksByUserName(User.Identity.Name);
+        }
+
+        // GET api/values/5
         [HttpGet("{id}")]
         public DrinkDTO Get(int id)
         {
@@ -37,7 +44,14 @@ namespace Barometr.Controllers
         [HttpPost]
         public void Post([FromBody]DrinkDTO value)
         {
-            _service.AddDrink(value);
+            _service.AddDrink(value, User.Identity.Name);
+        }
+
+        // POST api/values
+        [HttpPost("addTo")]
+        public void PostToList([FromBody]DrinkDTO value)
+        {
+            _service.AddDrinkToList(value, User.Identity.Name);
         }
 
         // PUT api/values/5

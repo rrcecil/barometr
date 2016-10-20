@@ -77,6 +77,18 @@ namespace Barometr {
                 templateUrl: '/ngApp/views/barProfile.html',
                 controller: Barometr.Controllers.BarController,
                 controllerAs: 'controller'
+            })
+         .state('menu', {
+             url: '/menu',
+             templateUrl: '/ngApp/views/menu.html',
+             controller: Barometr.Controllers.MenuController,
+                controllerAs: 'controller'
+         })
+            .state('addToMenu', {
+                url: '/addToMenu',
+                templateUrl: '/ngApp/views/addToMenu.html',
+                controller: Barometr.Controllers.AddToMenuController,
+                controllerAs: 'controller'
             });
 
         // Handle request for non-existent route

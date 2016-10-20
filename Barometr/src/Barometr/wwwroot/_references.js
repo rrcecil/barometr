@@ -15,6 +15,7 @@
 /// <reference path="ngapp/controllers/accountcontroller.js" />
 /// <reference path="ngapp/controllers/barprofilecontroller.js" />
 /// <reference path="ngapp/controllers/controllers.js" />
+/// <reference path="ngapp/controllers/menucontroller.js" />
 /// <reference path="ngapp/controllers/profilecontroller.js" />
 /// <reference path="ngapp/controllers/searchcontroller.js" />
 /// <reference path="ngapp/services/accountservice.js" />
