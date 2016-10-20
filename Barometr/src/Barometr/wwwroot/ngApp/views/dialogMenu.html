@@ -1,0 +1,27 @@
+﻿<div>
+    <div class="modal-header">
+        <h1>Add A New Drink</h1>
+    </div>
+    <div class="modal-body">
+        <p>
+            <label>Name of Drink:</label><br/>
+            <input placeholder="Drink Name" ng-model="modal.drink.name" ng-required="true"/>
+        </p><br/>
+        <p>
+            <label>Alcohol By Volume:</label><br/>
+            <input placeholder="Alchohol By Volume" ng-model="modal.drink.abv" ng-required="true"/>
+        </p><br/>
+        <p>
+            <label>Type of Drink (Wine/Beer/Spirit):</label><br/>
+            <input placeholder="Drink Type" ng-model="modal.drink.type" ng-required="true"/>
+        </p><br/>
+        <p>
+            <label>Main Ingredient:</label><br/>
+            <input placeholder="Ingredient" ng-model="modal.drink.ingredient" ng-required="true"/>
+        </p>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="modal.ok(modal.drink)">Add And Submit</button>
+    </div>
+</div>
