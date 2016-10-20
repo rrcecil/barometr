@@ -19,7 +19,7 @@ namespace Barometr.Controllers {
         public bars;
         public drinks;
         public reviews;
-       
+
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
@@ -31,7 +31,7 @@ namespace Barometr.Controllers {
 
             });
 
-           
+
         }
 
 
@@ -59,11 +59,29 @@ namespace Barometr.Controllers {
             });
         }
     }
+
+    export class UserMetricController {
+        public barReviewCount;
+        public drinkReviewCount;
+
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService) {
+            $http.get(`api/bars/barReviewCount`).then((res) => {
+                this.barReviewCount = res.data;
+                console.log(this.barReviewCount);
+            });
+            $http.get(`api/bars/drinkReviewCount`).then((res) => {
+                this.drinkReviewCount = res.data;
+                console.log(this.drinkReviewCount);
+            });
+
+        }
+
+    }
     export class ReviewDialogController {
         public reviews;
         public barId;
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
-            $http.get('api/reviews').then((res) => {
+            $http.get('api/barReviews').then((res) => {
                 this.reviews = res.data;
                 console.log(this.bars);
             });
