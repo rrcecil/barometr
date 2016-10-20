@@ -26,13 +26,13 @@ namespace Barometr.Controllers
             _service.BarReviewCount(username);
         }
 
-        //TODO drinkreviewcount
-        //[HttpGet("drinkReviewCount")]
-        //public void GetDrinkReviewCount()
-        //{
-        //    var username = User.Identity.Name;
+        
+        [HttpGet("drinkReviewCount")]
+        public void GetDrinkReviewCount()
+        {
+            var username = User.Identity.Name;
 
-        //    _service.DrinkReviewCount(username);
-        //}
+            _service.DrinkReviewCount(username);
+        }
     }
 }
