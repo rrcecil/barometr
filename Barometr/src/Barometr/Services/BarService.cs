@@ -10,8 +10,8 @@ namespace Barometr.Services
     public class BarService
     {
         private BarRepository _barRepo;
-        private ReviewRepository _reviewRepo;
-        public BarService(BarRepository repo, ReviewRepository reviewRepo )
+        private BarReviewRepository _reviewRepo;
+        public BarService(BarRepository repo, BarReviewRepository reviewRepo )
         {
             _barRepo = repo;
             _reviewRepo = reviewRepo;    
@@ -27,12 +27,11 @@ namespace Barometr.Services
                         Longitude = b.Longitude,
                         HappyHour = b.HappyHour,
                         Reviews = (from r in b.Reviews
-                                   select new ReviewDTO()
+                                   select new BarReviewDTO()
                                    {
                                        Id = r.Id,
                                        Comment = r.Comment,
-                                       Rating = r.Rating,
-                                       Type = r.Type
+                                       Rating = r.Rating
                                        
                                    }).ToList()
                     }).ToList();
@@ -48,12 +47,12 @@ public BarDTO GetBarById(int id)
                 Longitude = b.Longitude,
                 HappyHour = b.HappyHour,
                 Reviews = (from r in b.Reviews
-                           select new ReviewDTO()
+                           select new BarReviewDTO()
                            {
                                Id = r.Id,
                                Comment = r.Comment,
-                               Rating = r.Rating,
-                               Type = r.Type
+                               Rating = r.Rating
+                               
 
                            }).ToList()
 
