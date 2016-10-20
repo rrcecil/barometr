@@ -3,25 +3,23 @@ namespace Barometr.Controllers {
     const apiURL = '/api/bars';
 
     export class HomeController {
-        //public bars;
-        //public search;
-        //constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService) {
-        //    $http.get(apiURL).then((res) => {
-        //        this.bars = res.data;
-        //    });
-        //}
-        //public fetch() {
-        //    this.$http.get(apiURL + `search/${this.search}`).then((res) => {
-        //        this.bars = res.data;
-        //    });
-        //}
 
+        public randomBar;
+        constructor(public $http: ng.IHttpService) {
+
+            $http.get(`/api/bars/random`).then((res) => {
+                this.randomBar = res.data;
+                console.log(this.randomBar);
+            });
+        }
     }
+
 
     export class BarController {
         public bars;
         public drinks;
         public reviews;
+       
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
@@ -33,7 +31,9 @@ namespace Barometr.Controllers {
 
             });
 
+           
         }
+
 
         public openReviewDialog() {
             this.$uibModal.open({
@@ -63,12 +63,12 @@ namespace Barometr.Controllers {
         public reviews;
         public barId;
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
-        $http.get('api/reviews').then((res) => {
-            this.reviews = res.data;
-            console.log(this.bars);
+            $http.get('api/reviews').then((res) => {
+                this.reviews = res.data;
+                console.log(this.bars);
             });
-        this.barId = this.$stateParams['id'];
-}
+            this.barId = this.$stateParams['id'];
+        }
 
         public postReview(review) {
             review.barId = this.barId;
@@ -90,6 +90,8 @@ namespace Barometr.Controllers {
             this.$uibModalInstance.close();
         }
     }
+
+
     angular.module('Barometr').controller('ReviewDialogController', ReviewDialogController);
     
 
@@ -195,5 +197,5 @@ namespace Barometr.Controllers {
     export class AboutController {
         public message = 'Hello from the about page!';
     }
-    
+
 }
