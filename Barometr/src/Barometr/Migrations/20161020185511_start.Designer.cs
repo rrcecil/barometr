@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Barometr.Data;
 
-namespace Barometr.Data.Migrations
+namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161017201218_updatemodels")]
-    partial class updatemodels
+    [Migration("20161020185511_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,6 +116,8 @@ namespace Barometr.Data.Migrations
 
                     b.Property<int?>("BarDrinkDrinkId");
 
+                    b.Property<int?>("BarId");
+
                     b.Property<string>("Ingredient");
 
                     b.Property<string>("Name");
@@ -123,6 +125,8 @@ namespace Barometr.Data.Migrations
                     b.Property<string>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BarId");
 
                     b.HasIndex("BarDrinkBarId", "BarDrinkDrinkId");
 
@@ -325,6 +329,10 @@ namespace Barometr.Data.Migrations
 
             modelBuilder.Entity("Barometr.Models.Drink", b =>
                 {
+                    b.HasOne("Barometr.Models.Bar")
+                        .WithMany("Menu")
+                        .HasForeignKey("BarId");
+
                     b.HasOne("Barometr.Models.BarDrink")
                         .WithMany("Drinks")
                         .HasForeignKey("BarDrinkBarId", "BarDrinkDrinkId");
