@@ -120,13 +120,11 @@ public BarDTO GetBarById(int id)
                 Longitude = bar.Longitude,
                 Name = bar.Name,
                 Reviews = (from r in bar.Reviews
-                   select new ReviewDTO()
+                   select new BarReviewDTO()
                    {
                        Id = r.Id,
                        Comment = r.Comment,
-                       Rating = r.Rating,
-                       Type = r.Type
-
+                       Rating = r.Rating
                    }).ToList()
             };
         }

@@ -11,10 +11,10 @@ namespace Barometr.Services
     public class DrinkService
     {
         private DrinkRepository _drinkRepo;
-        private ReviewRepository _reviewRepo;
+        private DrinkReviewRepository _reviewRepo;
         private BarRepository _barRepo;
 
-        public DrinkService(DrinkRepository drinkRepo, ReviewRepository reviewRepo, BarRepository barRepo)
+        public DrinkService(DrinkRepository drinkRepo, DrinkReviewRepository reviewRepo, BarRepository barRepo)
         {
             _drinkRepo = drinkRepo;
             _reviewRepo = reviewRepo;
