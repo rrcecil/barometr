@@ -17,7 +17,7 @@ namespace Barometr.Services
 
         public IList<ApplicationUser> GetUsers(int id)
         {
-
+            return null;
         }
     }
 }

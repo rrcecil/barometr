@@ -88,7 +88,7 @@ namespace Barometr {
         ngGPlacesAPIProvider.setDefaults({
             radius: 7000,
             type: 'bar',
-            nearbySearchKeys: ['name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level']
+            nearbySearchKeys: ['name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level', 'geometry']
         });
     });
 
