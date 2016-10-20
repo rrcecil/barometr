@@ -38,6 +38,12 @@ namespace Barometr {
                 controller: Barometr.Controllers.ProfileReviewsController,
                 controllerAs: 'controller'
             })
+            .state('mybarlist', {
+                url: '/mybarlist',
+                templateUrl: '/ngApp/views/mybarlist.html',
+                controller: Barometr.Controllers.BarController,
+                controllerAs: 'controller'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: '/ngApp/views/login.html',
