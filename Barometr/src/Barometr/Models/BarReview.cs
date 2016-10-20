@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Barometr.Models
 {
-    public class Review
+    public class BarReview
     {
         public int Id { get; set; }
         public string Comment { get; set; }
         public int Rating { get; set; }
-        public string Type { get; set; } // bar or drink
+      
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
@@ -21,8 +21,6 @@ namespace Barometr.Models
         [ForeignKey("BarId")]
         public Bar Bar { get; set; }
 
-        public int DrinkId { get; set; }
-        [ForeignKey("DrinkId")]
-        public Drink Drink { get; set; }
+        
     }
 }
