@@ -53,7 +53,7 @@ namespace Barometr.Controllers {
                 controller: 'DrinkDialogController',
                 controllerAs: 'modal',
                 resolve: {
-                    drink: () => drink
+                    drinks: () => this.drinks
                 },
                 size: 'sm'
             });
@@ -116,17 +116,17 @@ namespace Barometr.Controllers {
     export class DrinkDialogController {
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public drink) { }
         public postDrink(drink) {
-            this.$http.post('api/bars', drink).then((res) => {
+            this.$http.post('api/drinks', drink).then((res) => {
                 this.$state.reload();
             });
         }
         public updateDrink(drink) {
-            this.$http.put(`api/bars/${drink.id}`, drink).then((res) => {
+            this.$http.put(`api/drinks/${drink.id}`, drink).then((res) => {
                 this.$state.reload();
             });
         }
         public deleteDrink(drink) {
-            this.$http.delete(`api/bars/drinks/${drink.id}`).then((res) => {
+            this.$http.delete(`api/drinks/${drink.id}`).then((res) => {
                 this.$state.reload();
             });
         }
