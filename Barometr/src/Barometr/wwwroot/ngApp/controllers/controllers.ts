@@ -63,7 +63,7 @@ namespace Barometr.Controllers {
         public reviews;
         public barId;
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
-            $http.get('api/reviews').then((res) => {
+            $http.get('api/barReviews').then((res) => {
                 this.reviews = res.data;
                 console.log(this.bars);
             });
@@ -72,7 +72,7 @@ namespace Barometr.Controllers {
 
         public postReview(review) {
             review.barId = this.barId;
-            this.$http.post(`api/reviews`, review).then((res) => {
+            this.$http.post(`api/barReviews`, review).then((res) => {
                 this.$state.reload();
             });
         }
