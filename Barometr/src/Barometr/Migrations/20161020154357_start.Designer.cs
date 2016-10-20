@@ -8,7 +8,7 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161020185511_start")]
+    [Migration("20161020154357_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,6 +105,29 @@ namespace Barometr.Migrations
                     b.ToTable("BarDrinks");
                 });
 
+            modelBuilder.Entity("Barometr.Models.BarReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BarId");
+
+                    b.Property<string>("Comment");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BarId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BarReviews");
+                });
+
             modelBuilder.Entity("Barometr.Models.Drink", b =>
                 {
                     b.Property<int>("Id")
@@ -116,8 +139,6 @@ namespace Barometr.Migrations
 
                     b.Property<int?>("BarDrinkDrinkId");
 
-                    b.Property<int?>("BarId");
-
                     b.Property<string>("Ingredient");
 
                     b.Property<string>("Name");
@@ -126,11 +147,32 @@ namespace Barometr.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BarId");
-
                     b.HasIndex("BarDrinkBarId", "BarDrinkDrinkId");
 
                     b.ToTable("Drinks");
+                });
+
+            modelBuilder.Entity("Barometr.Models.DrinkReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Comment");
+
+                    b.Property<int>("DrinkId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DrinkId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DrinkReviews");
                 });
 
             modelBuilder.Entity("Barometr.Models.Profile", b =>
@@ -154,35 +196,6 @@ namespace Barometr.Migrations
                         .IsUnique();
 
                     b.ToTable("Profiles");
-                });
-
-            modelBuilder.Entity("Barometr.Models.Review", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("BarId");
-
-                    b.Property<string>("Comment");
-
-                    b.Property<int>("DrinkId");
-
-                    b.Property<int>("Rating");
-
-                    b.Property<string>("Type");
-
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BarId");
-
-                    b.HasIndex("DrinkId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Barometr.Models.UserBar", b =>
@@ -327,15 +340,37 @@ namespace Barometr.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Barometr.Models.BarReview", b =>
+                {
+                    b.HasOne("Barometr.Models.Bar", "Bar")
+                        .WithMany("Reviews")
+                        .HasForeignKey("BarId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Barometr.Models.ApplicationUser", "User")
+                        .WithMany("BarReviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Barometr.Models.Drink", b =>
                 {
-                    b.HasOne("Barometr.Models.Bar")
-                        .WithMany("Menu")
-                        .HasForeignKey("BarId");
-
                     b.HasOne("Barometr.Models.BarDrink")
                         .WithMany("Drinks")
                         .HasForeignKey("BarDrinkBarId", "BarDrinkDrinkId");
+                });
+
+            modelBuilder.Entity("Barometr.Models.DrinkReview", b =>
+                {
+                    b.HasOne("Barometr.Models.Drink", "Drink")
+                        .WithMany("Reviews")
+                        .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Barometr.Models.ApplicationUser", "User")
+                        .WithMany("DrinkReviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Barometr.Models.Profile", b =>
@@ -343,24 +378,6 @@ namespace Barometr.Migrations
                     b.HasOne("Barometr.Models.ApplicationUser", "User")
                         .WithOne("Profile")
                         .HasForeignKey("Barometr.Models.Profile", "UserId");
-                });
-
-            modelBuilder.Entity("Barometr.Models.Review", b =>
-                {
-                    b.HasOne("Barometr.Models.Bar", "Bar")
-                        .WithMany("Reviews")
-                        .HasForeignKey("BarId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Barometr.Models.Drink", "Drink")
-                        .WithMany("Reviews")
-                        .HasForeignKey("DrinkId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Barometr.Models.ApplicationUser", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Barometr.Models.UserBar", b =>

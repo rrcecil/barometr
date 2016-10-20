@@ -14,6 +14,6 @@ namespace Barometr.Models
         public string HappyHour { get; set; } // property?
         public List<Drink> Menu { get; set; } 
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<BarReview> Reviews { get; set; }
     }
 }

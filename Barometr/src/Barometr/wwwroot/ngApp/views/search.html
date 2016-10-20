@@ -15,9 +15,15 @@
     </div>
     <div flex="80">
         <table class="table">
+            
             <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Add</th>
+                </tr>
                 <tr ng-repeat="bar in controller.bars">
                     <td>{{bar.name}}</td>
+                    <td><button ng-disabled="bar.disabled" class="btn btn-success" ng-click="controller.addBar(bar)">Add</button></td>
                 </tr>
             </tbody>
         </table>

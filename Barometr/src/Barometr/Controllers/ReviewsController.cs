@@ -13,15 +13,15 @@ namespace Barometr.Controllers
     [Route("api/[controller]")]
     public class ReviewsController : Controller
     {
-        private ReviewService _service;
-        public ReviewsController(ReviewService service)
+        private BarReviewService _service;
+        public ReviewsController(BarReviewService service)
         {
             _service = service;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<ReviewDTO> Get()
+        public IEnumerable<BarReviewDTO> Get()
         {
             var UserId = User.Identity.Name;
             return _service.GetMyReviews(UserId);
@@ -29,36 +29,39 @@ namespace Barometr.Controllers
 
         // GET api/values/5
         [HttpGet("myReviews")]
-        public ICollection<ReviewDTO> GetByUser()
+        public ICollection<BarReviewDTO> GetByUser()
         {
             return _service.GetReviewByName(User.Identity.Name);
         }
 
-        [HttpGet("drink/{id}")]
-        public ICollection<ReviewDTO> GetDrinkReview(int id)
-        {
-            return _service.GetReviewsByDrink(id);
-        }
+        //[HttpGet("drink/{id}")]
+        //public ICollection<BarReviewDTO> GetDrinkReview(int id)
+        //{
+        //    return _service.GetReviewsByDrink(id);
+        //}
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]ReviewDTO value)
+        public void Post([FromBody]BarReviewDTO value)
+
         {
-            _service.AddReview(value);
+            var userName = User.Identity.Name;
+            _service.AddReview(value, userName);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]ReviewDTO value)
+        public void Put(int id, [FromBody]BarReviewDTO value)
         {
             _service.UpdateReview(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(ReviewDTO value)
+        public void Delete(BarReviewDTO value)
         {
-            _service.DeleteReview(value);
+            var userName = User.Identity.Name;
+            _service.DeleteReview(value, userName);
         }
     }
 }

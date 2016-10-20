@@ -1,6 +1,6 @@
 namespace Barometr {
 
-    angular.module('Barometr', ['ui.router', 'ngResource', 'ui.bootstrap', 'google.places', 'ngGPlaces']).config((
+    angular.module('Barometr', ['ui.router', 'ngResource', 'ui.bootstrap', 'google.places', 'ngGPlaces', 'angular-input-stars']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
@@ -15,7 +15,7 @@ namespace Barometr {
                 controllerAs: 'controller'
             })
             .state('bar', {
-                url: '/bar',
+                url: '/bar/:id',
                 templateUrl: '/ngApp/views/bar.html',
                 controller: Barometr.Controllers.BarController,
                 controllerAs: 'controller'
@@ -36,6 +36,12 @@ namespace Barometr {
                 url: '/myreviews',
                 templateUrl: '/ngApp/views/myreviews.html',
                 controller: Barometr.Controllers.ProfileReviewsController,
+                controllerAs: 'controller'
+            })
+            .state('mybarlist', {
+                url: '/mybarlist',
+                templateUrl: '/ngApp/views/mybarlist.html',
+                controller: Barometr.Controllers.BarController,
                 controllerAs: 'controller'
             })
             .state('login', {
@@ -73,7 +79,7 @@ namespace Barometr {
                controllerAs: 'controller'
            })
             .state('barProfile', {
-                url: '/barProfile',
+                url: '/barProfile/:id',
                 templateUrl: '/ngApp/views/barProfile.html',
                 controller: Barometr.Controllers.BarController,
                 controllerAs: 'controller'
@@ -99,7 +105,8 @@ namespace Barometr {
 
         ngGPlacesAPIProvider.setDefaults({
             radius: 7000,
-            type: 'bar'
+            type: 'bar',
+            nearbySearchKeys: ['name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level', 'geometry']
         });
     });
 

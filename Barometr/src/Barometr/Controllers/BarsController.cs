@@ -63,7 +63,7 @@ namespace Barometr.Controllers
         }
 
         //random bar of the day method
-        [HttpGet("/random")]
+        [HttpGet("random")]
         public BarDTO GetRandomBar()
         {
             return _service.GetBarById(_service.RandomBar());

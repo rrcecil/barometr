@@ -12,7 +12,7 @@ namespace Barometr.ViewModels
         public double Abv { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-        public ICollection<ReviewDTO> Reviews { get; set; }
+        public ICollection<DrinkReviewDTO> Reviews { get; set; }
          
     }
 }

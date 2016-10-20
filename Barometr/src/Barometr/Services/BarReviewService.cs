@@ -9,43 +9,46 @@ using System.Threading.Tasks;
 
 namespace Barometr.Services
 {
-    public class ReviewService
+    public class BarReviewService
     {
-        private ReviewRepository _repo;
+        private BarReviewRepository _repo;
 
-        public ReviewService(ReviewRepository repo)
+        public BarReviewService(BarReviewRepository repo)
         {
             _repo = repo;
         }
 
-        public List<ReviewDTO> GetMyReviews(string UserId)
+        public List<BarReviewDTO> GetMyReviews(string UserId)
         {
             var result = _repo.GetReviews().Where(r => r.UserId == UserId).Select(r => ProjectToViewModel(r)).ToList();
 
             return result;
         }
 
-        public ReviewDTO GetReviewById (int Id)
+        public BarReviewDTO GetReviewById (int Id)
         {
             var result = _repo.GetReviews().Where(r => r.Id == Id).Select(r => ProjectToViewModel(r)).FirstOrDefault();
 
             return result;
         }
 
-        public List<ReviewDTO> GetReviewsByDrink (int DrinkId)
+        public List<BarReviewDTO> GetReviewsByBar (int BarId)
         {
-            var result = _repo.GetReviews().Where(r => r.DrinkId == DrinkId).Select(r => ProjectToViewModel(r)).ToList();
-
+            var result = _repo.GetReviews().Where(r => r.BarId == BarId).Select(r => ProjectToViewModel(r)).ToList();                   //added this
             return result;
         }
 
-        public void AddReview(ReviewDTO r)
+        
+
+        public void AddReview(BarReviewDTO r, string UserName)
         {
-            _repo.Add(ProjectToModel(r));
+            var User = _repo.GetUserByUsername(UserName);
+            
+            _repo.Add(ProjectToModel(r, User.Id));
             _repo.SaveChanges();
         }
 
-        public void UpdateReview(ReviewDTO r)
+        public void UpdateReview(BarReviewDTO r)
         {
             var review = _repo.List().FirstOrDefault(re => re.Id == r.Id);
 
@@ -55,49 +58,49 @@ namespace Barometr.Services
             _repo.SaveChanges();
         }
 
-        public void DeleteReview(ReviewDTO r)
+        public void DeleteReview(BarReviewDTO r, string UserName)
         {
-            _repo.Delete(ProjectToModel(r));
+            var User = _repo.GetUserByUsername(UserName);
+            _repo.Delete(ProjectToModel(r, User.Id));
             _repo.SaveChanges();
         }
         //TODO: Needs logic to determine if review is drink or bar review
-        private Review ProjectToModel(ReviewDTO r)
+        private BarReview ProjectToModel(BarReviewDTO r, string UserId)
         {
-            return new Review
+            return new BarReview
             {
                 Comment = r.Comment,
                 Rating = r.Rating,
-                Id = r.Id
+                UserId = UserId,
+                BarId = r.BarId
             };
         }
-        private ReviewDTO ProjectToViewModel(Review r)
+        private BarReviewDTO ProjectToViewModel(BarReview r)
         {
-            return new ReviewDTO
+            return new BarReviewDTO
             {
                 Id = r.Id,
                 Comment = r.Comment,
                 Rating = r.Rating,
-                Type = r.Type,
                 Username = r.User.UserName
             };
         }
 
-        public ICollection<ReviewDTO> GetReviewByName(string user)
+        public ICollection<BarReviewDTO> GetReviewByName(string user)
         {
-            var review = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new ReviewDTO
+            var review = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new BarReviewDTO
             {
                 Comment = r.Comment,
                 Id = r.Id,
                 Rating = r.Rating,
-                Type = r.Type,
                 Username = r.User.UserName
             }).ToList();
 
             if (review.Count > 0)
                 return review;
 
-            var tempReview = new List<ReviewDTO>();
-            var rev = new ReviewDTO
+            var tempReview = new List<BarReviewDTO>();
+            var rev = new BarReviewDTO
             {
                 Comment = "Your profile has no reviews."
             };

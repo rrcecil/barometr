@@ -12,7 +12,7 @@ namespace Barometr.ViewModels
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
         public string HappyHour { get; set; }
-        public ICollection<ReviewDTO> Reviews { get; set; } 
+        public ICollection<BarReviewDTO> Reviews { get; set; } 
 
 
     }
