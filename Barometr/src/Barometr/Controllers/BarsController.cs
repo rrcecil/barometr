@@ -34,6 +34,12 @@ namespace Barometr.Controllers
             return _service.GetBarById(id);
         }
 
+        [HttpGet("Bar")]
+        public BarDTO GetBar()
+        {
+            return _service.GetBarByUserName(User.Identity.Name);
+        }
+
         // POST api/values
         [HttpPost]
         public void Post([FromBody]BarDTO value)

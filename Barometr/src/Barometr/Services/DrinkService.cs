@@ -12,11 +12,13 @@ namespace Barometr.Services
     {
         private DrinkRepository _drinkRepo;
         private DrinkReviewRepository _reviewRepo;
+        private BarRepository _barRepo;
 
-        public DrinkService(DrinkRepository drinkRepo, DrinkReviewRepository reviewRepo)
+        public DrinkService(DrinkRepository drinkRepo, DrinkReviewRepository reviewRepo, BarRepository barRepo)
         {
             _drinkRepo = drinkRepo;
             _reviewRepo = reviewRepo;
+            _barRepo = barRepo;
         }
 
         public List<DrinkDTO> GetAllDrinks()
@@ -26,17 +28,49 @@ namespace Barometr.Services
             return result;
         }
 
-        public DrinkDTO GetDrinkById(int Id)
+        public DrinkDTO GetDrinkById(int id)
         {
-            var result = _drinkRepo.GetDrinks().Where(d => d.Id == Id).Select(d => ProjectToViewModel(d)).FirstOrDefault();
+            var result = _drinkRepo.GetDrinks().Where(d => d.Id == id).Select(d => ProjectToViewModel(d)).FirstOrDefault();
 
             return result;
         }
 
-        public void AddDrink (DrinkDTO d)
+        public List<DrinkDTO> GetDrinksByUserName(string user)
         {
-            _drinkRepo.Add(ProjectToModel(d));
+            var userOwner = _barRepo.GetBarByUsername(user) ?? new Bar
+            {
+                HappyHour = "false",
+                Name = "New Test Bar",
+                Longitude = .001M,
+                Latitude = .012M,
+                Menu = new List<Drink>()
+            };
+
+            return userOwner.Menu.Select(drink => new DrinkDTO
+            {
+                Abv = drink.Abv,
+                Id = drink.Id,
+                Ingredient = drink.Ingredient,
+                Name = drink.Name,
+                Type = drink.Type
+                
+            }).ToList();
+        }
+
+        public void AddDrink (DrinkDTO d, string user)
+        {
+            var drink = ProjectToModel(d);
+            _drinkRepo.Add(drink);
+            var bar = _barRepo.GetBarByUsername(user);
+            bar.Menu.Add(drink);
             _drinkRepo.SaveChanges();
+        }
+
+        public void AddDrinkToList(DrinkDTO d, string user)
+        {
+            var drink = ProjectToModel(d);
+            var bar = _barRepo.GetBarByUsername(user);
+            bar.Menu.Add(drink);
         }
 
         private Drink ProjectToModel (DrinkDTO d)
@@ -78,14 +112,7 @@ namespace Barometr.Services
                 Ingredient = d.Ingredient,
                 Name = d.Name,
                 Abv = d.Abv,
-                Type = d.Type,
-                Reviews = _reviewRepo.List().Where(r => r.DrinkId == d.Id).Select(r => new DrinkReviewDTO
-                {
-                    Id = r.Id,
-                    Comment = r.Comment,
-                    Rating = r.Rating,
-                    Username = r.User.UserName
-                }).ToList()
+                Type = d.Type
             };
         }
     }

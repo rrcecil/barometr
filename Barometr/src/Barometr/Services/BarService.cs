@@ -108,6 +108,26 @@ public BarDTO GetBarById(int id)
             return randomBar;
         }
 
+        public BarDTO GetBarByUserName(string user)
+        {
+            var bar = _barRepo.GetBarByUsername(user);
+            
+            return new BarDTO
+            {
+                HappyHour = bar.HappyHour,
+                Id = bar.Id,
+                Latitude = bar.Latitude,
+                Longitude = bar.Longitude,
+                Name = bar.Name,
+                Reviews = (from r in bar.Reviews
+                   select new BarReviewDTO()
+                   {
+                       Id = r.Id,
+                       Comment = r.Comment,
+                       Rating = r.Rating
+                   }).ToList()
+            };
+        }
     }    
 }
    

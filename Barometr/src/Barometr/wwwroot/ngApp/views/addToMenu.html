@@ -1,0 +1,21 @@
+﻿<h2><label>Create A Custom Drink To Menu</label><br/>
+</h2>
+
+<p><button class="btn-toolbar" ng-click="controller.showModal()">Create A New Drink</button></p>
+
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Alcohol By Volume</th>
+        <th>Type</th>
+        <th>Ingredient</th>
+        <th>Add To Menu</th>
+    </tr>
+    <tr ng-repeat="drink in controller.drinks">
+        <td>{{drink.name}}</td>
+        <td>{{drink.abv}}</td>
+        <td>{{drink.type}}</td>
+        <td>{{drink.ingredient}}</td>
+        <td><button ng-click="controller.add(drink)">Add This Drink</button></td>
+    </tr>
+</table>

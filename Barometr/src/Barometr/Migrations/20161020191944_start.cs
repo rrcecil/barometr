@@ -278,6 +278,7 @@ namespace Barometr.Migrations
                     Abv = table.Column<double>(nullable: false),
                     BarDrinkBarId = table.Column<int>(nullable: true),
                     BarDrinkDrinkId = table.Column<int>(nullable: true),
+                    BarId = table.Column<int>(nullable: true),
                     Ingredient = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true)
@@ -285,6 +286,12 @@ namespace Barometr.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Drinks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Drinks_Bars_BarId",
+                        column: x => x.BarId,
+                        principalTable: "Bars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Drinks_BarDrinks_BarDrinkBarId_BarDrinkDrinkId",
                         columns: x => new { x.BarDrinkBarId, x.BarDrinkDrinkId },
@@ -328,6 +335,11 @@ namespace Barometr.Migrations
                 name: "IX_BarReviews_UserId",
                 table: "BarReviews",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Drinks_BarId",
+                table: "Drinks",
+                column: "BarId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Drinks_BarDrinkBarId_BarDrinkDrinkId",
@@ -478,10 +490,10 @@ namespace Barometr.Migrations
                 name: "BarDrinks");
 
             migrationBuilder.DropTable(
-                name: "Bars");
+                name: "Drinks");
 
             migrationBuilder.DropTable(
-                name: "Drinks");
+                name: "Bars");
         }
     }
 }

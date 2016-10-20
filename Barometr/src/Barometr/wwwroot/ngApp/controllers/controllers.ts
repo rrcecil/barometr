@@ -90,7 +90,7 @@ namespace Barometr.Controllers {
 
         public postReview(review) {
             review.barId = this.barId;
-            this.$http.post(`api/reviews`, review).then((res) => {
+            this.$http.post(`api/barReviews`, review).then((res) => {
                 this.$state.reload();
             });
         }

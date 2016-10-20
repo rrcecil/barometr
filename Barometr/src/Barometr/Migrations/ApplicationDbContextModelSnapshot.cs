@@ -138,6 +138,8 @@ namespace Barometr.Migrations
 
                     b.Property<int?>("BarDrinkDrinkId");
 
+                    b.Property<int?>("BarId");
+
                     b.Property<string>("Ingredient");
 
                     b.Property<string>("Name");
@@ -145,6 +147,8 @@ namespace Barometr.Migrations
                     b.Property<string>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BarId");
 
                     b.HasIndex("BarDrinkBarId", "BarDrinkDrinkId");
 
@@ -354,6 +358,10 @@ namespace Barometr.Migrations
 
             modelBuilder.Entity("Barometr.Models.Drink", b =>
                 {
+                    b.HasOne("Barometr.Models.Bar")
+                        .WithMany("Menu")
+                        .HasForeignKey("BarId");
+
                     b.HasOne("Barometr.Models.BarDrink")
                         .WithMany("Drinks")
                         .HasForeignKey("BarDrinkBarId", "BarDrinkDrinkId");
