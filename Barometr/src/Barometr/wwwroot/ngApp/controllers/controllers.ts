@@ -45,7 +45,7 @@ namespace Barometr.Controllers {
             });
         }
 
-        public openDrinkDialog(drink) {
+        public openDrinkDialog() {
             this.$uibModal.open({
                 templateUrl: 'ngApp/views/drinkdialog.html',
                 controller: 'DrinkDialogController',
