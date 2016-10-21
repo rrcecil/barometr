@@ -62,15 +62,40 @@ namespace Barometr.Controllers {
         public barReviewCount;
         public drinkReviewCount;
         public randomBar;
+        public randomDrink;
+        public drinks;
+        
 
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public RandomBarService: Barometr.Services.RandomBarService) {
+        
+
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public RandomBarService: Barometr.Services.RandomBarService
+            ) {
             $http.get(`api/bars/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
                 console.log(this.barReviewCount);
             });
+
             $http.get(`api/bars/drinkReviewCount`).then((res) => {
                 this.drinkReviewCount = res.data;
                 console.log(this.drinkReviewCount);
+            });
+
+            $http.get(`api/bars/drinks`).then((res) => {
+                this.drinks = res.data;
+
+            });
+
+            let drinks = [
+                { Id: 1, name: "Corona",type: "Beer"},
+                {Id:2, name: "Mambo Taxi", type: "Spirit"},
+                { Id:3, name: "Robert Mondavi", type: "Wine" }
+            ];
+
+
+            
+            $http.get(`/api/drinks/randomDrink`).then((res) => {
+                console.log("the drink is " + res.data);
+                this.randomDrink = res.data;
             });
 
         }
@@ -135,13 +160,23 @@ namespace Barometr.Controllers {
     }
     angular.module('Barometr').controller('DrinkDialogController', DrinkDialogController);
 
-    //export class DrinkController {
-    //    public bars;
-    //    constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
-    //        $http.get(`api/bars/drinks`).then((res) => {
-    //            this.bars = res.data;
-    //        });
-    //    }
+    export class DrinkController {
+        public bars;
+        public randomDrink;
+
+        constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
+            $http.get(`api/bars/drinks`).then((res) => {
+                this.bars = res.data;
+            });
+
+            $http.get(`/api/bars/randomDrink`).then((res) => {
+                console.log(res.data);
+                this.randomDrink = res.data;
+            });
+        }
+
+
+
     //    public postDrink(drink) {
     //        this.$http.post('api/bars/drinks', drink).then((res) => {
     //            this.$state.reload();
@@ -198,7 +233,7 @@ namespace Barometr.Controllers {
     //            return false;
     //        }
     //    }
-    //}
+    }
 
     export class SecretController {
         public secrets;
