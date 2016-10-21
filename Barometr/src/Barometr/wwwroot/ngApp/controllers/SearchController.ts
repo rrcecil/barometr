@@ -27,15 +27,21 @@ namespace Barometr.Controllers {
             this.ngGPlacesAPI.nearbySearch({ latitude: hoodObj.latitude, longitude: hoodObj.longitude }).then((res) => {
                 this.bars = "";
                 this.bars = res;
-                console.log(this.bars);
+                
+                for (let bar of this.bars) {
+                    bar.googleBarId = bar.id;
+                    delete bar.id;
+                    bar.latitude = bar.geometry.location.lat();
+                    bar.longitude = bar.geometry.location.lng();
+                    this.$http.post('api/bars', bar).then((res) => console.log(res));
+                }
             });
         }
 
         public addBar(bar) {
             bar.disabled = true;
-            bar.latitude = bar.geometry.location.lat();
-            bar.longitude = bar.geometry.location.lng();
-            this.$http.post('api/bars', bar).then((res) => console.log(res))
+            
+            this.$http.post('api/bars', bar).then((res) => res );
         }
 
         public logThis() {
