@@ -9,23 +9,23 @@
     </tr>
     <tr>
         <th>Category</th>
-        <td>{{bar.category}}</td>
+        <td>{{controller.bars.category}}</td>
     </tr>
     <tr>
         <th>Price</th> <!--expensive or not-->
-        <td>{{bar.price | currency}}</td>
+        <td>{{controller.bars.price | currency}}</td>
     </tr>
     <tr>
         <th>Hours Of Operation</th>
-        <td>{{bar.hours}}</td>
+        <td>{{controller.bars.hours}}</td>
     </tr>
     <tr>
         <th>Location</th>   <!--google map marker-->
-        <td>{{bar.location}}</td>
+        <td>{{controller.bars.location}}</td>
     </tr>
     <tr>
         <th>Contact Information</th>
-        <td>{{bar.contact}}</td>
+        <td>{{controller.bars.contact}}</td>
     </tr>
     <tr>
         <th>Reviews</th> <!--snippet from a top user review-->
@@ -35,7 +35,7 @@
     </tr>
     <tr>
         <th>Bar Menu</th> <!--link to bar menu-->
-        <td><a>{{bar.menu}}</a></td>
+        <td><a ui-sref="menu({id:menu.id})">Menu</a></td> <!-link to bar menu-->
     </tr>
 
     <tr>

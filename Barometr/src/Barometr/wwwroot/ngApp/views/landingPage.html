@@ -1,16 +1,38 @@
 ﻿<!--testing counts-->
 {{controller.profile.name}}
-<table class="table table-striped table-hover">
-    <tr>
-        <th>My Bar Review Count</th>
-        <th>My Drink Review Count</th>
-    </tr>
-    <tr>
+<div class="container" style="height:auto; width:100%">
+    <div class="div1" style="float:left;height:100%;width:75%">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>My Reviews</th>
+                <th>Total</th> <!--count-->
+                
+            </tr>
+            <tr>
+                <th><a ui-sref="myreviews({id:myreviews.id})">Bar Reviews</a></th>
+                <td>{{controller.barReviewCount}}</td>
+            </tr>
+            <tr>
+    <th><a>Drink Reviews</a></th>
+    <td>{{controller.drinkReviewCount}}</td>
+</tr>
+        </table>
 
-        <td>{{controller.barReviewCount}}</td>
-        <td>{{controller.drinkReviewCount}}</td>
-    </tr>
-</table>
+       </div>
+    <div class="div2" style="float:right;height:100%;width:25%">
+        <h2>Bar of the Day</h2>
+        
+        Name:{{controller.RandomBarService.randomBar.name}}
+        <br />
+        Happy Hour:{{controller.RandomBarService.randomBar.happyHour}}
+        <br />
+        Rating:
+        <br />
+        Address:
+<h2>Recommendations</h2>
+        </div>
+
+    </div>
 
 
 

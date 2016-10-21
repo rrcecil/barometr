@@ -5,12 +5,10 @@ namespace Barometr.Controllers {
     export class HomeController {
 
         public randomBar;
-        constructor(public $http: ng.IHttpService) {
-
-            $http.get(`/api/bars/random`).then((res) => {
-                this.randomBar = res.data;
-                console.log(this.randomBar);
-            });
+        constructor(private RandomBarService: Barometr.Services.RandomBarService) {
+            let randomBar = RandomBarService.randomBar;
+            console.log(randomBar);
+            this.randomBar = randomBar;
         }
     }
 
@@ -63,8 +61,9 @@ namespace Barometr.Controllers {
     export class UserMetricController {
         public barReviewCount;
         public drinkReviewCount;
+        public randomBar;
 
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService) {
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public RandomBarService: Barometr.Services.RandomBarService) {
             $http.get(`api/bars/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
                 console.log(this.barReviewCount);
