@@ -12,10 +12,10 @@ namespace Barometr.Services
     {
         private BarRepository _barRepo;
         private BarReviewRepository _reviewRepo;
-        public BarService(BarRepository repo, BarReviewRepository reviewRepo )
+        public BarService(BarRepository repo, BarReviewRepository reviewRepo)
         {
             _barRepo = repo;
-            _reviewRepo = reviewRepo;    
+            _reviewRepo = reviewRepo;
         }
         public IList<BarDTO> GetBarDTO()
         {
@@ -33,12 +33,12 @@ namespace Barometr.Services
                                        Id = r.Id,
                                        Comment = r.Comment,
                                        Rating = r.Rating
-                                       
+
                                    }).ToList()
                     }).ToList();
         }
 
-public BarDTO GetBarById(int id)
+        public BarDTO GetBarById(int id)
         {
             var bar = _barRepo.List().Where(b => b.Id == id).Select(b => new BarDTO
             {
@@ -53,7 +53,7 @@ public BarDTO GetBarById(int id)
                                Id = r.Id,
                                Comment = r.Comment,
                                Rating = r.Rating
-                               
+
 
                            }).ToList()
 
@@ -63,7 +63,7 @@ public BarDTO GetBarById(int id)
 
         public void AddBar(BarDTO bardto)
         {
-            
+
             var bar = new Bar
             {
                 Name = bardto.Name,
@@ -78,14 +78,14 @@ public BarDTO GetBarById(int id)
         }
 
 
-       // update method
+        // update method
         public void UpdateBar(BarDTO bar)
         {
             var orig = _barRepo.GetBarById(bar.Id);
             orig.Name = bar.Name;
             orig.Latitude = bar.Latitude;
             orig.Longitude = bar.Longitude;
-            orig.HappyHour = bar.HappyHour;      
+            orig.HappyHour = bar.HappyHour;
             _barRepo.SaveChanges();
         }
 
@@ -100,18 +100,19 @@ public BarDTO GetBarById(int id)
         //random method bar of the day
         public int RandomBar()
         {
-            Random rand = new Random((int)DateTime.Today.ToBinary()); 
+            int num = (int)DateTime.Today.ToBinary();
+            Random rand = new Random(num);
             //Random random = new Random();
             int BarCount = (from b in _barRepo.List()
                             select b).Count();
-            int randomBar = rand.Next(1, BarCount+1);
+            int randomBar = rand.Next(1, BarCount + 1);
             return randomBar;
         }
 
         public BarDTO GetBarByUserName(string user)
         {
             var bar = _barRepo.GetBarByUsername(user);
-            
+
             return new BarDTO
             {
                 HappyHour = bar.HappyHour,
@@ -120,14 +121,13 @@ public BarDTO GetBarById(int id)
                 Longitude = bar.Longitude,
                 Name = bar.Name,
                 Reviews = (from r in bar.Reviews
-                   select new BarReviewDTO()
-                   {
-                       Id = r.Id,
-                       Comment = r.Comment,
-                       Rating = r.Rating
-                   }).ToList()
+                           select new BarReviewDTO()
+                           {
+                               Id = r.Id,
+                               Comment = r.Comment,
+                               Rating = r.Rating
+                           }).ToList()
             };
         }
-    }    
+    }
 }
-   
