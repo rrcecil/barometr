@@ -23,19 +23,25 @@ namespace Barometr.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly BarService _barService;
+        private readonly UserBarService _userBarService;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            BarService barService,
+            UserBarService userBarService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _barService = barService;
+            _userBarService = userBarService;
         }
 
 
@@ -130,6 +136,31 @@ namespace Barometr.Controllers
 
             // If we got this far, something failed
             return BadRequest(this.ModelState);
+        }
+
+        [HttpPost("ClaimBusiness/{id}")]
+        public void ClaimBusiness(int id)
+        {
+            //Get Application User
+            var user = _userManager.Users.FirstOrDefault();
+
+            //Find Bar From ID Passed
+            var bar = _barService.GetActualBarById(id);
+            
+            //Create a new UserBar and Link with User and Bar
+            var userBar = new UserBar
+            {
+                User = user,
+                Bar = bar,
+                UserId = user.Id,
+                BarId = bar.Id
+            };
+
+            //Add the UserBar to the database
+            _userBarService.Add(userBar);
+
+            //Add new claim to user making them a "User Admin"
+            _userManager.AddClaimAsync(user, new Claim("IsUserAdmin", "true"));
         }
 
         //
