@@ -22,14 +22,16 @@ namespace Barometr.Controllers {
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
                 this.bars = res.data;
-                console.log(this.bars);
             });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
 
             });
+        }
 
-
+        public claimBar(id) {
+            this.$http.post(`api/account/claimbusiness/${this.$stateParams['id']}`, id).then((res) => {
+            });
         }
 
 

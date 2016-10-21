@@ -57,12 +57,14 @@ namespace Barometr
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             services.AddScoped<BarRepository>();
+            services.AddScoped<UserBarRepository>();
             services.AddScoped<DrinkRepository>();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<BarReviewRepository>();
 
             //Services
             services.AddScoped<BarService>();
+            services.AddScoped<UserBarService>();
             services.AddScoped<DrinkService>();
             services.AddScoped<ProfileService>();
             services.AddScoped<BarReviewService>();

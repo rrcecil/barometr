@@ -43,9 +43,9 @@ namespace Barometr.Services
             return profile;
         }
 
-        public ProfileDTO GetProfileByName(string user)
+        public ProfileDTO GetProfileByEmail(string user)
         {
-            var profile = _repo.List().Where(p => p.User.UserName == user).Select(p => new ProfileDTO
+            var profileUser = _repo.GetProfiles().Where(p => p.User.Email == user).Select(p => new ProfileDTO
             {
                 Id = p.Id,
                 DOB = p.DOB,
@@ -53,7 +53,8 @@ namespace Barometr.Services
                 Location = p.Location,
                 Name = p.Name
             }).FirstOrDefault();
-            return profile;
+            
+            return profileUser;
         }
         public void AddProfile(ProfileDTO profiledto, string username)
         {
