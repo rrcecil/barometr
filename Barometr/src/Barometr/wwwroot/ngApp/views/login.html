@@ -1,32 +1,29 @@
-<fieldset>
-    <legend>Login with a Social Provider</legend>
-
-    <ul>
-        <li ng-repeat="externalLogin in account.externalLogins">
-            <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
-        </li>
-    </ul>
-
-</fieldset>
-
-<fieldset>
-    <legend>Login Locally</legend>
-    <ul>
-        <li ng-repeat="error in controller.validationMessages">
-            {{error}}
-        </li>
-    </ul>
-
-    <form ng-submit="controller.login()">
-        <div>
-            <label>Email:</label>
-            <input ng-model="controller.loginUser.email" />
+<div class="container">
+    <div class="col-md-5">
+        <div style="list-style: none; margin: auto; width: 50%; padding: 10px">
+            <h3>Login with: </h3>
+            <div ng-repeat="externalLogin in account.externalLogins">
+                <a ng-init="controller.loginBtn(externalLogin.displayName)" ng-class="{'btn btn-block btn-social btn-md btn-{{controller.prov}}' : externalLogin.displayName == '{{controller.Provider}}'}" target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}<span ng-class="'fa fa-{{controller.prov}}'"></span></a>
+            </div>
         </div>
-        <div>
-            <label>Password:</label>
-            <input ng-model="controller.loginUser.password" type="password"/>
+    </div>
+    <div style="margin: auto; width: 50%; padding: 10px;">
+        <h3>Login locally: </h3>
+        <ul>
+            <li ng-repeat="error in controller.validationMessages">
+                {{error}}
+            </li>
+        </ul>
+
+        <div ng-submit="controller.login()">
+            <div>
+                <input ng-model="controller.loginUser.email" placeholder="Email" />
+            </div>
+            <div>
+                <input ng-model="controller.loginUser.password" placeholder="Password" />
+            </div>
+            <input type="submit" value="Login" />
+            <a href="/register">Register</a>
         </div>
-        <input type="submit" value="Login" />
-        <a href="/register">Register</a>
-    </form>
-</fieldset>
+    </div>
+</div>

@@ -61,6 +61,11 @@ namespace Barometr.Services
             return bar;
         }
 
+        public Bar GetActualBarById(int id)
+        {
+            return _barRepo.List().FirstOrDefault(b => b.Id == id);
+        }
+
         public void AddBar(BarDTO bardto)
         {
 

@@ -26,7 +26,14 @@ namespace Barometr.Data
                 admin = new ApplicationUser
                 {
                     UserName = "Admin@Barometr.com",
-                    Email = "Admin@Barometr.com"
+                    Email = "Admin@Barometr.com",
+                    Profile = new Profile
+                        {
+                            Name = "Admin",
+                            Faction = "Beer",
+                            DOB = DateTime.UtcNow,
+                            Location = "Multiverse"
+                        }
                 };
                 await userManager.CreateAsync(admin, "Password123!");
 
