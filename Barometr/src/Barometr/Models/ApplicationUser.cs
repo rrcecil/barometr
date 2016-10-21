@@ -18,4 +18,5 @@ namespace Barometr.Models
 
         public Profile Profile { get; set; }
     }
+
 }

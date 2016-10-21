@@ -2,6 +2,10 @@
 
 
 <h1>{{controller.bars.name}}</h1>
+
+<h3>Are you the bar owner?</h3> <br/>
+<button class="alert-success" ng-click="controller.claimBar({id: controller.bars.id})">Claim This Bar</button>
+
 <table class="table table-striped">
     <tr>
         <th>Name</th>
@@ -35,7 +39,7 @@
     </tr>
     <tr>
         <th>Bar Menu</th> <!--link to bar menu-->
-        <td><a ui-sref="menu({id:menu.id})">Menu</a></td> <!-link to bar menu-->
+        <td><a ui-sref="menu({id:menu.id})">Menu</a></td> <!--link to bar menu-->
     </tr>
 
     <tr>
