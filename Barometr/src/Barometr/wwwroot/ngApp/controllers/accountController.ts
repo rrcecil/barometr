@@ -41,6 +41,8 @@ namespace Barometr.Controllers {
     export class LoginController {
         public loginUser;
         public validationMessages;
+        public prov; //facebook
+        public Provider; //Facebook
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
@@ -49,6 +51,22 @@ namespace Barometr.Controllers {
                 this.validationMessages = results;
             });
         }
+
+        public loginBtn(socialBtn) {
+            console.log(socialBtn);
+            if (socialBtn == "Facebook") {
+                this.prov = "facebook";
+                this.Provider = "Facebook";
+            }
+            else if (socialBtn == "Twitter") {
+                this.Provider = "Twitter";
+                this.prov = "twitter";
+            }
+            else {
+                return null;
+            }
+        }
+
 
         constructor(private accountService: Barometr.Services.AccountService, private $location: ng.ILocationService) { }
     }
@@ -69,10 +87,6 @@ namespace Barometr.Controllers {
         constructor(private accountService: Barometr.Services.AccountService, private $location: ng.ILocationService) { }
     }
 
-
-
-
-
     export class ExternalRegisterController {
         public registerUser;
         public validationMessages;
@@ -85,7 +99,6 @@ namespace Barometr.Controllers {
                     this.validationMessages = result;
                 });
         }
-
         constructor(private accountService: Barometr.Services.AccountService, private $location: ng.ILocationService) {}
 
     }
