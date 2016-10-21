@@ -14,6 +14,7 @@ namespace Barometr.Controllers
     [Route("api/[controller]")]
     public class BarsController : Controller
     {
+        
         private BarService _service;
         public BarsController(BarService service)
         {
@@ -68,6 +69,8 @@ namespace Barometr.Controllers
         {
             return _service.GetBarById(_service.RandomBar());
         }
+
+        
     }
 
 

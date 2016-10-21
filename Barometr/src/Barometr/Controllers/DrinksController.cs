@@ -13,10 +13,12 @@ namespace Barometr.Controllers
     [Route("api/[controller]")]
     public class DrinksController : Controller
     {
+        private ProfileService _profileService;
         private DrinkService _service;
-        public DrinksController(DrinkService service)
+        public DrinksController(DrinkService service, ProfileService profileService)
         {
             _service = service;
+            _profileService = profileService;
         }
 
         // GET: api/values
@@ -66,6 +68,13 @@ namespace Barometr.Controllers
         public void Delete(DrinkDTO value)
         {
             _service.DeleteDrink(value);
+        }
+
+        [HttpGet("randomDrink")]
+        public string GetRandomDrink()
+        {
+            var username = User.Identity.Name;
+            return _service.RandomDrink(username);
         }
     }
 }

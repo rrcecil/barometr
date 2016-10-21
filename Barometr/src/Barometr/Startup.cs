@@ -57,15 +57,12 @@ namespace Barometr
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             services.AddScoped<BarRepository>();
-            services.AddScoped<UserBarRepository>();
             services.AddScoped<DrinkRepository>();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<BarReviewRepository>();
             services.AddScoped<DrinkReviewRepository>();
-
             //Services
             services.AddScoped<BarService>();
-            services.AddScoped<UserBarService>();
             services.AddScoped<DrinkService>();
             services.AddScoped<ProfileService>();
             services.AddScoped<BarReviewService>();
@@ -110,17 +107,6 @@ namespace Barometr
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-
-            app.UseTwitterAuthentication(new TwitterOptions {
-                ConsumerKey = "R3KdnL7Tco0Kqb1xRmgTzNgdo",
-                ConsumerSecret = "sqij1XwJpvJbc8QegZ9ypXXyrX3Vsz8AYBbsFJRfQdjYyRKaxz"
-            });
-
-            app.UseFacebookAuthentication(new FacebookOptions {
-                AppId = "1153085474773635",
-                AppSecret = "723a9ff9e94e21c778658779203bbd6d"
-            });
-
 
             app.UseMvc(routes =>
             {
