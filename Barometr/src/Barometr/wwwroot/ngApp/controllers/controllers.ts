@@ -26,10 +26,10 @@ namespace Barometr.Controllers {
                 this.bars = res.data;
                 console.log(this.bars);
             });
-            $http.get(`api/bars/drinks`).then((res) => {
-                this.drinks = res.data;
-
-            });
+            //$http.get(`api/drinks`).then((res) => {
+            //    this.drinks = res.data;
+            //    console.log(this.drinks);
+            //});
 
 
         }

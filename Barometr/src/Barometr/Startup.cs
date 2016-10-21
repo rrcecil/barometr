@@ -60,12 +60,14 @@ namespace Barometr
             services.AddScoped<DrinkRepository>();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<BarReviewRepository>();
+            services.AddScoped<DrinkReviewRepository>();
 
             //Services
             services.AddScoped<BarService>();
             services.AddScoped<DrinkService>();
             services.AddScoped<ProfileService>();
             services.AddScoped<BarReviewService>();
+            services.AddScoped<DrinkReviewService>();
 
 
 
