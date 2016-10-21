@@ -27,6 +27,7 @@ namespace Barometr.Services
                         Latitude = b.Latitude,
                         Longitude = b.Longitude,
                         HappyHour = b.HappyHour,
+                        GoogleBarId = b.GoogleBarId,
                         Reviews = (from r in b.Reviews
                                    select new BarReviewDTO()
                                    {
@@ -47,6 +48,7 @@ namespace Barometr.Services
                 Latitude = b.Latitude,
                 Longitude = b.Longitude,
                 HappyHour = b.HappyHour,
+                GoogleBarId = b.GoogleBarId,
                 Reviews = (from r in b.Reviews
                            select new BarReviewDTO()
                            {
@@ -70,13 +72,27 @@ namespace Barometr.Services
                 Latitude = bardto.Latitude,
                 Longitude = bardto.Longitude,
                 HappyHour = bardto.HappyHour,
-
+                GoogleBarId = bardto.GoogleBarId
             };
-            _barRepo.Add(bar);
-            _barRepo.SaveChanges();
 
+            if (!IsBarDuplicate(bardto.GoogleBarId))
+            {
+                _barRepo.Add(bar);
+                _barRepo.SaveChanges();
+            }
         }
 
+        private bool IsBarDuplicate(string gbi)
+        {
+            var barExists = _barRepo.List().FirstOrDefault(b => b.GoogleBarId == gbi);
+            if(barExists != null)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
 
         // update method
         public void UpdateBar(BarDTO bar)
