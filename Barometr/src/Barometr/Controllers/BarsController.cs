@@ -43,9 +43,9 @@ namespace Barometr.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]BarDTO value)
+        public IActionResult Post([FromBody]BarDTO value)
         {
-            _service.AddBar(value);
+            return Json(new { barId = _service.AddBar(value) });
         }
 
         // PUT api/values/5
