@@ -13,6 +13,7 @@ namespace Barometr.Models
         public decimal Longitude { get; set; }
         public string HappyHour { get; set; } // property?
         public List<Drink> Menu { get; set; } 
+        public string GoogleBarId { get; set; }
 
         public ICollection<BarReview> Reviews { get; set; }
     }

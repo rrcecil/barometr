@@ -19,20 +19,24 @@ namespace Barometr.Controllers
         }
 
         [HttpGet("barReviewCount")]
-        public void GetBarReviewCount()
+        public IActionResult GetBarReviewCount()
         {
             var username = User.Identity.Name;
 
-            _service.BarReviewCount(username);
+            var barReviewCount =_service.BarReviewCount(username);
+            return Ok(barReviewCount);
         }
 
         
         [HttpGet("drinkReviewCount")]
-        public void GetDrinkReviewCount()
+        public IActionResult GetDrinkReviewCount()
         {
             var username = User.Identity.Name;
 
-            _service.DrinkReviewCount(username);
+           var drinkReviewCount = _service.DrinkReviewCount(username);
+            return Ok(drinkReviewCount);
         }
+
+     
     }
 }

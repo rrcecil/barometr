@@ -44,6 +44,8 @@ namespace Barometr {
                 controller: Barometr.Controllers.UserMetricController,
                 controllerAs: 'controller'
             })
+           
+
             .state('mybarlist', {
                 url: '/mybarlist',
                 templateUrl: '/ngApp/views/mybarlist.html',
@@ -118,7 +120,7 @@ namespace Barometr {
         ngGPlacesAPIProvider.setDefaults({
             radius: 7000,
             type: 'bar',
-            nearbySearchKeys: ['name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level', 'geometry']
+            nearbySearchKeys: ['id', 'name', 'reference', 'vicinity', 'icon', 'opening_hours', 'price_level', 'geometry']
         });
     });
 

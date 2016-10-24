@@ -7,7 +7,7 @@ namespace Barometr.Controllers {
         public randomBar;
         constructor(private RandomBarService: Barometr.Services.RandomBarService) {
             let randomBar = RandomBarService.randomBar;
-            console.log(randomBar);
+            console.log("Random Bar " + randomBar);
             this.randomBar = randomBar;
         }
     }
@@ -64,15 +64,39 @@ namespace Barometr.Controllers {
         public barReviewCount;
         public drinkReviewCount;
         public randomBar;
+        public randomDrink;
+        public drinks;
+        
 
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public RandomBarService: Barometr.Services.RandomBarService) {
-            $http.get(`api/bars/barReviewCount`).then((res) => {
+        
+
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService,
+            public RandomBarService: Barometr.Services.RandomBarService
+            ) {
+            $http.get(`api/UserMetric/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
-                console.log(this.barReviewCount);
-            });
-            $http.get(`api/bars/drinkReviewCount`).then((res) => {
+               
+                console.log("the Bar Review count is " + this.barReviewCount);
+            })
+                .catch((response) => {
+                    console.error("did not work");
+                });
+
+            $http.get(`api/UserMetric/drinkReviewCount`).then((res) => {
                 this.drinkReviewCount = res.data;
-                console.log(this.drinkReviewCount);
+                console.log("the Drink Review count is " + this.drinkReviewCount);
+            });
+
+            $http.get(`api/bars/drinks`).then((res) => {
+                this.drinks = res.data;
+                console.log(res.data);
+                console.log(this.drinks);
+
+            });
+
+           $http.get(`/api/drinks/randomDrink`).then((res) => {
+                console.log("the drink is " + res.data);
+                this.randomDrink = res.data;
             });
 
         }
@@ -137,13 +161,23 @@ namespace Barometr.Controllers {
     }
     angular.module('Barometr').controller('DrinkDialogController', DrinkDialogController);
 
-    //export class DrinkController {
-    //    public bars;
-    //    constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
-    //        $http.get(`api/bars/drinks`).then((res) => {
-    //            this.bars = res.data;
-    //        });
-    //    }
+    export class DrinkController {
+        public bars;
+        public randomDrink;
+
+        constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
+            $http.get(`api/bars/drinks`).then((res) => {
+                this.bars = res.data;
+            });
+
+            $http.get(`/api/bars/randomDrink`).then((res) => {
+                console.log(res.data);
+                this.randomDrink = res.data;
+            });
+        }
+
+
+
     //    public postDrink(drink) {
     //        this.$http.post('api/bars/drinks', drink).then((res) => {
     //            this.$state.reload();
@@ -200,7 +234,7 @@ namespace Barometr.Controllers {
     //            return false;
     //        }
     //    }
-    //}
+    }
 
     export class SecretController {
         public secrets;

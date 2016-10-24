@@ -28,7 +28,7 @@ namespace Barometr.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("myReviews")]
+        [HttpGet("myBarReviews")]
         public ICollection<BarReviewDTO> GetByUser()
         {
             return _service.GetReviewByName(User.Identity.Name);

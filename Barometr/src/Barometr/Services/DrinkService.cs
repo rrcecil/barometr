@@ -10,15 +10,17 @@ namespace Barometr.Services
 {
     public class DrinkService
     {
+        private ProfileRepository _profileRepo;
         private DrinkRepository _drinkRepo;
         private DrinkReviewRepository _reviewRepo;
         private BarRepository _barRepo;
 
-        public DrinkService(DrinkRepository drinkRepo, DrinkReviewRepository reviewRepo, BarRepository barRepo)
+        public DrinkService(DrinkRepository drinkRepo, DrinkReviewRepository reviewRepo, BarRepository barRepo, ProfileRepository profileRepo)
         {
             _drinkRepo = drinkRepo;
             _reviewRepo = reviewRepo;
             _barRepo = barRepo;
+            _profileRepo = profileRepo;
         }
 
         public List<DrinkDTO> GetAllDrinks()
@@ -53,11 +55,11 @@ namespace Barometr.Services
                 Ingredient = drink.Ingredient,
                 Name = drink.Name,
                 Type = drink.Type
-                
+
             }).ToList();
         }
 
-        public void AddDrink (DrinkDTO d, string user)
+        public void AddDrink(DrinkDTO d, string user)
         {
             var drink = ProjectToModel(d);
             _drinkRepo.Add(drink);
@@ -73,7 +75,7 @@ namespace Barometr.Services
             bar.Menu.Add(drink);
         }
 
-        private Drink ProjectToModel (DrinkDTO d)
+        private Drink ProjectToModel(DrinkDTO d)
         {
             return new Drink
             {
@@ -93,7 +95,7 @@ namespace Barometr.Services
             drink.Ingredient = d.Ingredient;
             drink.Name = d.Name;
             drink.Type = d.Type;
-             
+
             _drinkRepo.SaveChanges();
         }
 
@@ -115,5 +117,36 @@ namespace Barometr.Services
                 Type = d.Type
             };
         }
+
+        public string RandomDrink(string username)
+        {  //if user picks wine, display random drink based on user's preference
+            var User = _drinkRepo.GetUserByUsername(username);
+
+            Random random = new Random();
+
+            int DrinkCount = (from d in _drinkRepo.List()
+                              select d).Count();
+        
+    
+            var userFaction = _profileRepo.List().Where(p => p.UserId == User.Id).Select(p => p.Faction).FirstOrDefault();
+
+            List<string> drinkList = _drinkRepo.List().Where(d => d.Type == userFaction).Select(d => d.Name).ToList();
+    int randomDrink = random.Next(1, DrinkCount);
+            return drinkList[randomDrink];
+        
+
+        }
+
     }
 }
+
+
+
+
+           
+
+
+
+         
+
+
