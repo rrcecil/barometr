@@ -68,7 +68,7 @@ namespace Barometr.Services
             return _barRepo.List().FirstOrDefault(b => b.Id == id);
         }
 
-        public void AddBar(BarDTO bardto)
+        public int AddBar(BarDTO bardto)
         {
 
             var bar = new Bar
@@ -84,6 +84,12 @@ namespace Barometr.Services
             {
                 _barRepo.Add(bar);
                 _barRepo.SaveChanges();
+                int barId = bar.Id;
+                return barId;
+            } else
+            {
+                int barId = _barRepo.List().FirstOrDefault(b => b.GoogleBarId == bardto.GoogleBarId).Id;
+                return barId;
             }
         }
 
