@@ -24,6 +24,12 @@ namespace Barometr.Controllers {
         public getBars(hood) {
             var hoodObj = JSON.parse(hood);
 
+            //this.$http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + hoodObj).then((res) => {
+            //    console.log(res);
+            //    //hoodObj.latitude = res.data.geometry.location.lat;
+            //    //hoodObj.longitude =
+            //})
+
             this.ngGPlacesAPI.nearbySearch({ latitude: hoodObj.latitude, longitude: hoodObj.longitude }).then((res) => {
                 this.bars = "";
                 this.bars = res;
