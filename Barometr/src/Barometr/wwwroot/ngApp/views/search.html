@@ -4,6 +4,8 @@
         <!--<input type="text" g-places-autocomplete options="controller.options" ng-model="controller.result" />
         <input type="submit" ng-click="controller.logThis()" />-->
         <form ng-submit="controller.getBars(selectedHood)">
+            <label for="zip">ZipCode</label>
+            <input id="zip" ng-model="selectedHood"/>
             <label for="hoodSelect">Neighborhood</label>
             <select ng-model="selectedHood" id="hoodSelect">
                 <option value={{controller.neighborhoods.heights}}>Heights</option>
