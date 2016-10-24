@@ -12,11 +12,18 @@
     }
 
     export class ProfileReviewsController {
-        public reviews;
+        public drinkReviews;
+        public barReviews;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService) {
-            $http.get(`api/reviews/myReviews`).then((res) => {
-                this.reviews = res.data;
+            $http.get(`api/DrinkReviews/myDrinkReviews`).then((res) => {
+                this.drinkReviews = res.data;
+                console.log("My drink reviews: " + this.drinkReviews);
+
+            });
+            $http.get(`api/BarReviews/myBarReviews`).then((res) => {
+                this.barReviews = res.data;
+                console.log("My bar reviews: " + this.barReviews);
             });
         }
     }
