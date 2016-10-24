@@ -1,10 +1,4 @@
-﻿<ul>
-    <li ng-repeat="bar in controller.bars">
-        <a ui-sref="barProfile({id:bar.id})">{{controller.bars.name}}</a> <!--testing bar profile-->
-    </li>
-</ul>
-
-<h1>{{controller.bars.name}}</h1>
+﻿<h1>{{controller.bars.name}}</h1>
 <ul>
     <li ng-repeat="review in controller.bars.reviews">
         {{review.comment}}  -Rating: {{review.rating}}
@@ -14,4 +8,3 @@
 <h2>{{controller.drinks.name}}</h2>
 
 <button ng-click="controller.openReviewDialog()">Write a Review</button>
-<button ng-click="controller.openDrinkDialog()">Create Drink</button>
