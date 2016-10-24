@@ -17,6 +17,7 @@ namespace Barometr.Data
         public DbSet<DrinkReview> DrinkReviews { get; set; }
         public DbSet<UserBar> UserBars { get; set; }
         public DbSet<BarDrink> BarDrinks { get; set; }
+        public DbSet<Request> Requests { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
