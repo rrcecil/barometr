@@ -45,6 +45,7 @@ namespace Barometr.Controllers {
         public Provider; //Facebook
 
         public login() {
+            console.log(this.loginUser);
             this.accountService.login(this.loginUser).then(() => {
                 this.$location.path('/');
             }).catch((results) => {
@@ -54,11 +55,11 @@ namespace Barometr.Controllers {
 
         public loginBtn(socialBtn) {
             console.log(socialBtn);
-            if (socialBtn == "Facebook") {
+            if (socialBtn === "Facebook") {
                 this.prov = "facebook";
                 this.Provider = "Facebook";
             }
-            else if (socialBtn == "Twitter") {
+            else if (socialBtn === "Twitter") {
                 this.Provider = "Twitter";
                 this.prov = "twitter";
             }

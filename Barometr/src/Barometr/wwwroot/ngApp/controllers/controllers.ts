@@ -29,12 +29,6 @@ namespace Barometr.Controllers {
             });
         }
 
-        public claimBar(id) {
-            this.$http.post(`api/account/claimbusiness/${this.$stateParams['id']}`, id).then((res) => {
-            });
-        }
-
-
         public openReviewDialog() {
             this.$uibModal.open({
                 templateUrl: 'ngApp/views/reviewdialog.html',
@@ -56,6 +50,12 @@ namespace Barometr.Controllers {
                     drinks: () => this.drinks
                 },
                 size: 'sm'
+            });
+        }
+
+        public claimBar(id) {
+            console.log(id);
+            this.$http.post(`api/requests/` + id, id).then((res) => {
             });
         }
     }
