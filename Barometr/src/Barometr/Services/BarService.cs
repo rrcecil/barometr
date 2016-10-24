@@ -41,26 +41,37 @@ namespace Barometr.Services
 
         public BarDTO GetBarById(int id)
         {
-            var bar = _barRepo.List().Where(b => b.Id == id).Select(b => new BarDTO
+            if (_barRepo.GetBars().Count() == 0)
             {
-                Id = b.Id,
-                Name = b.Name,
-                Latitude = b.Latitude,
-                Longitude = b.Longitude,
-                HappyHour = b.HappyHour,
-                GoogleBarId = b.GoogleBarId,
-                Reviews = (from r in b.Reviews
-                           select new BarReviewDTO()
-                           {
-                               Id = r.Id,
-                               Comment = r.Comment,
-                               Rating = r.Rating
+                return new BarDTO
+                {
+                    Name = "No bars in database"
+                };
+            }
+            else
+            {
+                var bar = _barRepo.List().Where(b => b.Id == id).Select(b => new BarDTO
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Latitude = b.Latitude,
+                    Longitude = b.Longitude,
+                    HappyHour = b.HappyHour,
+                    GoogleBarId = b.GoogleBarId,
+                    Reviews = (from r in b.Reviews
+                               select new BarReviewDTO()
+                               {
+                                   Id = r.Id,
+                                   Comment = r.Comment,
+                                   Rating = r.Rating
 
 
-                           }).ToList()
+                               }).ToList()
 
-            }).FirstOrDefault();
+                }).FirstOrDefault();
             return bar;
+            }
+            
         }
 
         public Bar GetActualBarById(int id)
