@@ -20,8 +20,6 @@ namespace Barometr
 {
     public class Startup
     {
-        //public string PlacesAPIKey;
-
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -37,8 +35,6 @@ namespace Barometr
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-
-            //PlacesAPIKey = Configuration["GOOGLE_PLACES_API_KEY"];
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -60,14 +56,12 @@ namespace Barometr
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
-            services.AddScoped<BarRepository>();
-            services.AddScoped<UserBarRepository>();
+            services.AddScoped<BarRepository>();            
+            services.AddScoped<UserBarRepository>();            
             services.AddScoped<DrinkRepository>();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<BarReviewRepository>();
             services.AddScoped<DrinkReviewRepository>();
-            
-
             //Services
             services.AddScoped<BarService>();
             services.AddScoped<UserBarService>();
@@ -75,7 +69,7 @@ namespace Barometr
             services.AddScoped<ProfileService>();
             services.AddScoped<BarReviewService>();
             services.AddScoped<DrinkReviewService>();
-            services.AddScoped<UserMetricService>();
+
 
 
             // add security policies
@@ -116,16 +110,17 @@ namespace Barometr
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
-            app.UseTwitterAuthentication(new TwitterOptions {
+            app.UseTwitterAuthentication(new TwitterOptions
+            {
                 ConsumerKey = "R3KdnL7Tco0Kqb1xRmgTzNgdo",
                 ConsumerSecret = "sqij1XwJpvJbc8QegZ9ypXXyrX3Vsz8AYBbsFJRfQdjYyRKaxz"
             });
 
-            app.UseFacebookAuthentication(new FacebookOptions {
+            app.UseFacebookAuthentication(new FacebookOptions
+            {
                 AppId = "1153085474773635",
                 AppSecret = "723a9ff9e94e21c778658779203bbd6d"
             });
-
 
             app.UseMvc(routes =>
             {
@@ -138,6 +133,7 @@ namespace Barometr
 
            // initialize sample data
            SampleData.Initialize(app.ApplicationServices).Wait();
+
         }
     }
 }
