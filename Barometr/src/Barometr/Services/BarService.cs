@@ -68,6 +68,8 @@ namespace Barometr.Services
             return _barRepo.List().FirstOrDefault(b => b.Id == id);
         }
 
+    
+
         public void AddBar(BarDTO bardto)
         {
 

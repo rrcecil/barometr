@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Barometr.Models;
 using Barometr.Services;
 using Barometr.ViewModels.Account;
+using Barometr.Infrastructure;
 
 namespace Barometr.Controllers
 {
@@ -25,6 +26,7 @@ namespace Barometr.Controllers
         private readonly ILogger _logger;
         private readonly BarService _barService;
         private readonly UserBarService _userBarService;
+        private readonly UserBarRepository _userBarRepo;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -33,7 +35,8 @@ namespace Barometr.Controllers
             ISmsSender smsSender,
             ILoggerFactory loggerFactory,
             BarService barService,
-            UserBarService userBarService)
+            UserBarService userBarService,
+            UserBarRepository userBarRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -42,6 +45,7 @@ namespace Barometr.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
             _barService = barService;
             _userBarService = userBarService;
+            _userBarRepo = userBarRepository;
         }
 
 
@@ -157,7 +161,7 @@ namespace Barometr.Controllers
             };
 
             //Add the UserBar to the database
-            _userBarService.Add(userBar);
+            _userBarRepo.Add(userBar);
 
             //Add new claim to user making them a "User Admin"
             _userManager.AddClaimAsync(user, new Claim("IsUserAdmin", "true"));
