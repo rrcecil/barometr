@@ -1,0 +1,19 @@
+﻿<h2>User Ownership Claim Requests</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>Business Name</th>
+        <th>Date Requested</th>
+        <th>Accept Request</th>
+        <th>Decline Request</th>
+    </tr>
+    <tr ng-repeat="request in controller.requests">
+        <td>request.userName</td>
+        <td>request.userEmail</td>
+        <td>request.barName</td>
+        <td>request.dateRequested</td>
+        <td><button ng-click="accept()"></button></td>
+    </tr>
+</table>
