@@ -7,7 +7,7 @@ namespace Barometr.Controllers {
         public randomBar;
         constructor(private RandomBarService: Barometr.Services.RandomBarService) {
             let randomBar = RandomBarService.randomBar;
-            console.log(randomBar);
+            console.log("Random Bar " + randomBar);
             this.randomBar = randomBar;
         }
     }
@@ -70,32 +70,31 @@ namespace Barometr.Controllers {
 
         
 
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public RandomBarService: Barometr.Services.RandomBarService
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService,
+            public RandomBarService: Barometr.Services.RandomBarService
             ) {
-            $http.get(`api/bars/barReviewCount`).then((res) => {
+            $http.get(`api/UserMetric/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
-                console.log(this.barReviewCount);
-            });
+               
+                console.log("the Bar Review count is " + this.barReviewCount);
+            })
+                .catch((response) => {
+                    console.error("did not work");
+                });
 
-            $http.get(`api/bars/drinkReviewCount`).then((res) => {
+            $http.get(`api/UserMetric/drinkReviewCount`).then((res) => {
                 this.drinkReviewCount = res.data;
-                console.log(this.drinkReviewCount);
+                console.log("the Drink Review count is " + this.drinkReviewCount);
             });
 
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
+                console.log(res.data);
+                console.log(this.drinks);
 
             });
 
-            let drinks = [
-                { Id: 1, name: "Corona",type: "Beer"},
-                {Id:2, name: "Mambo Taxi", type: "Spirit"},
-                { Id:3, name: "Robert Mondavi", type: "Wine" }
-            ];
-
-
-            
-            $http.get(`/api/drinks/randomDrink`).then((res) => {
+           $http.get(`/api/drinks/randomDrink`).then((res) => {
                 console.log("the drink is " + res.data);
                 this.randomDrink = res.data;
             });

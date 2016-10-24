@@ -121,14 +121,19 @@ namespace Barometr.Services
         public string RandomDrink(string username)
         {  //if user picks wine, display random drink based on user's preference
             var User = _drinkRepo.GetUserByUsername(username);
+
             Random random = new Random();
+
             int DrinkCount = (from d in _drinkRepo.List()
                               select d).Count();
-            int randomDrink = random.Next(1, DrinkCount + 1);
+        
+    
             var userFaction = _profileRepo.List().Where(p => p.UserId == User.Id).Select(p => p.Faction).FirstOrDefault();
 
             List<string> drinkList = _drinkRepo.List().Where(d => d.Type == userFaction).Select(d => d.Name).ToList();
+    int randomDrink = random.Next(1, DrinkCount);
             return drinkList[randomDrink];
+        
 
         }
 

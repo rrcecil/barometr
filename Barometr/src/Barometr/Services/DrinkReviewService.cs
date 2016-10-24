@@ -91,9 +91,9 @@ namespace Barometr.Services
             };
         }
 
-        public ICollection<DrinkReviewDTO> GetReviewByName(string user)
+        public ICollection<DrinkReviewDTO> GetDrinkReviewByName(string user)
         {
-            var review = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new DrinkReviewDTO
+            var drinkreview = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new DrinkReviewDTO
             {
                 Comment = r.Comment,
                 Id = r.Id,
@@ -101,8 +101,8 @@ namespace Barometr.Services
                 Username = r.User.UserName
             }).ToList();
 
-            if (review.Count > 0)
-                return review;
+            if (drinkreview.Count > 0)
+                return drinkreview;
 
             var tempReview = new List<DrinkReviewDTO>();
             var rev = new DrinkReviewDTO

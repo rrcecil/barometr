@@ -1,5 +1,6 @@
 ﻿using Barometr.Infrastructure;
 using Barometr.Models;
+using Barometr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,11 @@ namespace Barometr.Services
             return DrinkReviewCount;
 
         }
+
+        
     }
 }
+
 
 
 
