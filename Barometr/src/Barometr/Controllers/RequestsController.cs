@@ -22,24 +22,37 @@ namespace Barometr.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "isAdmin")]
+        [Authorize(Policy = "AdminOnly")]
         public ICollection<RequestsDTO> GetRequests()
         {
             return _service.GetRequests();
         }
 
-        [HttpPost]
-        [Authorize(Policy = "isAdmin")]
-        public void AddRequest(Bar bar)
+        [HttpPost("{id}")]
+        public void AddRequest(int id)
         {
-            _service.AddRequest(bar, User.Identity.Name);
+            _service.AddRequest(id, User.Identity.Name);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpPost("Accept/{id}")]
+        public async Task<bool> ConfirmRequest(int id)
+        {
+            return await _service.ConfirmRequest(id);
+        }
+
+        [Authorize(Policy = "AdminOnly")]
+        [HttpPost("Deny/{id}")]
+        public void DenyRequest(int id)
+        {
+            _service.DeleteRequest(id);
         }
 
         [HttpDelete]
-        [Authorize(Policy = "isAdmin")]
+        [Authorize(Policy = "AdminOnly")]
         public void DeleteRequest(RequestsDTO dto)
         {
-            _service.DeleteRequest(dto);
+            _service.DeleteRequest(dto.Id);
         }
     }
 }

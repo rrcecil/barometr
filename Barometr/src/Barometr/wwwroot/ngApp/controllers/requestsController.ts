@@ -11,6 +11,22 @@
 
             
         }
+
+        public accept(id) {
+            console.log(id);
+            this.$http.post(`api/requests/accept/` + id, id).then((res) => {
+                this.$state.reload();
+                alert("The user's request for ownership of this business has been accepted.");
+            });
+        }
+
+        public deny(id) {
+            this.$http.post(`api/requests/deny/` + id, id).then((res) => {
+                this.$state.reload();
+                alert("The user's requested for ownership of this business has been denied.");
+            });
+        }
+
         public claimBar(id) {
             this.$http.post(`api/account/claimbusiness/`, id).then((res) => {
             });

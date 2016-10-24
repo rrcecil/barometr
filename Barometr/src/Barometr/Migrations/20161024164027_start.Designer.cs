@@ -8,7 +8,7 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161020192835_start")]
+    [Migration("20161024164027_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -202,6 +202,26 @@ namespace Barometr.Migrations
                     b.ToTable("Profiles");
                 });
 
+            modelBuilder.Entity("Barometr.Models.Request", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("BarId");
+
+                    b.Property<DateTime>("DateRequested");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BarId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Requests");
+                });
+
             modelBuilder.Entity("Barometr.Models.UserBar", b =>
                 {
                     b.Property<int>("BarId");
@@ -386,6 +406,17 @@ namespace Barometr.Migrations
                     b.HasOne("Barometr.Models.ApplicationUser", "User")
                         .WithOne("Profile")
                         .HasForeignKey("Barometr.Models.Profile", "UserId");
+                });
+
+            modelBuilder.Entity("Barometr.Models.Request", b =>
+                {
+                    b.HasOne("Barometr.Models.Bar", "Bar")
+                        .WithMany()
+                        .HasForeignKey("BarId");
+
+                    b.HasOne("Barometr.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Barometr.Models.UserBar", b =>

@@ -9,11 +9,12 @@
         <th>Accept Request</th>
         <th>Decline Request</th>
     </tr>
-    <tr ng-repeat="request in controller.requests">
-        <td>request.userName</td>
-        <td>request.userEmail</td>
-        <td>request.barName</td>
-        <td>request.dateRequested</td>
-        <td><button ng-click="accept()"></button></td>
+    <tr ng-repeat="request in controller.requests track by $index">
+        <td>{{request.userName}}</td>
+        <td>{{request.userEmail}}</td>
+        <td>{{request.barName}}</td>
+        <td>{{request.dateRequested}}</td>
+        <td><button ng-click="controller.accept(request.id)">Accept Request</button></td>
+        <td><button ng-click="controller.deny(request.id)">Deny Request</button></td>
     </tr>
 </table>

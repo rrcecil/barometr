@@ -8,8 +8,8 @@ namespace Barometr.Models
     public class Request
     {
         public int Id { get; set; }
-        public ApplicationUser User { get; set; }
-        public Bar Bar { get; set; }
+        public string UserId { get; set; }
+        public int BarId { get; set; }
         public DateTime DateRequested { get; set; }
     }
 }

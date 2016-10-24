@@ -58,6 +58,7 @@ namespace Barometr
 
             services.AddScoped<BarRepository>();
             services.AddScoped<UserBarRepository>();
+            services.AddScoped<RequestsRepository>();
             services.AddScoped<DrinkRepository>();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<BarReviewRepository>();
@@ -66,6 +67,7 @@ namespace Barometr
             //Services
             services.AddScoped<BarService>();
             services.AddScoped<UserBarService>();
+            services.AddScoped<RequestService>();
             services.AddScoped<DrinkService>();
             services.AddScoped<ProfileService>();
             services.AddScoped<BarReviewService>();

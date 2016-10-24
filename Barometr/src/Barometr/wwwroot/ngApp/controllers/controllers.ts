@@ -52,6 +52,12 @@ namespace Barometr.Controllers {
                 size: 'sm'
             });
         }
+
+        public claimBar(id) {
+            console.log(id);
+            this.$http.post(`api/requests/` + id, id).then((res) => {
+            });
+        }
     }
 
     export class UserMetricController {
