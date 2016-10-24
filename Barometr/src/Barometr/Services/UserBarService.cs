@@ -44,5 +44,11 @@ namespace Barometr.Services
             
             return BarId;
         }
+
+        public void AddClaim(UserBar userBar)
+        {
+            _userBarRepo.Add(userBar);
+            _userBarRepo.SaveChanges();
+        }
     }
 }
