@@ -139,8 +139,13 @@ namespace Barometr.Services
     
             var userFaction = _profileRepo.List().Where(p => p.UserId == User.Id).Select(p => p.Faction).FirstOrDefault();
 
+            if (DrinkCount == 0)
+            {
+                return "No drinks in Database";
+            }
+
             List<string> drinkList = _drinkRepo.List().Where(d => d.Type == userFaction).Select(d => d.Name).ToList();
-    int randomDrink = random.Next(1, DrinkCount);
+            int randomDrink = random.Next(DrinkCount - 1);
             //return drinkList[randomDrink] //needs to be fixed;
             return drinkList[1];
 

@@ -25,7 +25,7 @@ namespace Barometr.Controllers
         [Authorize]
         public ProfileDTO GetMyProfile()
         {
-            return _service.GetProfileByEmail(User.Identity.Name);
+            return _service.GetProfileByName(User.Identity.Name);
         }
 
         // GET api/values/5
