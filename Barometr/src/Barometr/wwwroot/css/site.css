@@ -1,6 +1,48 @@
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+body{
+    width: 100%;
+    margin: 0;
+}
+
+.center {
+    margin: auto;
+    margin-top: 0;
+    width: 50%;
+}
+
+.parallax-one {
+    background-image: url("../images/blueBarBanner.jpg");
+    height: 95%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-center{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: lightblue;
+}
+
+.parallax-center > div {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed red;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallax-two {
+    background-image: url("../images/tempbanner.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Wrapping element */
