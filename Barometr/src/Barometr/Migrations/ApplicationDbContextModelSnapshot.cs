@@ -8,10 +8,9 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161021192437_addGoogleBarId")]
-    partial class addGoogleBarId
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -202,6 +201,22 @@ namespace Barometr.Migrations
                         .IsUnique();
 
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("Barometr.Models.Request", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BarId");
+
+                    b.Property<DateTime>("DateRequested");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("Barometr.Models.UserBar", b =>

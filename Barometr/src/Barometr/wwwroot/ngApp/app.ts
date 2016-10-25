@@ -109,6 +109,12 @@ namespace Barometr {
                 templateUrl: '/ngApp/views/addToMenu.html',
                 controller: Barometr.Controllers.AddToMenuController,
                 controllerAs: 'controller'
+            })
+            .state('requests', {
+                url: '/requests',
+                templateUrl: '/ngApp/views/requests.html',
+                controller: Barometr.Controllers.RequestsController,
+                controllerAs: 'controller'
             });
 
         // Handle request for non-existent route

@@ -157,7 +157,7 @@ namespace Barometr.Controllers
             };
 
             //Add the UserBar to the database
-            _userBarService.Add(userBar);
+            _userBarService.AddClaim(userBar);
 
             //Add new claim to user making them a "User Admin"
             _userManager.AddClaimAsync(user, new Claim("IsUserAdmin", "true"));

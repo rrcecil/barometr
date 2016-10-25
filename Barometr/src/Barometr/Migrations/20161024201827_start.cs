@@ -35,6 +35,21 @@ namespace Barometr.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Requests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BarId = table.Column<int>(nullable: false),
+                    DateRequested = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Requests", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -253,6 +268,7 @@ namespace Barometr.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BarDrinkBarId = table.Column<int>(nullable: true),
                     BarDrinkDrinkId = table.Column<int>(nullable: true),
+                    GoogleBarId = table.Column<string>(nullable: true),
                     HappyHour = table.Column<string>(nullable: true),
                     Latitude = table.Column<decimal>(nullable: false),
                     Longitude = table.Column<decimal>(nullable: false),
@@ -461,6 +477,9 @@ namespace Barometr.Migrations
 
             migrationBuilder.DropTable(
                 name: "Profiles");
+
+            migrationBuilder.DropTable(
+                name: "Requests");
 
             migrationBuilder.DropTable(
                 name: "UserBars");

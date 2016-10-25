@@ -99,6 +99,15 @@ namespace Barometr.Services
             _drinkRepo.SaveChanges();
         }
 
+        //public DrinkDTO DrinkSuggestion(DrinkDTO d, ProfileDTO p, string userName)
+        //{
+        //    var User = _drinkRepo.GetUserByUsername(userName);
+        //    if (d.Type == p.Faction)
+        //    {
+                
+        //    }
+        //}
+
         public void DeleteDrink(DrinkDTO d)
         {
 

@@ -8,8 +8,8 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161021191911_dbcreated")]
-    partial class dbcreated
+    [Migration("20161024201827_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,6 +74,8 @@ namespace Barometr.Migrations
                     b.Property<int?>("BarDrinkBarId");
 
                     b.Property<int?>("BarDrinkDrinkId");
+
+                    b.Property<string>("GoogleBarId");
 
                     b.Property<string>("HappyHour");
 
@@ -200,6 +202,22 @@ namespace Barometr.Migrations
                         .IsUnique();
 
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("Barometr.Models.Request", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BarId");
+
+                    b.Property<DateTime>("DateRequested");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("Barometr.Models.UserBar", b =>
