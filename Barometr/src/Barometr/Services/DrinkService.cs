@@ -141,8 +141,8 @@ namespace Barometr.Services
 
             List<string> drinkList = _drinkRepo.List().Where(d => d.Type == userFaction).Select(d => d.Name).ToList();
     int randomDrink = random.Next(1, DrinkCount);
-            return drinkList[randomDrink];
-        
+            //return drinkList[randomDrink] //needs to be fixed;
+            return drinkList[1];
 
         }
 

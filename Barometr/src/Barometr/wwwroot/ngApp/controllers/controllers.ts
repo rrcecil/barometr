@@ -66,16 +66,16 @@ namespace Barometr.Controllers {
         public randomBar;
         public randomDrink;
         public drinks;
-        
+        public greetings;
 
         
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService,
             public RandomBarService: Barometr.Services.RandomBarService
-            ) {
+        ) {
             $http.get(`api/UserMetric/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
-               
+
                 console.log("the Bar Review count is " + this.barReviewCount);
             })
                 .catch((response) => {
@@ -94,14 +94,29 @@ namespace Barometr.Controllers {
 
             });
 
-           $http.get(`/api/drinks/randomDrink`).then((res) => {
+            $http.get(`/api/drinks/randomDrink`).then((res) => {
                 console.log("the drink is " + res.data);
                 this.randomDrink = res.data;
             });
-
         }
 
-    }
+            public greet() {
+                var myDate = new Date();
+                var hrs = myDate.getHours();
+
+                
+
+                if (hrs < 12)
+                    return 'Good Morning';
+                else if (hrs >= 12 && hrs <= 17)
+                    return 'Good Afternoon';
+                else if (hrs >= 17 && hrs <= 24)
+                   return 'Good Evening'; 
+
+            }
+        }
+
+    
     export class ReviewDialogController {
         public reviews;
         public barId;

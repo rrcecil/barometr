@@ -1,0 +1,18 @@
+﻿<h2 style="text-align:center">My Drink Reviews</h2>
+
+    <h3>Drink Reviews</h3>
+
+    <table class="table table-striped">
+
+
+        <tr>
+            <th>Comment</th>
+            <th>Rating</th>
+            <!--<th>Type</th>-->
+        </tr>
+        <tr ng-repeat="review in controller.drinkReviews">
+            <td>{{review.comment}}</td>
+            <td>{{review.rating}}</td>
+            <!--<td>{{review.type}}</td>-->
+        </tr>
+    </table>
