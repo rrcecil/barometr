@@ -44,6 +44,8 @@ namespace Barometr {
                 controller: Barometr.Controllers.UserMetricController,
                 controllerAs: 'controller'
             })
+           
+
             .state('mybarlist', {
                 url: '/mybarlist',
                 templateUrl: '/ngApp/views/mybarlist.html',
@@ -100,6 +102,12 @@ namespace Barometr {
                 url: '/addToMenu',
                 templateUrl: '/ngApp/views/addToMenu.html',
                 controller: Barometr.Controllers.AddToMenuController,
+                controllerAs: 'controller'
+            })
+            .state('requests', {
+                url: '/requests',
+                templateUrl: '/ngApp/views/requests.html',
+                controller: Barometr.Controllers.RequestsController,
                 controllerAs: 'controller'
             });
 

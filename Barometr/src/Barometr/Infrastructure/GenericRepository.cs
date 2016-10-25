@@ -26,6 +26,11 @@ namespace Barometr.Infrastructure
             return _db.Users.FirstOrDefault(u => u.UserName == userName);
         }
 
+        public ApplicationUser GetUserById(string Id)
+        {
+            return _db.Users.FirstOrDefault(u => u.Id == Id);
+        }
+
         public void Add(T entity)
         {
             _db.Set<T>().Add(entity);
