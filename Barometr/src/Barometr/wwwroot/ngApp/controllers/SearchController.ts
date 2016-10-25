@@ -49,7 +49,7 @@ namespace Barometr.Controllers {
         public addBar(bar) {
             bar.disabled = true;
             
-            this.$http.post('api/bars', bar).then((res) => res );
+            this.$http.post('api/userBars', bar).then((res) => res );
         }
 
         public logThis() {
