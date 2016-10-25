@@ -62,6 +62,7 @@ namespace Barometr
             services.AddScoped<ProfileRepository>();
             services.AddScoped<BarReviewRepository>();
             services.AddScoped<DrinkReviewRepository>();
+            services.AddScoped<UserMetricService>();
             //Services
             services.AddScoped<BarService>();
             services.AddScoped<UserBarService>();
