@@ -6,6 +6,7 @@
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService) {
             $http.get(`api/profiles`).then((res) => {
                 this.profile = res.data;
+                console.log(this.profile);
             });
         }
 
