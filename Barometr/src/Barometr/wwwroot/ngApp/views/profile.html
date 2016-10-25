@@ -8,13 +8,20 @@
         <th>Location</th>
         <th>Date of Birth</th>
         <th>Reviews</th>
+        <th>Reviews</th>
     </tr>
     <tr>
         <td>{{controller.profile.name}}</td>
         <td>{{controller.profile.faction}}</td>
         <td>{{controller.profile.location}}</td>
         <td>{{controller.profile.dob}}</td>
-        <td><a ui-sref="myreviews"> My Reviews</a></td>
+        <td><a ui-sref="myBarReviews">Bar</a></td>
+        <td><a ui-sref="myDrinkReviews">Drinks</a></td>
     </tr>
 
 </table>
+<ul>
+    <li ng-repeat="bar in controller.userBars.bars">
+        {{bar.name}}
+    </li>
+</ul>

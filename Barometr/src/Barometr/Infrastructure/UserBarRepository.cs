@@ -1,5 +1,6 @@
 ﻿using Barometr.Data;
 using Barometr.Models;
+using Barometr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,12 @@ namespace Barometr.Infrastructure
         public UserBarRepository(ApplicationDbContext db) : base(db)
         {
 
-        }
 
+        }
+        public IQueryable<UserBar> GetUserBars()
+        {
+            return _db.UserBars;
+        }
 
     }
 }

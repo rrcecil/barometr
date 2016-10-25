@@ -32,9 +32,15 @@ namespace Barometr {
                 controller: Barometr.Controllers.ProfileController,
                 controllerAs: 'controller'
             })
-            .state('myreviews', {
-                url: '/myreviews',
-                templateUrl: '/ngApp/views/myreviews.html',
+            .state('myBarReviews', {
+                url: '/myBarReviews',
+                templateUrl: '/ngApp/views/myBarReviews.html',
+                controller: Barometr.Controllers.ProfileReviewsController,
+                controllerAs: 'controller'
+            })
+            .state('myDrinkReviews', {
+                url: '/myDrinkReviews',
+                templateUrl: '/ngApp/views/myDrinkReviews.html',
                 controller: Barometr.Controllers.ProfileReviewsController,
                 controllerAs: 'controller'
             })
@@ -102,6 +108,12 @@ namespace Barometr {
                 url: '/addToMenu',
                 templateUrl: '/ngApp/views/addToMenu.html',
                 controller: Barometr.Controllers.AddToMenuController,
+                controllerAs: 'controller'
+            })
+            .state('requests', {
+                url: '/requests',
+                templateUrl: '/ngApp/views/requests.html',
+                controller: Barometr.Controllers.RequestsController,
                 controllerAs: 'controller'
             });
 

@@ -39,7 +39,9 @@ namespace Barometr.Controllers {
                     delete bar.id;
                     bar.latitude = bar.geometry.location.lat();
                     bar.longitude = bar.geometry.location.lng();
-                    this.$http.post('api/bars', bar).then((res) => console.log(res));
+                    this.$http.post('api/bars', bar).then((res) => {
+                        bar.Id = res.data['barId'];
+                    });
                 }
             });
         }
@@ -47,7 +49,7 @@ namespace Barometr.Controllers {
         public addBar(bar) {
             bar.disabled = true;
             
-            this.$http.post('api/bars', bar).then((res) => res );
+            this.$http.post('api/userBars', bar).then((res) => res );
         }
 
         public logThis() {

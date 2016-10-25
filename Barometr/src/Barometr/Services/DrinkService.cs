@@ -99,6 +99,15 @@ namespace Barometr.Services
             _drinkRepo.SaveChanges();
         }
 
+        //public DrinkDTO DrinkSuggestion(DrinkDTO d, ProfileDTO p, string userName)
+        //{
+        //    var User = _drinkRepo.GetUserByUsername(userName);
+        //    if (d.Type == p.Faction)
+        //    {
+                
+        //    }
+        //}
+
         public void DeleteDrink(DrinkDTO d)
         {
 
@@ -130,10 +139,15 @@ namespace Barometr.Services
     
             var userFaction = _profileRepo.List().Where(p => p.UserId == User.Id).Select(p => p.Faction).FirstOrDefault();
 
+            if (DrinkCount == 0)
+            {
+                return "No drinks in Database";
+            }
+
             List<string> drinkList = _drinkRepo.List().Where(d => d.Type == userFaction).Select(d => d.Name).ToList();
-    int randomDrink = random.Next(1, DrinkCount);
-            return drinkList[randomDrink];
-        
+            int randomDrink = random.Next(DrinkCount - 1);
+            //return drinkList[randomDrink] //needs to be fixed;
+            return drinkList[1];
 
         }
 
