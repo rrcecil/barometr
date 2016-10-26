@@ -1,21 +1,24 @@
-﻿<div flex layout>
-  <!--Search Bar-->
-    <div flex="20">
+﻿<div class="row">
+    <!--Search Bar-->
+    <div class="col-xs-3">
         <!--<input type="text" g-places-autocomplete options="controller.options" ng-model="controller.result" />
         <input type="submit" ng-click="controller.logThis()" />-->
-        <form ng-submit="controller.getBars(selectedHood)">
-            <label for="zip">ZipCode</label>
-            <input id="zip" ng-model="selectedHood"/>
-            <label for="hoodSelect">Neighborhood</label>
-            <select ng-model="selectedHood" id="hoodSelect">
-                <option value={{controller.neighborhoods.heights}}>Heights</option>
-                <option value="{{controller.neighborhoods.riceVillage}}">Rice Village</option>
-                <option value="{{controller.neighborhoods.pearland}}">Pearland</option>
-            </select>
-            <input type="submit" value="Search"/>
+        <form ng-submit="controller.getBars(zipCode)">
+            <div class="form-group">
+                <label for="zip">ZipCode</label>
+                <input id="zip" class="form-control" ng-model="zipCode" />
+            </div>
+            <button type="submit" class="btn btn-default" value="Search">Search</button>
         </form>
     </div>
-    <div flex="80">
+    <div class="col-xs-9" style="height:500px">
+        <div id="map" style="width:100%; height:500px">
+
+        </div>
+    </div>
+</div>
+<div class="row barResults">
+    <div class="col-xs-12">
         <table class="table table-striped">
             <tbody>
                 <tr>
@@ -30,5 +33,6 @@
         </table>
     </div>
 </div>
+
             
         
