@@ -3,16 +3,17 @@
     <title>Barometr</title>
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet" />
+    <link href="~/bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css" rel="stylesheet" />
     <link href="~/bower_components/angular-input-stars/angular-input-stars.css" rel="stylesheet" />
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
                     <a href="#" class="navbar-brand"><img src="~/images/RatingImages/BarometerLogo.png" alt="Barometr logo" style="max-height: 110%; max-width: 110%;" /></a>
@@ -21,30 +22,34 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="/">Home</a>
+                            <a ng-show="!account.isLoggedIn()" ui-sref="home">Home</a>
+                            <a ng-show="account.isLoggedIn()" ui-sref="landingPage">Home</a>
                         </li>
                         <li>
-                            <a href="/profile">Profile</a>
+                            <a ui-sref="profile">Profile</a>
                         </li>
                         <li>
-                            <a href="/login" class="glyphicon glyphicon-log-in" ng-show="!account.isLoggedIn()">Login</a>
-                            <a href="#" ng-click="account.logout()"  ng-show="account.isLoggedIn()">Logout</a>
+                            <a ui-sref="login" class="glyphicon glyphicon-log-in" ng-show="!account.isLoggedIn()">Login</a>
+                            <a ui-sref="#" ng-click="account.logout()"  ng-show="account.isLoggedIn()">Logout</a>
                             <div ng-show="account.isLoggedIn()">
                                 <span>[{{account.getUserName()}}]</span>
                                 </div>
-</li>
-                        <li><a href="/register" ng-show="!account.isLoggedIn()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        </li>
+                        <li><a ui-sref="register" ng-show="!account.isLoggedIn()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li ng-if="account.getClaim('IsAdmin')" ng-controller="UserMetricController as metric">
+                                <a ng-click="metric.goToRequests()" ng-init="metric.getRequests(account.getClaim('IsAdmin'))"><span ng-show="metric.showRequestNum" class="badge pull-right">{{metric.requests}}</span>Requests</a>
+                        </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a ui-sref="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 About
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="/about">About Us</a></li>
-                                <li><a href="/contact">Contact Us</a></li>
+                                <li><a ui-sref="about">About Us</a></li>
+                                <li><a ui-sref="contact">Contact Us</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header"><a href="#"> FAQ</a></li>
-                                <li><a href="#">Support</a></li>
+                                <li><a ui-sref="#">Support</a></li>
                                
                             </ul>
                         </li>
@@ -58,7 +63,7 @@
                         <button type="submit" title="Search" class="btn"  aria-expanded="false" style="color: #7e7e7e"><i class="glyphicon glyphicon-search"></i></button>
                     </form>
                 </div>
-            </div>
+
         </nav>
     </div>
         <div class="container">
