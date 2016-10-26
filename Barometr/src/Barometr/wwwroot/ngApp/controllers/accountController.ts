@@ -12,7 +12,11 @@ namespace Barometr.Controllers {
         }
 
         public getClaim(type) {
-            return this.accountService.getClaim(type);
+            console.log(type);
+
+            var claim = this.accountService.getClaim(type);
+            console.log(claim);
+            return claim;
         }
 
         public isLoggedIn() {
@@ -47,7 +51,7 @@ namespace Barometr.Controllers {
         public login() {
             console.log(this.loginUser);
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/landingPage');
             }).catch((results) => {
                 this.validationMessages = results;
             });
