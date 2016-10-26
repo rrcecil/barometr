@@ -1,6 +1,6 @@
 ﻿<h2>User Ownership Claim Requests</h2>
 
-<table class="table table-striped">
+<table class="table table-striped" id="requests">
     <tr>
         <th>User Name</th>
         <th>User Email</th>
@@ -14,7 +14,7 @@
         <td>{{request.userEmail}}</td>
         <td>{{request.barName}}</td>
         <td>{{request.dateRequested}}</td>
-        <td><button ng-click="controller.accept(request.id)" ui-sref="javascript:history.go(0)">Accept Request</button></td>
-        <td><button ng-click="controller.deny(request.id)" ui-sref="javascript:history.go(0)">Deny Request</button></td>
+        <td><button ng-click="controller.accept(request.id)">Accept Request</button></td>
+        <td><button ng-click="controller.deny(request.id)">Deny Request</button></td>
     </tr>
 </table>

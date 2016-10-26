@@ -68,8 +68,9 @@ namespace Barometr.Controllers {
         public drinks;
         public greetings;
         public requests;
+        public showRequestNum;
 
-        
+
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService,
             public RandomBarService: Barometr.Services.RandomBarService
@@ -103,28 +104,35 @@ namespace Barometr.Controllers {
             $http.get(`api/requests/amount`).then((res) => {
                 this.requests = res.data;
             });
+
+            this.showRequestNum = true;
         }
 
-            public greet() {
-                var myDate = new Date();
-                var hrs = myDate.getHours();
+        public greet() {
+            var myDate = new Date();
+            var hrs = myDate.getHours();
 
-                
 
-                if (hrs < 12)
-                    return 'Good Morning';
-                else if (hrs >= 12 && hrs <= 17)
-                    return 'Good Afternoon';
-                else if (hrs >= 17 && hrs <= 24)
-                   return 'Good Evening'; 
 
-            }
+            if (hrs < 12)
+                return 'Good Morning';
+            else if (hrs >= 12 && hrs <= 17)
+                return 'Good Afternoon';
+            else if (hrs >= 17 && hrs <= 24)
+                return 'Good Evening';
+
+        }
+
+        public goToRequests() {
+            this.showRequestNum = false;
+            this.$state.go("requests");
+        }
     }
 
     angular.module('Barometr').controller('UserMetricController', UserMetricController);
 
 
-    
+
     export class ReviewDialogController {
         public reviews;
         public barId;
@@ -159,7 +167,7 @@ namespace Barometr.Controllers {
 
 
     angular.module('Barometr').controller('ReviewDialogController', ReviewDialogController);
-    
+
 
     export class DrinkDialogController {
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public drink) { }
@@ -201,62 +209,62 @@ namespace Barometr.Controllers {
 
 
 
-    //    public postDrink(drink) {
-    //        this.$http.post('api/bars/drinks', drink).then((res) => {
-    //            this.$state.reload();
-    //        });
-    //    }
-    //    public deleteDrink(drink) {
-    //        this.$http.delete(`api/bars/drinks/${drink.id}`).then((res) => {
-    //            this.$state.reload();
-    //        });
-    //    }
-    //    public updateDrink(drink) {
+        //    public postDrink(drink) {
+        //        this.$http.post('api/bars/drinks', drink).then((res) => {
+        //            this.$state.reload();
+        //        });
+        //    }
+        //    public deleteDrink(drink) {
+        //        this.$http.delete(`api/bars/drinks/${drink.id}`).then((res) => {
+        //            this.$state.reload();
+        //        });
+        //    }
+        //    public updateDrink(drink) {
 
-    //        this.$http.put(`api/bars/drinks/${drink.id}`, drink).then((res) => {
-    //            this.$state.reload();
-    //        });
+        //        this.$http.put(`api/bars/drinks/${drink.id}`, drink).then((res) => {
+        //            this.$state.reload();
+        //        });
 
-    //    }
-    //}
+        //    }
+        //}
 
-    //export class ReviewController {
-    //    public bar;
-    //    public drink;
+        //export class ReviewController {
+        //    public bar;
+        //    public drink;
 
-    //    constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
-    //        $http.get(`api/bars/reviews`).then((res) => {
-    //            this.bar = res.data;
-    //            console.log(this.bar);
-    //        });
+        //    constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
+        //        $http.get(`api/bars/reviews`).then((res) => {
+        //            this.bar = res.data;
+        //            console.log(this.bar);
+        //        });
 
-    //    }
-    //    public postReview(review) {
-    //        this.$http.post(`api/bars/reviews`, review).then((res) => {
-    //            this.$state.reload();
-    //        });
-    //    }
+        //    }
+        //    public postReview(review) {
+        //        this.$http.post(`api/bars/reviews`, review).then((res) => {
+        //            this.$state.reload();
+        //        });
+        //    }
 
-    //    public deleteReview(review) {
-    //        this.$http.delete(`api/bars/reviews/${review.id}`).then((res) => {
-    //            this.$state.reload();
-    //        });
-    //    }
-    //    public updateReview(review) {
+        //    public deleteReview(review) {
+        //        this.$http.delete(`api/bars/reviews/${review.id}`).then((res) => {
+        //            this.$state.reload();
+        //        });
+        //    }
+        //    public updateReview(review) {
 
-    //        this.$http.put(`api/bars/reviews/${review.id}`, review).then((res) => {
-    //            this.$state.reload();
-    //        });
+        //        this.$http.put(`api/bars/reviews/${review.id}`, review).then((res) => {
+        //            this.$state.reload();
+        //        });
 
-    //    }
-    //    public validateUser(review) {
-    //        if (this.accountService.getUserName() != review.userName) {
-    //            return true;
-    //        }
-    //        else {
-    //            return false;
-    //        }
-    //    }
+        //    }
+        //    public validateUser(review) {
+        //        if (this.accountService.getUserName() != review.userName) {
+        //            return true;
+        //        }
+        //        else {
+        //            return false;
+        //        }
+        //    }
     }
 
     export class SecretController {
