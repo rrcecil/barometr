@@ -31,7 +31,7 @@ namespace Barometr.Infrastructure
             {
                 return new Bar
                 {
-                    Name = "New test Bar",
+                    Name = "New Test Bar",
                     Longitude = .001M,
                     Latitude = .012M,
                     HappyHour = "5PM",

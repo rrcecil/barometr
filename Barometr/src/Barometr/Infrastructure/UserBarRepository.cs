@@ -20,5 +20,6 @@ namespace Barometr.Infrastructure
             return _db.UserBars;
         }
 
+   
     }
 }

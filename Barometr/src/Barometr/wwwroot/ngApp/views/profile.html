@@ -1,27 +1,35 @@
 ﻿<h2>{{controller.profile.name}}'s Profile</h2>
 
 <table class="table table-striped">
-
     <tr>
         <th>Name</th>
-        <th>Faction</th>
-        <th>Location</th>
-        <th>Date of Birth</th>
-        <th>Reviews</th>
-        <th>Reviews</th>
+        <td>{{controller.profile.name}}</td>
+        <td></td>
     </tr>
     <tr>
-        <td>{{controller.profile.name}}</td>
+        <th>Faction</th>
         <td>{{controller.profile.faction}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Location</th>
         <td>{{controller.profile.location}}</td>
-        <td>{{controller.profile.dob}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Date Of Birth</th>
+        <td>{{controller.profile.dob | date: "MM/dd/yyyy"}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Reviews</th>
         <td><a ui-sref="myBarReviews">Bar</a></td>
         <td><a ui-sref="myDrinkReviews">Drinks</a></td>
+        
     </tr>
-
+    <tr>
+        <th>My List</th>
+        <td><a ui-sref="userBars({id:bar.id})">My list of Bars</a></td>
+        <td></td>
+  </tr>
 </table>
-<ul>
-    <li ng-repeat="bar in controller.userBars.bars">
-        {{bar.name}}
-    </li>
-</ul>

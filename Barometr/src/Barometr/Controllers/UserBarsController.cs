@@ -22,9 +22,10 @@ namespace Barometr.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<UserBar> Get()
+        public IEnumerable<UserBar> GetUserBars(string UserId)
         {
-            return _service.GetUserBars(User.Identity.Name);
+            var username = User.Identity.Name;
+            return _service.GetUserBars(username);
         }
 
         // GET api/values/5
@@ -51,6 +52,14 @@ namespace Barometr.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        [HttpGet("userBars")]
+        public IEnumerable<BarDTO> GetBarByUser()
+        {
+            var UserName = User.Identity.Name;
+            return _service.GetBarByUser(UserName);
+           
         }
     }
 }
