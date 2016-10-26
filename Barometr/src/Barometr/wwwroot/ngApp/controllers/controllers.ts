@@ -3,13 +3,14 @@ namespace Barometr.Controllers {
     const apiURL = '/api/bars';
 
     export class HomeController {
-
         public randomBar;
-        constructor(private RandomBarService: Barometr.Services.RandomBarService) {
-            let randomBar = RandomBarService.randomBar;
-            console.log("Random Bar " + randomBar);
-            this.randomBar = randomBar;
-        }
+        
+
+        //constructor(private RandomBarService: Barometr.Services.RandomBarService) {
+        //    let randomBar = RandomBarService.randomBar;
+        //    console.log("Random Bar " + randomBar);
+        //    this.randomBar = randomBar;
+        //}
     }
 
 
