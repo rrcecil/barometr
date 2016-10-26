@@ -102,9 +102,7 @@ namespace Barometr.Controllers {
                 this.randomDrink = res.data;
             });
 
-            $http.get(`api/requests/amount`).then((res) => {
-                this.requests = res.data;
-            });
+           
 
             this.showRequestNum = true;
         }
@@ -122,6 +120,14 @@ namespace Barometr.Controllers {
             else if (hrs >= 17 && hrs <= 24)
                 return 'Good Evening';
 
+        }
+
+        public getRequests(admin) {
+            if (admin != null) {
+                this.$http.get(`api/requests/amount`).then((res) => {
+                    this.requests = res.data;
+                });
+            }
         }
 
         public goToRequests() {

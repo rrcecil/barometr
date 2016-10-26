@@ -1,45 +1,51 @@
 ﻿
+<div class="row">
+    <div class="col-xs-9">
+        <p ng-show="controller.greet()" style="font-size: 24px">
+            <strong>{{controller.greet()}} {{account.getUserName()}}</strong>
+        </p>
+        <br/>
+        <table class="table table-responsive table-hover">
+            <tr>
+                <th>My Reviews</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <th>
+                    <a ui-sref="myBarReviews">Bar Reviews</a>
+                </th>
+                <td>{{controller.barReviewCount}}</td>
+            </tr>
+            <tr>
+                <th>
+                    <a ui-sref="myDrinkReviews">Drink Reviews</a>
+                </th>
+                <td>{{controller.drinkReviewCount}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-xs-3">
+        <p style="font-size: 24px">
+            <strong>Bar of the Day</strong>
+        </p>
 
-
-
-
-        <div class="row">
-            <div class="col-xs-9">
-                <p ng-show="controller.greet()" style="font-size:24px"><strong>{{controller.greet()}}  {{account.getUserName()}}</strong></p>
-<br />
-                <table class="table table-responsive table-hover">
-                    <tr>
-                        <th>My Reviews</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <th><a ui-sref="myBarReviews">Bar Reviews</a></th>
-                        <td>{{controller.barReviewCount}}</td>
-                    </tr>
-                    <tr>
-                        <th><a ui-sref="myDrinkReviews">Drink Reviews</a></th>
-                        <td>{{controller.drinkReviewCount}}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-xs-3">
-                <p style="font-size:24px"><strong>Bar of the Day</strong></p>
-
-                Name:{{controller.RandomBarService.randomBar.name}}
-                <br />
-                Happy Hour:{{controller.RandomBarService.randomBar.happyHour}}
-                <br />
-                Rating:
-                <br />
-                Address:<!--google map marker-->
-                <br />
-                <br/>
-                <p><strong>Drink You May Like</strong></p>
-                Drink: {{controller.randomDrink}}
-                <br />
-                Type: {{controller.randomDrink.type}} <!--needs data and needs logic if we want just Bar name or Bar Object-->
-            </div>
-        </div>
+        Name:{{controller.RandomBarService.randomBar.name}}
+        <br/>
+        Happy Hour:{{controller.RandomBarService.randomBar.happyHour}}
+        <br/>
+        Rating:
+        <br/>
+        Address:<!--google map marker-->
+        <br/>
+        <br/>
+        <p>
+            <strong>Drink You May Like</strong>
+        </p>
+        Drink: {{controller.randomDrink}}
+        <br/>
+        Type: {{controller.randomDrink.type}} <!--needs data and needs logic if we want just Bar name or Bar Object-->
+    </div>
+</div>
 
 
 

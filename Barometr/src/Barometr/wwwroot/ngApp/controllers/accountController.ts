@@ -12,11 +12,7 @@ namespace Barometr.Controllers {
         }
 
         public getClaim(type) {
-            console.log(type);
-
-            var claim = this.accountService.getClaim(type);
-            console.log(claim);
-            return claim;
+            return this.accountService.getClaim(type);
         }
 
         public isLoggedIn() {
