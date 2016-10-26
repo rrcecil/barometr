@@ -1,6 +1,7 @@
 body{
     width: 100%;
     margin: 0;
+    font-family: 'Roboto Condensed' sans-serif;
 }
 
 .center {
@@ -9,9 +10,18 @@ body{
     width: 50%;
 }
 
+.navbar{
+    margin: 0 !important;
+    position: fixed !important;
+    width: 98.5% !important;
+    background-color: black;
+}
+
+.navbar li{ color: #000}
+
 .parallax-one {
     background-image: url("../images/blueBarBanner.jpg");
-    height: 95%;
+    height: 100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,6 +55,17 @@ body{
     background-size: cover;
 }
 
+#footer-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-social-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
