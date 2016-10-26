@@ -72,6 +72,7 @@ namespace Barometr
             services.AddScoped<ProfileService>();
             services.AddScoped<BarReviewService>();
             services.AddScoped<DrinkReviewService>();
+            services.AddScoped<UserMetricService>();
 
 
 

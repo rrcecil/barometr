@@ -10,12 +10,14 @@ namespace Barometr.Services
 {
     public class UserBarService
     {
+        private BarReviewRepository _barReviewRepo;
         private BarRepository _barRepo;
         private UserBarRepository _userBarRepo;
-        public UserBarService(UserBarRepository userBarRepo, BarRepository barRepo)
+        public UserBarService(UserBarRepository userBarRepo, BarRepository barRepo, BarReviewRepository barReviewRepo)
         {
             _userBarRepo = userBarRepo;
             _barRepo = barRepo;
+            _barReviewRepo = barReviewRepo;
         }
 
         public void Add(string Username, BarDTO b)
@@ -35,20 +37,55 @@ namespace Barometr.Services
         }
         public List<UserBar> GetUserBars(string UserId)
         {
-            var result = _userBarRepo.GetUserBars().Where(b => b.UserId == UserId ).ToList();
+            var result = _userBarRepo.GetUserBars().Where(b => b.UserId == UserId).ToList();
             return result;
         }
         public int GetBarIdByGoogleBarId(string GoogleBarId)
         {
             var BarId = _barRepo.List().FirstOrDefault(b => b.GoogleBarId == GoogleBarId).Id;
-            
+
             return BarId;
         }
+
 
         public void AddClaim(UserBar userBar)
         {
             _userBarRepo.Add(userBar);
             _userBarRepo.SaveChanges();
         }
+
+        public List<BarDTO> GetBarByUser(string UserName)
+        {
+            var userId = _userBarRepo.GetUserByUsername(UserName).Id;
+            var userbar = _userBarRepo.List().Where(u => u.UserId == userId).Select(u =>u.BarId).ToList();
+            var bar = _barRepo.GetBars().Where(b => userbar.Contains(b.Id)).Select(b => new BarDTO
+            {
+                Name = b.Name,
+                HappyHour = b.HappyHour,
+                
+            }).ToList();
+
+            return bar;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+            
+
+
+        
+
+
+
+
+
+

@@ -1,5 +1,7 @@
-﻿<ul>
-    <li ng-repeat="bar in controller.userBars.bars">
-        {{bar.name}}
-    </li>
-</ul>
+﻿<p>My List of Bars</p>
+   <li ng-repeat="bar in controller.userBars">
+       <a ui-sref="barProfile({id:bar.id})">{{bar.name}}</a>
+       {{bar.happyHour}}
+      <!--needs to show reviews, happy hour, -->
+
+</li>

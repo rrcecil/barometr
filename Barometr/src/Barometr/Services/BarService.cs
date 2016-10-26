@@ -150,22 +150,26 @@ namespace Barometr.Services
         public BarDTO GetBarByUserName(string user)
         {
             var bar = _barRepo.GetBarByUsername(user);
-
-            return new BarDTO
+            
+           var baruser = (from b in _barRepo.List()
+                    select new BarDTO
             {
-                HappyHour = bar.HappyHour,
-                Id = bar.Id,
-                Latitude = bar.Latitude,
-                Longitude = bar.Longitude,
-                Name = bar.Name,
-                Reviews = (from r in bar.Reviews
+                HappyHour =b.HappyHour,
+                Id = b.Id,
+                Latitude = b.Latitude,
+                Longitude = b.Longitude,
+                Name = b.Name,
+                Reviews = (from r in b.Reviews
                            select new BarReviewDTO()
                            {
                                Id = r.Id,
                                Comment = r.Comment,
                                Rating = r.Rating
                            }).ToList()
-            };
+
+            }).FirstOrDefault();
+            return baruser;
         }
+        
     }
 }
