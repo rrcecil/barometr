@@ -67,6 +67,7 @@ namespace Barometr.Controllers {
         public randomDrink;
         public drinks;
         public greetings;
+        public requests;
 
         
 
@@ -98,6 +99,10 @@ namespace Barometr.Controllers {
                 console.log("the drink is " + res.data);
                 this.randomDrink = res.data;
             });
+
+            $http.get(`api/requests/amount`).then((res) => {
+                this.requests = res.data;
+            });
         }
 
             public greet() {
@@ -114,7 +119,10 @@ namespace Barometr.Controllers {
                    return 'Good Evening'; 
 
             }
-        }
+    }
+
+    angular.module('Barometr').controller('UserMetricController', UserMetricController);
+
 
     
     export class ReviewDialogController {
