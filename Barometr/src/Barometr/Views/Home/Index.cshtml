@@ -4,8 +4,7 @@
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
-    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">    <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css" rel="stylesheet" />
     <link href="~/bower_components/angular-input-stars/angular-input-stars.css" rel="stylesheet" />
@@ -21,7 +20,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a ng-show="!account.isLoggedIn()" ui-sref="home">Home</a>
                             <a ng-show="account.isLoggedIn()" ui-sref="landingPage">Home</a>
                         </li>
@@ -29,7 +28,7 @@
                             <a ui-sref="profile">Profile</a>
                         </li>
                         <li>
-                            <a ui-sref="login" class="glyphicon glyphicon-lock" ng-show="!account.isLoggedIn()">Login</a>
+                            <a ui-sref="login"><span class="glyphicon glyphicon-lock" ng-show="!account.isLoggedIn()"></span>Login</a>
                             <a ui-sref="#" ng-click="account.logout()"  ng-show="account.isLoggedIn()">Logout</a>
                             <div ng-show="account.isLoggedIn()">
                                 <span>[{{account.getUserName()}}]</span>
