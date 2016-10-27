@@ -1,15 +1,15 @@
 ﻿<!--clicking on bar name will take user to this page-barProfile(bar details)-->
 
 
-<h1>{{controller.bars.name}}</h1>
+<h1>{{controller.bar.name}}</h1>
 
 <h3>Are you the bar owner?</h3> <br/>
-<button class="alert-success" ng-click="controller.claimBar(controller.bars.id)">Claim This Bar</button>
+<button class="alert-success" ng-click="controller.claimBar(controller.bar.id)">Claim This Bar</button>
 
 <table class="table table-striped">
     <tr>
         <th>Name</th>
-        <td>{{controller.bars.name}}</td>
+        <td>{{controller.bar.name}}</td>
     </tr>
     <tr>
         <th>Price</th> <!--expensive or not-->
@@ -29,7 +29,7 @@
     </tr>
     <tr>
         <th>Reviews</th> <!--snippet from a top user review-->
-        <td ng-repeat="review in controller.bars.reviews">
+        <td ng-repeat="review in controller.bar.reviews">
             {{review.comment}}
         </td>
     </tr>
