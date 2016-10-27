@@ -18,11 +18,12 @@ namespace Barometr.Controllers {
         public bar;
         public drinks;
         public reviews;
-
+        public rating;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
                 this.bar = res.data;
+                this.rating = this.bar.rating;
             });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
