@@ -2,6 +2,7 @@ body{
     width: 100%;
     margin: 0;
     font-family: 'Comfortaa', cursive;
+    padding-top: 70px;
 }
 
 .container-fluid{
@@ -19,13 +20,13 @@ body{
     margin: 0 !important;
     position: fixed !important;
     width: 100%;
-    background-color: black;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 
 .navbar li{ color: #000}
 
 .login-parallax-one {
-    background-image: url("../images/sidewaysblacklog.png");
+    background-image: url("../images/background.jpg");
     height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -52,7 +53,8 @@ body{
 
 
 .parallax-one {
-    background-image: url("../images/sidewaysblacklog.png");
+    margin-top: -70px !important;
+    background-image: url("../images/background.jpg");
     height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -78,7 +80,7 @@ body{
 }
 
 .parallax-two {
-    background-image: url("../images/sidewaysblacklog.png");
+    background-image: url("../images/background2.jpeg");
     height: 100%;
     background-attachment: fixed;
     background-position: center;

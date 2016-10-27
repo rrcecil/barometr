@@ -4,7 +4,9 @@
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" />
+
  
     <link href="~/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css" rel="stylesheet" />
@@ -48,9 +50,11 @@
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header"><a href="#"> FAQ</a></li>
                                 <li><a ui-sref="#">Support</a></li>
-                               
+
                             </ul>
                         </li>
+                        <li><a ui-sref="userBars" ng-show="account.isLoggedIn()">Bars</a></li>
+
                     </ul>
                     <form class="navbar-form navbar-right" id="tfnewsearch" method="post" action="/search">
                         <div class="form-group">
