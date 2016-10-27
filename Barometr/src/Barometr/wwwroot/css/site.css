@@ -4,6 +4,11 @@ body{
     font-family: 'Roboto Condensed' sans-serif;
 }
 
+.container-fluid{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .center {
     margin: auto;
     margin-top: 0;
@@ -13,7 +18,7 @@ body{
 .navbar{
     margin: 0 !important;
     position: fixed !important;
-    width: 98.5% !important;
+    width: 100%;
     background-color: black;
 }
 
