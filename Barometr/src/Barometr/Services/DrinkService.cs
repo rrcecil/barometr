@@ -64,6 +64,12 @@ namespace Barometr.Services
             var drink = ProjectToModel(d);
             _drinkRepo.Add(drink);
             var bar = _barRepo.GetBarByUsername(user);
+
+            //Prevent null ref exceptions from Menu not being initalized.
+            if (bar.Menu == null)
+            {
+                bar.Menu = new List<Drink>();
+            }
             bar.Menu.Add(drink);
             _drinkRepo.SaveChanges();
         }
@@ -72,6 +78,10 @@ namespace Barometr.Services
         {
             var drink = ProjectToModel(d);
             var bar = _barRepo.GetBarByUsername(user);
+            if (bar.Menu == null)
+            {
+                bar.Menu = new List<Drink>();
+            }
             bar.Menu.Add(drink);
         }
 
@@ -137,9 +147,13 @@ namespace Barometr.Services
             }
 
             List<string> drinkList = _drinkRepo.List().Where(d => d.Type == userFaction).Select(d => d.Name).ToList();
+            if (drinkList.Count == 0)
+            {
+                return "No drinks found with same faction.";
+            }
             int randomDrink = random.Next(DrinkCount - 1);
-            //return drinkList[randomDrink] //needs to be fixed;
-            return drinkList[1];
+            return drinkList[randomDrink]; //needs to be fixed;
+            //return drinkList[1];
 
         }
 
