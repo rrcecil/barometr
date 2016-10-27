@@ -115,7 +115,7 @@ namespace Barometr.Migrations
 
                     b.Property<string>("Comment");
 
-                    b.Property<int>("Rating");
+                    b.Property<double>("Rating");
 
                     b.Property<string>("UserId")
                         .IsRequired();

@@ -143,10 +143,10 @@ namespace Barometr.Controllers {
     export class ReviewDialogController {
         public reviews;
         public barId;
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bars) {
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bar) {
             $http.get('api/barReviews').then((res) => {
                 this.reviews = res.data;
-                console.log(this.bars);
+                console.log(this.bar);
             });
             this.barId = this.$stateParams['id'];
         }
