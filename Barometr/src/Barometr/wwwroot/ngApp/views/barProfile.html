@@ -1,50 +1,62 @@
 ﻿<!--clicking on bar name will take user to this page-barProfile(bar details)-->
 
+<div class="container">
+    <h2 style="text-align:center">{{controller.bars.name}}</h2>
 
-<h1>{{controller.bar.name}}</h1>
+    <h3>Are you the Bar Owner?</h3> <br />
+    <button class="alert-success" ng-click="controller.claimBar(controller.bars.id)">Claim This Bar</button>
+    <br />
+    <br />
 
-<h3>Are you the bar owner?</h3> <br/>
-<button class="alert-success" ng-click="controller.claimBar(controller.bar.id)">Claim This Bar</button>
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <td>{{controller.bars.name}}</td>
+        </tr>
+        <tr>
+            <th>Price</th> <!--expensive or not-->
+            <td>{{controller.bars.price | currency}}</td>
+        </tr>
+        <tr>
+            <th>Hours Of Operation</th>
+            <td>{{controller.bars.hours}}</td>
+        </tr>
+        <tr>
+            <th>Location</th>   <!--google map marker-->
+            <td>{{controller.bars.location}}</td>
+        </tr>
+        <tr>
+            <th>Contact Information</th>
+            <td>{{controller.bars.contact}}</td>
+        </tr>
 
-<table class="table table-striped">
-    <tr>
-        <th>Name</th>
-        <td>{{controller.bar.name}}</td>
-    </tr>
-    <tr>
-        <th>Price</th> <!--expensive or not-->
-        <td>{{controller.bars.price | currency}}</td>
-    </tr>
-    <tr>
-        <th>Hours Of Operation</th>
-        <td>{{controller.bars.hours}}</td>
-    </tr>
-    <tr>
-        <th>Location</th>   <!--google map marker-->
-        <td>{{controller.bars.location}}</td>
-    </tr>
-    <tr>
-        <th>Contact Information</th>
-        <td>{{controller.bars.contact}}</td>
-    </tr>
-    <tr>
-        <th>Reviews</th> <!--snippet from a top user review-->
-        <td ng-repeat="review in controller.bar.reviews">
-            {{review.comment}}
-        </td>
-    </tr>
-    <tr>
-        <th>Bar Menu</th> <!--link to bar menu-->
-        <td><a ui-sref="menu({id:menu.id})">Menu</a></td> <!--link to bar menu-->
-    </tr>
+        <tr>
+            <th>Bar Menu</th> <!--link to bar menu-->
+            <td><button title="Menu" ui-sref="menu({id:menu.id})"><span class="glyphicon glyphicon-book"></span>Menu</button></td> <!--link to bar menu-->
+        </tr>
 
-    <tr>
-        <th>Top 3 drinkers</th>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Top 3 Popular Drinks </th>
-        <td></td>
-    </tr>
+        <!--<tr>          stretch goal
 
-</table>
+            <th>Top 3 drinkers</th>
+            <td></td>
+
+        </tr>
+        <tr>
+            <th>Top 3 Popular Drinks </th>
+            <td></td>
+        </tr>-->
+
+    </table>
+
+
+
+<h2>Reviews:</h2> <!--snippet from a top user review-->
+<ul>
+    <li ng-repeat="review in controller.bars.reviews" style="list-style:disc">
+        Rating: {{review.rating}}
+        <br />
+        Comments:{{review.comment}}
+
+    </li>
+</ul>
+</div>
