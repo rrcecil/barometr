@@ -53,7 +53,7 @@ namespace Barometr.Services
             var review = _repo.List().FirstOrDefault(re => re.Id == r.Id);
 
             review.Comment = r.Comment;
-            review.Rating = r.Rating;
+            review.Rating = (int)r.Rating;
              
             _repo.SaveChanges();
         }
@@ -70,7 +70,7 @@ namespace Barometr.Services
             return new BarReview
             {
                 Comment = r.Comment,
-                Rating = r.Rating,
+                Rating = (int)r.Rating,
                 UserId = UserId,
                 BarId = r.BarId
             };
@@ -84,6 +84,12 @@ namespace Barometr.Services
                 Rating = r.Rating,
                 Username = r.User.UserName
             };
+        }
+        public double GetAverageRating(int id)
+        {
+            var ratingAverage = _repo.GetReviews().Where(r => r.BarId == id).Select(r => r.Rating).Average();
+            var roundedRating = Math.Round(ratingAverage);
+            return roundedRating;
         }
 
         public ICollection<BarReviewDTO> GetReviewByName(string user)

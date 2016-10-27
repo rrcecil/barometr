@@ -14,6 +14,7 @@ namespace Barometr.ViewModels
         public string HappyHour { get; set; }
         public string GoogleBarId { get; set; }
         public ICollection<BarReviewDTO> Reviews { get; set; } 
+        public double Rating { get; set; }
 
 
     }

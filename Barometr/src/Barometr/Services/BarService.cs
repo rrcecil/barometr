@@ -38,6 +38,12 @@ namespace Barometr.Services
                                    }).ToList()
                     }).ToList();
         }
+        public double GetAverageRating(int id)
+        {
+            var ratingAverage = _reviewRepo.GetReviews().Where(r => r.BarId == id).Select(r => r.Rating).Average();
+            var roundedRating = Math.Round(ratingAverage);
+            return roundedRating;
+        }
 
         public BarDTO GetBarById(int id)
         {
@@ -58,6 +64,7 @@ namespace Barometr.Services
                     Longitude = b.Longitude,
                     HappyHour = b.HappyHour,
                     GoogleBarId = b.GoogleBarId,
+                    Rating = GetAverageRating(b.Id),
                     Reviews = (from r in b.Reviews
                                select new BarReviewDTO()
                                {
