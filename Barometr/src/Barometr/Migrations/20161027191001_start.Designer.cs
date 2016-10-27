@@ -8,7 +8,7 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161025214113_start")]
+    [Migration("20161027191001_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,7 +116,7 @@ namespace Barometr.Migrations
 
                     b.Property<string>("Comment");
 
-                    b.Property<int>("Rating");
+                    b.Property<double>("Rating");
 
                     b.Property<string>("UserId")
                         .IsRequired();

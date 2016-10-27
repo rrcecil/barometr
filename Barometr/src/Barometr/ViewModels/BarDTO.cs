@@ -13,8 +13,9 @@ namespace Barometr.ViewModels
         public decimal Longitude { get; set; }
         public string HappyHour { get; set; }
         public string GoogleBarId { get; set; }
-        public ICollection<BarReviewDTO> Reviews { get; set; } 
+        public double Rating { get; set; }
 
+        public ICollection<BarReviewDTO> Reviews { get; set; } 
 
     }
 }

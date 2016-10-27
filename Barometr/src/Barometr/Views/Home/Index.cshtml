@@ -29,7 +29,7 @@
                             <a ui-sref="profile">Profile</a>
                         </li>
                         <li>
-                            <a ui-sref="login" class="glyphicon glyphicon-log-in" ng-show="!account.isLoggedIn()">Login</a>
+                            <a ui-sref="login" class="glyphicon glyphicon-lock" ng-show="!account.isLoggedIn()">Login</a>
                             <a ui-sref="#" ng-click="account.logout()"  ng-show="account.isLoggedIn()">Logout</a>
                             <div ng-show="account.isLoggedIn()">
                                 <span>[{{account.getUserName()}}]</span>
@@ -70,11 +70,10 @@
 
         </nav>
     </div>
-        <div class="container">
+        <div class="container-fluid">
 
           
         
-        <hr />
 
         <ui-view></ui-view>
     </div>

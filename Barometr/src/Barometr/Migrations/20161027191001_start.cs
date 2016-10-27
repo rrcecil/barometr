@@ -194,7 +194,7 @@ namespace Barometr.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BarId = table.Column<int>(nullable: false),
                     Comment = table.Column<string>(nullable: true),
-                    Rating = table.Column<int>(nullable: false),
+                    Rating = table.Column<double>(nullable: false),
                     UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

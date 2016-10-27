@@ -38,6 +38,22 @@ namespace Barometr.Services
                                    }).ToList()
                     }).ToList();
         }
+        public double GetAverageRating(int id)
+        {
+            var something = _reviewRepo.GetReviews().Where(r => r.BarId == id).Select(r => r.Rating);
+            var ratingAverage = 0d;
+            try
+            {
+                ratingAverage = something.Average();
+            }
+            catch
+            {
+                ratingAverage = 0;
+            }
+
+            var roundedRating = Math.Round(ratingAverage);
+            return roundedRating;
+        }
 
         public BarDTO GetBarById(int id)
         {
@@ -58,14 +74,13 @@ namespace Barometr.Services
                     Longitude = b.Longitude,
                     HappyHour = b.HappyHour,
                     GoogleBarId = b.GoogleBarId,
+                    Rating = GetAverageRating(b.Id),
                     Reviews = (from r in b.Reviews
                                select new BarReviewDTO()
                                {
                                    Id = r.Id,
                                    Comment = r.Comment,
-                                   Rating = r.Rating
-
-
+                                   Rating = (double)((int)r.Rating)
                                }).ToList()
 
                 }).FirstOrDefault();
@@ -150,26 +165,22 @@ namespace Barometr.Services
         public BarDTO GetBarByUserName(string user)
         {
             var bar = _barRepo.GetBarByUsername(user);
-            
-           var baruser = (from b in _barRepo.List()
-                    select new BarDTO
+
+            return new BarDTO
             {
-                HappyHour =b.HappyHour,
-                Id = b.Id,
-                Latitude = b.Latitude,
-                Longitude = b.Longitude,
-                Name = b.Name,
-                Reviews = (from r in b.Reviews
+                HappyHour = bar.HappyHour,
+                Id = bar.Id,
+                Latitude = bar.Latitude,
+                Longitude = bar.Longitude,
+                Name = bar.Name,
+                Reviews = (from r in bar.Reviews
                            select new BarReviewDTO()
                            {
                                Id = r.Id,
                                Comment = r.Comment,
                                Rating = r.Rating
                            }).ToList()
-
-            }).FirstOrDefault();
-            return baruser;
+            };
         }
-        
     }
 }
