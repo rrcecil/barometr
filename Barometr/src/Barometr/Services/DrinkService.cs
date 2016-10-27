@@ -25,14 +25,14 @@ namespace Barometr.Services
 
         public List<DrinkDTO> GetAllDrinks()
         {
-            var result = _drinkRepo.GetDrinks().Select(d => ProjectToViewModel(d)).ToList();
+            var result = _drinkRepo.List().Select(d => ProjectToViewModel(d)).ToList();
 
             return result;
         }
 
         public DrinkDTO GetDrinkById(int id)
         {
-            var result = _drinkRepo.GetDrinks().Where(d => d.Id == id).Select(d => ProjectToViewModel(d)).FirstOrDefault();
+            var result = _drinkRepo.List().Where(d => d.Id == id).Select(d => ProjectToViewModel(d)).FirstOrDefault();
 
             return result;
         }

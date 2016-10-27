@@ -45,7 +45,7 @@ namespace Barometr.Services
 
         public ProfileDTO GetProfileByEmail(string user)
         {
-            var profileUser = _repo.GetProfiles().Where(p => p.User.Email == user).Select(p => new ProfileDTO
+            var profileUser = _repo.List().Where(p => p.User.Email == user).Select(p => new ProfileDTO
             {
                 Id = p.Id,
                 DOB = p.DOB,
@@ -59,7 +59,7 @@ namespace Barometr.Services
 
         public ProfileDTO GetProfileByName(string name)
         {
-            var profileUser = _repo.GetProfiles().Where(p => p.User.UserName == name).Select(p => new ProfileDTO
+            var profileUser = _repo.List().Where(p => p.User.UserName == name).Select(p => new ProfileDTO
             {
                 Id = p.Id,
                 DOB = p.DOB,
@@ -96,16 +96,5 @@ namespace Barometr.Services
             _repo.SaveChanges();
 
         }
-
-
-
-        //delete method
-        //public void DeleteProfile(int id)
-        //{
-        //    var orig = _repo.GetProfileById(id);
-        //    _repo.Delete(orig);
-        //    _repo.SaveChanges();
-        //}
-
     }
 }

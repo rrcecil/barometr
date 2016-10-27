@@ -12,11 +12,7 @@ namespace Barometr.Infrastructure
         public ProfileRepository(ApplicationDbContext db) : base(db)
         {
         }
-
-        public IQueryable<Profile> GetProfiles()
-        {
-            return _db.Profiles;
-        }
+        
         public Profile GetProfileById(int id)
         {
             return _db.Profiles.FirstOrDefault(p => p.Id == id);
