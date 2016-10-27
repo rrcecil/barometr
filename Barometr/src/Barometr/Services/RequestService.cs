@@ -30,24 +30,29 @@ namespace Barometr.Services
         {
             var requests = _repo.GetRequests();
 
-            var alLRequests = new List<RequestsDTO>();
+            var allRequests = new List<RequestsDTO>();
             foreach (var request in requests)
             {
                 var bar = _barRepo.GetBarById(request.BarId);
                 var user = _repo.GetUserById(request.UserId);
-                var requestDTO = new RequestsDTO
+                try
                 {
-                    Id = request.Id,
-                    UserName = user.UserName,
-                    UserEmail = user.Email,
-                    BarName = bar.Name,
-                    DateRequested = request.DateRequested
-                };
-
-                alLRequests.Add(requestDTO);
-
+                    var requestDTO = new RequestsDTO
+                    {
+                        Id = request.Id,
+                        UserName = user.UserName,
+                        UserEmail = user.Email,
+                        BarName = bar.Name,
+                        DateRequested = request.DateRequested
+                    };
+                    allRequests.Add(requestDTO);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
-            return alLRequests;
+            return allRequests;
         }
 
         public void AddRequest(int id, string user)

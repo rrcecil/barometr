@@ -17,6 +17,8 @@ namespace Barometr.Models
         public ICollection<DrinkReview> DrinkReviews { get; set; }
 
         public Profile Profile { get; set; }
+
+        public string Name { get; set; }
     }
 
 }

@@ -2,11 +2,13 @@ body{
     width: 100%;
     margin: 0;
     font-family: 'Roboto Condensed' sans-serif;
+    padding-top: 70px;
 }
 
 .container-fluid{
     padding-left: 0 !important;
     padding-right: 0 !important;
+
 }
 
 .center {
@@ -15,16 +17,27 @@ body{
     width: 50%;
 }
 
-.navbar{
+.navbar {
     margin: 0 !important;
     position: fixed !important;
     width: 100%;
-    background-color: black;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+    
 }
+
+.view {
+    margin-top: 100px;
+}
+
+.dropdown-menu {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8fxcAAuEB3tN7AH8AAAAASUVORK5CYII=);
+}
+
 
 .navbar li{ color: #000}
 
 .parallax-one {
+    margin-top: -70px !important;
     background-image: url("../images/blueBarBanner.jpg");
     height: 100%;
     background-attachment: fixed;

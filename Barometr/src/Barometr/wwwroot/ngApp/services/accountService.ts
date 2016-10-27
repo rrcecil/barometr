@@ -7,6 +7,9 @@ namespace Barometr.Services {
             // store user name
             this.$window.sessionStorage.setItem('userName', userInfo.userName);
 
+            // store name of User
+            this.$window.sessionStorage.setItem('name', userInfo.name);
+
             // store user id
             this.$window.sessionStorage.setItem('userId', userInfo.id);
 
@@ -16,6 +19,10 @@ namespace Barometr.Services {
 
         public getUserName() {
             return this.$window.sessionStorage.getItem('userName');
+        }
+
+        public getName() {
+            return this.$window.sessionStorage.getItem('name');
         }
 
         public getUserId() {
@@ -32,7 +39,8 @@ namespace Barometr.Services {
         public login(loginUser) {
             return this.$q((resolve, reject) => {
                 this.$http.post('/api/account/login', loginUser).then((result) => {
-                        this.storeUserInfo(result.data);
+                    this.storeUserInfo(result.data);
+                    console.log(result.data);
                         resolve();
                 }).catch((result) => {
                     var messages = this.flattenValidation(result.data);
