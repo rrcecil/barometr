@@ -7,6 +7,10 @@ namespace Barometr.Controllers {
             return this.accountService.getUserName();
         }
 
+        public getName() {
+            return this.accountService.getName();
+        }
+
         public getUserId() {
             return this.accountService.getUserName();
         }

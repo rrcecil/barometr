@@ -51,6 +51,7 @@ namespace Barometr.Controllers
             var claims = await _userManager.GetClaimsAsync(user);
             var vm = new UserViewModel
             {
+                Name = user.Name,
                 UserName = user.UserName,
                 Claims = claims.ToDictionary(c => c.Type, c => c.Value)
             };
@@ -107,6 +108,7 @@ namespace Barometr.Controllers
             {
                 var user = new ApplicationUser
                 {
+                    Name = model.Name,
                     UserName = model.Email,
                     Email = model.Email,
                     Profile = new Profile
@@ -171,7 +173,7 @@ namespace Barometr.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { Name = model.Name, UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

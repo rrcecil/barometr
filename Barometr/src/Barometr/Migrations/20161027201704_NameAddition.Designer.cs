@@ -8,9 +8,10 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161027201704_NameAddition")]
+    partial class NameAddition
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -117,7 +118,7 @@ namespace Barometr.Migrations
 
                     b.Property<string>("Comment");
 
-                    b.Property<double>("Rating");
+                    b.Property<int>("Rating");
 
                     b.Property<string>("UserId")
                         .IsRequired();

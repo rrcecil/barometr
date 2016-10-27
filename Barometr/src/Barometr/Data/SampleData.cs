@@ -25,6 +25,7 @@ namespace Barometr.Data
                 // create user
                 admin = new ApplicationUser
                 {
+                    Name = "Admin",
                     UserName = "Admin@Barometr.com",
                     Email = "Admin@Barometr.com",
                     Profile = new Profile
