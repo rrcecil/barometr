@@ -40,13 +40,35 @@ namespace Barometr.Services
         }
         public double GetAverageRating(int id)
         {
-            var ratingAverage = _reviewRepo.GetReviews().Where(r => r.BarId == id).Select(r => r.Rating).Average();
-            var roundedRating = Math.Round(ratingAverage);
-            return roundedRating;
+            var reviews = _reviewRepo.GetReviews().Where(r => r.BarId == id);
+            double total = 0;
+            int diffRatings = 0;
+            foreach (var review in reviews)
+            {
+                if (review.Rating != 0)
+                {
+                    total += review.Rating;
+                    diffRatings++;
+                }
+            }
+            if (diffRatings == 0 || total == 0)
+            {
+                return 0;
+            }
+            total /= diffRatings;
+
+            return total;
         }
 
         public BarDTO GetBarById(int id)
         {
+            if (id == 0)
+            {
+                return new BarDTO
+                {
+                    Name = "Bar ID cannot be found."
+                };
+            }
             if (_barRepo.GetBars().Count() == 0)
             {
                 return new BarDTO
