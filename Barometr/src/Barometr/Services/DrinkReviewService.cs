@@ -19,27 +19,27 @@ namespace Barometr.Services
 
         public List<DrinkReviewDTO> GetReviewsByDrink(int DrinkId)
         {
-            var result = _repo.GetReviews().Where(r => r.DrinkId == DrinkId).Select(r => ProjectToViewModel(r)).ToList();
+            var result = _repo.List().Where(r => r.DrinkId == DrinkId).Select(r => ProjectToViewModel(r)).ToList();
 
             return result;
         }
         public List<DrinkReviewDTO> GetMyReviews(string UserId)
         {
-            var result = _repo.GetReviews().Where(r => r.UserId == UserId).Select(r => ProjectToViewModel(r)).ToList();
+            var result = _repo.List().Where(r => r.UserId == UserId).Select(r => ProjectToViewModel(r)).ToList();
 
             return result;
         }
 
         public DrinkReviewDTO GetReviewById(int Id)
         {
-            var result = _repo.GetReviews().Where(r => r.Id == Id).Select(r => ProjectToViewModel(r)).FirstOrDefault();
+            var result = _repo.List().Where(r => r.Id == Id).Select(r => ProjectToViewModel(r)).FirstOrDefault();
 
             return result;
         }
 
         public List<DrinkReviewDTO> GetReviewsByBar(int BarId)
         {
-            var result = _repo.GetReviews().Where(r => r.DrinkId == BarId).Select(r => ProjectToViewModel(r)).ToList();                   //added this
+            var result = _repo.List().Where(r => r.DrinkId == BarId).Select(r => ProjectToViewModel(r)).ToList();                   //added this
             return result;
         }
 
@@ -93,7 +93,7 @@ namespace Barometr.Services
 
         public ICollection<DrinkReviewDTO> GetDrinkReviewByName(string user)
         {
-            var drinkreview = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new DrinkReviewDTO
+            var drinkreview = _repo.List().Where(r => r.User.UserName == user).Select(r => new DrinkReviewDTO
             {
                 Comment = r.Comment,
                 Id = r.Id,

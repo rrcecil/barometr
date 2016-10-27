@@ -12,12 +12,5 @@ namespace Barometr.Infrastructure
         public DrinkRepository(ApplicationDbContext db) : base(db)
         {
         }
-
-        public IQueryable<Drink> GetDrinks()
-        {
-            return _db.Drinks;
-        }
-
-
     }
 }

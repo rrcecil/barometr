@@ -40,7 +40,7 @@ namespace Barometr.Services
         }
         public double GetAverageRating(int id)
         {
-            var something = _reviewRepo.GetReviews().Where(r => r.BarId == id).Select(r => r.Rating);
+            var something = _reviewRepo.List().Where(r => r.BarId == id).Select(r => r.Rating);
             var ratingAverage = 0d;
             try
             {
@@ -57,7 +57,7 @@ namespace Barometr.Services
 
         public BarDTO GetBarById(int id)
         {
-            if (_barRepo.GetBars().Count() == 0)
+            if (_barRepo.List().Count() == 0)
             {
                 return new BarDTO
                 {

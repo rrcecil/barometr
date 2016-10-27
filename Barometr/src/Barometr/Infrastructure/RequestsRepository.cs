@@ -13,10 +13,5 @@ namespace Barometr.Infrastructure
         {
             
         }
-
-        public IQueryable<Request> GetRequests()
-        {
-            return _db.Requests;
-        }
     }
 }

@@ -37,7 +37,7 @@ namespace Barometr.Services
         }
         public List<UserBar> GetUserBars(string UserId)
         {
-            var result = _userBarRepo.GetUserBars().Where(b => b.UserId == UserId).ToList();
+            var result = _userBarRepo.List().Where(b => b.UserId == UserId).ToList();
             return result;
         }
         public int GetBarIdByGoogleBarId(string GoogleBarId)
@@ -58,7 +58,7 @@ namespace Barometr.Services
         {
             var userId = _userBarRepo.GetUserByUsername(UserName).Id;
             var userbar = _userBarRepo.List().Where(u => u.UserId == userId).Select(u =>u.BarId).ToList();
-            var bar = _barRepo.GetBars().Where(b => userbar.Contains(b.Id)).Select(b => new BarDTO
+            var bar = _barRepo.List().Where(b => userbar.Contains(b.Id)).Select(b => new BarDTO
             {
                 Id = b.Id,
                 Name = b.Name,

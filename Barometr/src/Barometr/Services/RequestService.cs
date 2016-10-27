@@ -28,9 +28,9 @@ namespace Barometr.Services
 
         public ICollection<RequestsDTO> GetRequests()
         {
-            var requests = _repo.GetRequests();
+            var requests = _repo.List();
 
-            var alLRequests = new List<RequestsDTO>();
+            var allRequests = new List<RequestsDTO>();
             foreach (var request in requests)
             {
                 var bar = _barRepo.GetBarById(request.BarId);
@@ -44,10 +44,10 @@ namespace Barometr.Services
                     DateRequested = request.DateRequested
                 };
 
-                alLRequests.Add(requestDTO);
+                allRequests.Add(requestDTO);
 
             }
-            return alLRequests;
+            return allRequests;
         }
 
         public void AddRequest(int id, string user)
@@ -68,7 +68,7 @@ namespace Barometr.Services
 
         public Request GetRequestById(int id)
         {
-            return _repo.GetRequests().FirstOrDefault(r => r.Id == id);
+            return _repo.List().FirstOrDefault(r => r.Id == id);
         }
 
         public void DeleteRequest(int id)
@@ -109,7 +109,7 @@ namespace Barometr.Services
 
         public int GetRequestsAmount()
         {
-            return _repo.GetRequests().Count();
+            return _repo.List().Count();
         }
     }
 }

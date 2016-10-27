@@ -20,21 +20,21 @@ namespace Barometr.Services
 
         public List<BarReviewDTO> GetMyReviews(string UserId)
         {
-            var result = _repo.GetReviews().Where(r => r.UserId == UserId).Select(r => ProjectToViewModel(r)).ToList();
+            var result = _repo.List().Where(r => r.UserId == UserId).Select(r => ProjectToViewModel(r)).ToList();
 
             return result;
         }
 
         public BarReviewDTO GetReviewById (int Id)
         {
-            var result = _repo.GetReviews().Where(r => r.Id == Id).Select(r => ProjectToViewModel(r)).FirstOrDefault();
+            var result = _repo.List().Where(r => r.Id == Id).Select(r => ProjectToViewModel(r)).FirstOrDefault();
 
             return result;
         }
 
         public List<BarReviewDTO> GetReviewsByBar (int BarId)
         {
-            var result = _repo.GetReviews().Where(r => r.BarId == BarId).Select(r => ProjectToViewModel(r)).ToList();                   //added this
+            var result = _repo.List().Where(r => r.BarId == BarId).Select(r => ProjectToViewModel(r)).ToList();                   //added this
             return result;
         }
 
@@ -87,14 +87,14 @@ namespace Barometr.Services
         }
         public double GetAverageRating(int id)
         {
-            var ratingAverage = _repo.GetReviews().Where(r => r.BarId == id).Select(r => r.Rating).Average();
+            var ratingAverage = _repo.List().Where(r => r.BarId == id).Select(r => r.Rating).Average();
             var roundedRating = Math.Round(ratingAverage);
             return roundedRating;
         }
 
         public ICollection<BarReviewDTO> GetReviewByName(string user)
         {
-            var review = _repo.GetReviews().Where(r => r.User.UserName == user).Select(r => new BarReviewDTO
+            var review = _repo.List().Where(r => r.User.UserName == user).Select(r => new BarReviewDTO
             {
                 Comment = r.Comment,
                 Id = r.Id,
