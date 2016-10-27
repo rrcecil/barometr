@@ -13,13 +13,6 @@ namespace Barometr.Infrastructure
         public UserBarRepository(ApplicationDbContext db) : base(db)
         {
 
-
         }
-        public IQueryable<UserBar> GetUserBars()
-        {
-            return _db.UserBars;
-        }
-
-   
     }
 }

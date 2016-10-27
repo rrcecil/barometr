@@ -1,30 +1,39 @@
-<div class="container">
-    <div class="col-md-5">
-        <div style="list-style: none; margin: auto; width: 50%; padding: 10px">
-            <h3>Login with: </h3>
-            <div ng-repeat="externalLogin in account.externalLogins">
-                <a ng-init="controller.loginBtn(externalLogin.displayName)" ng-class="{'btn btn-block btn-social btn-md btn-{{controller.prov}}' : externalLogin.displayName == '{{controller.Provider}}'}" target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}<span ng-class="'fa fa-{{controller.prov}}'"></span></a>
+<div class="container-fluid">
+    <div class="login-parallax-one">
+        <div class="login-parallax-center" style="height: 200px">
+            <div>
+                <div>
+                    <div>
+                        <h3>Social Account</h3>
+                        <div ng-repeat="externalLogin in account.externalLogins">
+                            <a ng-init="controller.loginBtn(externalLogin.displayName)" ng-class="{'btn btn-block btn-social btn-md btn-{{controller.prov}}' : externalLogin.displayName == '{{controller.Provider}}'}" target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}<span ng-class="'fa fa-{{controller.prov}}'"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h3>Local Account</h3>
+                    <ul>
+                        <li ng-repeat="error in controller.validationMessages">
+                            {{error}}
+                        </li>
+                    </ul>
+
+                    <form ng-submit="controller.login()">
+                        <div class="form-group">
+                            <input ng-model="controller.loginUser.email" placeholder="Email" autofocus required />
+                        </div>
+                        <div class="form-group">
+                            <input ng-model="controller.loginUser.password" placeholder="Password" type="password" required />
+                        </div>
+                        <input class="btn btn-default" type="submit" value="Login" />
+                        <a href="/register">Register</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div style="margin: auto; width: 50%; padding: 10px;">
-        <h3>Login locally: </h3>
-        <ul>
-            <li ng-repeat="error in controller.validationMessages">
-                {{error}}
-            </li>
-        </ul>
 
-        <form class="login" ng-submit="controller.login()">
-            <div>
-                <input ng-model="controller.loginUser.email" placeholder="Email"autofocus required />
-                <i class="fa fa-user"></i>
-            </div>
-            <div>
-                <input ng-model="controller.loginUser.password" placeholder="Password" type="password" required />
-            </div>
-            <input type="submit" value="Login" />
-            <a href="/register">Register</a>
-        </form>
-    </div>
 </div>
+

@@ -1,14 +1,12 @@
 body{
     width: 100%;
     margin: 0;
-    font-family: 'Roboto Condensed' sans-serif;
-    padding-top: 70px;
+    font-family: 'Comfortaa', cursive;
 }
 
 .container-fluid{
     padding-left: 0 !important;
     padding-right: 0 !important;
-
 }
 
 .center {
@@ -17,28 +15,44 @@ body{
     width: 50%;
 }
 
-.navbar {
+.navbar{
     margin: 0 !important;
     position: fixed !important;
     width: 100%;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
-    
+    background-color: black;
 }
-
-.view {
-    margin-top: 100px;
-}
-
-.dropdown-menu {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8fxcAAuEB3tN7AH8AAAAASUVORK5CYII=);
-}
-
 
 .navbar li{ color: #000}
 
+.login-parallax-one {
+    background-image: url("../images/sidewaysblacklog.png");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.login-parallax-center{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.login-parallax-center > div {
+    padding-top: 15%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .parallax-one {
-    margin-top: -70px !important;
-    background-image: url("../images/blueBarBanner.jpg");
+    background-image: url("../images/sidewaysblacklog.png");
     height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -57,7 +71,6 @@ body{
 .parallax-center > div {
     width: 100%;
     height: 100%;
-    border: 2px dashed red;
     text-align: center;
     display: flex;
     align-items: center;
@@ -65,7 +78,7 @@ body{
 }
 
 .parallax-two {
-    background-image: url("../images/tempbanner.jpg");
+    background-image: url("../images/sidewaysblacklog.png");
     height: 100%;
     background-attachment: fixed;
     background-position: center;

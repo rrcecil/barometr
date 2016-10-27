@@ -12,13 +12,7 @@ namespace Barometr.Infrastructure
         public BarReviewRepository(ApplicationDbContext db) : base(db)
         {
         }
-
-        public IQueryable<BarReview> GetReviews()
-        {
-            return _db.BarReviews;
-        }
-
-
+        
         public BarReview GetReviewById(int id)
         {
             return _db.BarReviews.FirstOrDefault(r => r.Id == id);

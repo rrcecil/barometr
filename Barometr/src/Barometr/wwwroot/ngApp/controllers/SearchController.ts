@@ -3,8 +3,6 @@ namespace Barometr.Controllers {
 
     export class SearchController {
         public result;
-        public options;
-        public neighborhoods;
         public bars;
         public map;
         public mapDiv;
@@ -14,22 +12,13 @@ namespace Barometr.Controllers {
         public zip;
         public mapOptions;
 
-        constructor(public ngGPlacesAPI, public $http:ng.IHttpService, public $q: ng.IQService) {
-            this.options = {
-                types: ['establishment']
-            };
-            this.neighborhoods = {
-                heights: { latitude: 29.790128, longitude: -95.402796 },
-                riceVillage: { latitude: 29.715253, longitude: -95.418873 },
-                pearland: { latitude: 29.543877, longitude: -95.387624 }
-            };
-
+        constructor(public ngGPlacesAPI, public $http: ng.IHttpService, public $q: ng.IQService, public $scope: ng.IScope) {
             this.displayMap();
         }
 
-        public displayMap(lat?, lng?) {
+        public displayMap(location?) {
             this.mapOptions = {
-                center: new google.maps.LatLng(lat || 29.790128, lng || -95.402796),
+                center: location || new google.maps.LatLng(29.790128, -95.402796),
                 zoom: 13
             };
             this.result = document.getElementById('map');
@@ -47,7 +36,7 @@ namespace Barometr.Controllers {
                     //assign response to lat and long
                     var result = res[0];
                     var geometry = result.geometry.location;
-                    deferred.resolve({ latitude: geometry.lat(), longitude: geometry.lng() });
+                    deferred.resolve(geometry);
                     return;
                 } else {
                     deferred.reject("Couldn't find that address! Google Maps say: " + stat);
@@ -57,24 +46,37 @@ namespace Barometr.Controllers {
         }
 
         public getBars(zipCode) {
+
             var coords = this.getLatLong(zipCode);
             coords.then((res) => {
-                this.lat = res['latitude'];
-                this.lng = res['longitude'];
+                var location = new google.maps.LatLng(res['lat'](), res['lng']());
+                var service = new google.maps.places.PlacesService(this.map);
+                var request = {
+                    location: location,
+                    radius: 7000,
+                    types: ['bar']
+                };
+                this.displayMap(location);
+                this.bars = [];
+                
+                service.nearbySearch(request, (res, stat) => {
+                    if (stat == google.maps.places.PlacesServiceStatus.OK) {
 
-                this.displayMap(this.lat, this.lng);
-
-                this.ngGPlacesAPI.nearbySearch({ latitude: this.lat, longitude: this.lng }).then((res) => {
-                    this.bars = "";
-                    this.bars = res;
-
-                    for (let bar of this.bars) {
-                        bar.googleBarId = bar.id;
-                        delete bar.id;
-                        bar.latitude = bar.geometry.location.lat();
-                        bar.longitude = bar.geometry.location.lng();
-                        this.$http.post('api/bars', bar).then((res) => {
-                            bar.Id = res.data['barId'];
+                        res.forEach((res) => {
+                            var bar = {
+                                name: res.name,
+                                googleBarId: res['id'],
+                                latitude: res.geometry.location.lat(),
+                                longitude: res.geometry.location.lng()
+                            };
+                            this.$http.post('api/bars', bar).then((res) => {
+                                bar['Id'] = res.data['barId'];
+                            });
+                            this.bars.push(bar);
+                            var marker = new google.maps.Marker({ position: res.geometry.location, map: this.map });
+                        });
+                        this.$scope.$apply(() => {
+                            this.bars;
                         });
                     }
                 });
@@ -83,11 +85,11 @@ namespace Barometr.Controllers {
 
         public addBar(bar) {
             bar.disabled = true;
-            
-            this.$http.post('api/userBars', bar).then((res) => res );
+            this.$http.post('api/userBars', bar).then((res) => res);
         }
     }
 }
+
 
 
 
