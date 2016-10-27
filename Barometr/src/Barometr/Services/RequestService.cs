@@ -106,5 +106,10 @@ namespace Barometr.Services
 
             return result.Succeeded;
         }
+
+        public int GetRequestsAmount()
+        {
+            return _repo.GetRequests().Count();
+        }
     }
 }

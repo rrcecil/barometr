@@ -28,6 +28,13 @@ namespace Barometr.Controllers
             return _service.GetRequests();
         }
 
+        [HttpGet("Amount")]
+        [Authorize(Policy = "AdminOnly")]
+        public int GetRequestAmount()
+        {
+            return _service.GetRequestsAmount();
+        }
+
         [HttpPost("{id}")]
         public void AddRequest(int id)
         {

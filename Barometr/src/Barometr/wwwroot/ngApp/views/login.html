@@ -15,12 +15,13 @@
             </li>
         </ul>
 
-        <form ng-submit="controller.login()">
+        <form class="login" ng-submit="controller.login()">
             <div>
-                <input ng-model="controller.loginUser.email" placeholder="Email" />
+                <input ng-model="controller.loginUser.email" placeholder="Email"autofocus required />
+                <i class="fa fa-user"></i>
             </div>
             <div>
-                <input ng-model="controller.loginUser.password" placeholder="Password" />
+                <input ng-model="controller.loginUser.password" placeholder="Password" type="password" required />
             </div>
             <input type="submit" value="Login" />
             <a href="/register">Register</a>

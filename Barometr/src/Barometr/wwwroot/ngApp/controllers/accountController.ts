@@ -47,7 +47,7 @@ namespace Barometr.Controllers {
         public login() {
             console.log(this.loginUser);
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/landingPage');
             }).catch((results) => {
                 this.validationMessages = results;
             });
