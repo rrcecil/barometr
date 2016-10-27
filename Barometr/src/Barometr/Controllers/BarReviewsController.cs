@@ -34,6 +34,12 @@ namespace Barometr.Controllers
             return _service.GetReviewByName(User.Identity.Name);
         }
 
+        [HttpGet("averages")]
+        public double GetAverage(int avg)
+        {
+            return _service.GetAverageRating(avg);
+        }
+
         //[HttpGet("drink/{id}")]
         //public ICollection<BarReviewDTO> GetDrinkReview(int id)
         //{

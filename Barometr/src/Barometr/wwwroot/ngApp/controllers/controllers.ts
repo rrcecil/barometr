@@ -15,14 +15,14 @@ namespace Barometr.Controllers {
 
 
     export class BarController {
-        public bars;
+        public bar;
         public drinks;
         public reviews;
 
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
-                this.bars = res.data;
+                this.bar = res.data;
             });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
@@ -36,9 +36,9 @@ namespace Barometr.Controllers {
                 controller: 'ReviewDialogController',
                 controllerAs: 'modal',
                 resolve: {
-                    bars: () => this.bars
+                    bar: () => this.bar
                 },
-                size: 'lg'
+                size: 'sm'
             });
         }
 

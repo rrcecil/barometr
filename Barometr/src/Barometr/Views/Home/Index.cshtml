@@ -14,7 +14,7 @@
 <body ng-controller="AccountController as account">
     <div class="container-fluid">
         <nav class="navbar navbar-default" >
-            <div>
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
                     <a href="#" class="navbar-brand"><img src="~/images/RatingImages/BarometerLogo.png" alt="Barometr logo" style="max-height: 110%; max-width: 110%;" /></a>
@@ -65,8 +65,9 @@
         </nav>
     </div>
 
-
-    <ui-view></ui-view>
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
 
     <!-- Library Files -->
     <script src="/bower_components/angular/angular.js"></script>
