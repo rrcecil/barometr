@@ -60,8 +60,10 @@ namespace Barometr.Services
             var userbar = _userBarRepo.List().Where(u => u.UserId == userId).Select(u =>u.BarId).ToList();
             var bar = _barRepo.List().Where(b => userbar.Contains(b.Id)).Select(b => new BarDTO
             {
+                Id = b.Id,
                 Name = b.Name,
                 HappyHour = b.HappyHour,
+
                 
             }).ToList();
 
