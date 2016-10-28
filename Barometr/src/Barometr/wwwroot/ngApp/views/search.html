@@ -1,38 +1,78 @@
-﻿<div class="row">
-    <!--Search Bar-->
-    <div class="col-xs-3">
-        <!--<input type="text" g-places-autocomplete options="controller.options" ng-model="controller.result" />
-        <input type="submit" ng-click="controller.logThis()" />-->
-        <form ng-submit="controller.getBars(zipCode)">
-            <div class="form-group">
-                <label for="zip">ZipCode</label>
-                <input id="zip" class="form-control" ng-model="zipCode" />
+﻿<div class="parallax-two">
+    <div class="search">
+
+        <div class="row">
+            <!--Search Bar-->
+            <div class="col-xs-3">
+                <!--<input type="text" g-places-autocomplete options="controller.options" ng-model="controller.result" />
+                <input type="submit" ng-click="controller.logThis()" />-->
+                <form ng-submit="controller.getBars(zipCode)">
+                    <div class="form-group">
+                        <label for="zip">ZipCode</label>
+                        <input id="zip" class="form-control" ng-model="zipCode"/>
+                    </div>
+                    <button type="submit" class="btn btn-default" value="Search">Search</button>
+                    <br/>
+                    <br/>
+                    <br/>
+                </form>
+                <div id="viewport" buffered-scroll="increaseLimit();" ng-init="limit-15;">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Add</th>
+                        </tr>
+                        <tr ng-repeat="bar in controller.bars | limitTo: limit" >
+                            <td><a ng-href="/barProfile/{{bar.Id}}">{{bar.name}}</a></td>
+                            <td><button ng-disabled="bar.disabled" class="btn btn-success" ng-click="controller.addBar(bar)">Add</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <button type="submit" class="btn btn-default" value="Search">Search</button>
-        </form>
-    </div>
-    <div class="col-xs-9" style="height:500px">
-        <div id="map" style="width:100%; height:500px">
 
+            <div class="col-xs-9" style="height:500px">
+                <div id="map" style="width:100%; height:500px">
+
+                </div>
+            </div>
         </div>
+        
     </div>
 </div>
-<div class="row barResults">
-    <div class="col-xs-12">
-        <table class="table table-striped">
-            <tbody>
-                <tr>
-                    <th>Name</th>
-                    <th>Add</th>
-                </tr>
-                <tr ng-repeat="bar in controller.bars">
-                    <td><a ng-href="/barProfile/{{bar.Id}}">{{bar.name}}</a></td>
-                    <td><button ng-disabled="bar.disabled" class="btn btn-success" ng-click="controller.addBar(bar)">Add</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<script>
+    
+    var app = angular.module('limit', []);
 
-            
+    app.directive('bufferedScroll', function ($parse) {
+        return function ($scope, element, attrs) {
+            var handler = $parse(attrs.bufferedScroll);
+            element.scroll(function (evt) {
+                var scrollTop = element[0].scrollTop,
+                    scrollHeight = element[0].scrollHeight,
+                    offsetHeight = element[0].offsetHeight;
+                if (scrollTop === (scrollHeight - offsetHeight)) {
+                    $scope.$apply(function () {
+                        handler($scope);
+                    });
+                }
+            });
+        };
+    });
+
+    app.controller('SearchController', function ($scope) {
+        $scope.items = [];
+        for (var i = 0; i < 10000; i++) {
+            $scope.items.push({ id: i, value: 'val ' + i });
+        }
+
+        $scope.increaseLimit = function () {
+            if ($scope.limit < $scope.items.length) {
+                $scope.limit += 15;
+            }
+        };
+    });
+
+</script>            
         
