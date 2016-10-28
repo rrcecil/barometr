@@ -2,7 +2,6 @@ body{
     width: 100%;
     margin: 0;
     font-family: 'Comfortaa', cursive;
-    padding-top: 70px;
 }
 
 .container-fluid{
@@ -53,13 +52,13 @@ body{
 
 
 .parallax-one {
-    margin-top: -70px !important;
+    padding-top: -70px;
     background-image: url("../images/background.jpg");
     height: 100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
 }
 
 .parallax-center{
@@ -80,12 +79,13 @@ body{
 }
 
 .parallax-two {
+    padding-top: -70px;
     background-image: url("../images/background2.jpeg");
     height: 100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
 }
 
 #footer-links{
@@ -149,8 +149,105 @@ textarea {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 
+.profile {
+    left: 10%;
+    width: 75%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
 .search {
     left: 10%;
+    width: 75%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
+.landingPage {
+    left: 10%;
+    width: 50%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
+.landingPage2 {
+    left: 115%;
+    width: 50%;
+    top: 0;
+    margin-right: -90%;
+    padding-top: 30px;
+    padding-bottom: 45px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
+.loginPage {
+
+    align-content: center;
+    left: 40%;
+    width: 15%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
+.registerPage {
+
+    align-content: center;
+    left: 40%;
+    width: 15%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
+.myBars {
+    left: 10%;
+    width: 75%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
+}
+
+.about {
+     left: 10%;
     width: 75%;
     margin-top: 140px;
     margin-right: -90%;
@@ -169,7 +266,7 @@ textarea {
 
 #viewport {
   width: 315px;
-  height: 338px;
+  height: 488px;
   overflow-y: scroll;
 }
 

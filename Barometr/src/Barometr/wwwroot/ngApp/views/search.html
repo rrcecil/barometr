@@ -1,4 +1,5 @@
-﻿<div class="parallax-two">
+﻿
+<div class="parallax-two">
     <div class="search">
 
         <div class="row">
@@ -9,40 +10,40 @@
                 <form ng-submit="controller.getBars(zipCode)">
                     <div class="form-group">
                         <label for="zip">ZipCode</label>
-                        <input id="zip" class="form-control" ng-model="zipCode"/>
+                        <input id="zip" class="form-control" ng-model="zipCode" />
                     </div>
                     <button type="submit" class="btn btn-default" value="Search">Search</button>
-                    <br/>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
+                    <br />
                 </form>
                 <div id="viewport" buffered-scroll="increaseLimit();" ng-init="limit-15;">
                     <table class="table table-hover">
                         <tbody>
-                        <tr>
-                            <th>Name</th>
-                            <th>Add</th>
-                        </tr>
-                        <tr ng-repeat="bar in controller.bars | limitTo: limit" >
-                            <td><a ng-href="/barProfile/{{bar.Id}}">{{bar.name}}</a></td>
-                            <td><button ng-disabled="bar.disabled" class="btn btn-success" ng-click="controller.addBar(bar)">Add</button></td>
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Add</th>
+                            </tr>
+                            <tr ng-repeat="bar in controller.bars | limitTo: limit">
+                                <td><a ng-href="/barProfile/{{bar.Id}}">{{bar.name}}</a></td>
+                                <td><button ng-disabled="bar.disabled" class="btn btn-success" ng-click="controller.addBar(bar)">Add</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="col-xs-9" style="height:500px">
-                <div id="map" style="width:100%; height:500px">
+            <div class="col-xs-9" style="height:650px">
+                <div id="map" style="width:100%; height:650px">
 
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 <script>
-    
+
     var app = angular.module('limit', []);
 
     app.directive('bufferedScroll', function ($parse) {
@@ -74,5 +75,5 @@
         };
     });
 
-</script>            
-        
+</script>
+

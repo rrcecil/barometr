@@ -1,39 +1,29 @@
-<div class="container-fluid">
-    <div class="login-parallax-one">
-        <div class="login-parallax-center" style="height: 200px">
+<div class="parallax-one">
+    <div class="loginPage">
+        <h3>Social Account</h3>
+        <div ng-repeat="externalLogin in account.externalLogins">
+            <a ng-init="controller.loginBtn(externalLogin.displayName)" ng-class="{'btn btn-block btn-social btn-md btn-{{controller.prov}}' : externalLogin.displayName == '{{controller.Provider}}'}" target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}<span ng-class="'fa fa-{{controller.prov}}'"></span></a>
+        </div>
+        <div>
             <div>
-                <div>
-                    <div>
-                        <h3>Social Account</h3>
-                        <div ng-repeat="externalLogin in account.externalLogins">
-                            <a ng-init="controller.loginBtn(externalLogin.displayName)" ng-class="{'btn btn-block btn-social btn-md btn-{{controller.prov}}' : externalLogin.displayName == '{{controller.Provider}}'}" target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}<span ng-class="'fa fa-{{controller.prov}}'"></span></a>
-                        </div>
+                <h3>Local Account</h3>
+                <ul>
+                    <li ng-repeat="error in controller.validationMessages">
+                        {{error}}
+                    </li>
+                </ul>
+                <form ng-submit="controller.login()">
+                    <div class="form-group">
+                        <input ng-model="controller.loginUser.email" placeholder="Email" autofocus required />
                     </div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <h3>Local Account</h3>
-                    <ul>
-                        <li ng-repeat="error in controller.validationMessages">
-                            {{error}}
-                        </li>
-                    </ul>
-
-                    <form ng-submit="controller.login()">
-                        <div class="form-group">
-                            <input ng-model="controller.loginUser.email" placeholder="Email" autofocus required />
-                        </div>
-                        <div class="form-group">
-                            <input ng-model="controller.loginUser.password" placeholder="Password" type="password" required />
-                        </div>
-                        <input class="btn btn-default" type="submit" value="Login" />
-                        <a href="/register">Register</a>
-                    </form>
-                </div>
+                    <div class="form-group">
+                        <input ng-model="controller.loginUser.password" placeholder="Password" type="password" required />
+                    </div>
+                    <input class="btn btn-default" type="submit" value="Login" />
+                    <a href="/register">Register</a>
+                </form>
             </div>
         </div>
     </div>
-
 </div>
 

@@ -1,7 +1,11 @@
-﻿        <div class="row">
-            <div class="col-xs-9">
-                <p ng-show="controller.greet()" style="font-size:24px"><strong>{{controller.greet()}}  {{account.getUserName()}}</strong></p>
-<br />
+﻿<div class="parallax-one">
+    <div class="landingPage">
+        <div class="row">
+            <div class="col-xs-12">
+                <p ng-show="controller.greet()" style="font-size: 25px">
+                    <strong>{{controller.greet()}}, {{account.getName()}}</strong>
+                </p>
+                <br/>
                 <table class="table table-responsive table-hover">
                     <tr>
                         <th>My Reviews</th>
@@ -17,27 +21,26 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-xs-3">
-                <p style="font-size:24px"><strong>Bar of the Day</strong></p>
+            <span class="landingPage2" style="font-size: 16px">
+                    <strong>Bar of the Day</strong><br/>
 
-                Name:<a>{{controller.RandomBarService.randomBar.name}}</a>
+                Name: <a>{{controller.RandomBarService.randomBar.name}}</a><br/>
                 <br />
-                Happy Hour:{{controller.RandomBarService.randomBar.happyHour}}
+                Happy Hour: {{controller.RandomBarService.randomBar.happyHour}}
                 <br />
                 Rating:
                 <br />
                 Address:<!--google map marker-->
-
-               
-
                 <br />
-                <br/>
-                <p><strong>Drink You May Like</strong></p>
+                <br />
+                <p>
+                    <strong>Drink You May Like</strong>
+                </p>
                 Drink: {{controller.randomDrink}}
                 <br />
                 Type: {{controller.randomDrink.type}} <!--needs data and needs logic if we want just Bar name or Bar Object-->
-            </div>
+            </span>
         </div>
-
-
+    </div>
+</div>
 

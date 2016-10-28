@@ -1,4 +1,4 @@
-﻿<style>
+﻿<!--<style>
   .rounded-list li{
 
     border-bottom: 1px dashed #ccc;
@@ -7,12 +7,12 @@
     color: #444;
     text-decoration: none;
     border-radius: .3em;
-    transition: all .3s ease-out;   
+    transition: all .3s ease-out;
 }
     .rounded-list a {
         position: relative;
         display: block;
-        padding: .4em .4em .4em 2em;  
+        padding: .4em .4em .4em 2em;
           padding: 2.5em;
     }
 
@@ -21,7 +21,7 @@
 }
 
 .rounded-list a:hover:before{
-    transform: rotate(360deg);  
+    transform: rotate(360deg);
 }
 
     .rounded-list a:before {
@@ -42,19 +42,22 @@
         transition: all .3s ease-out;
     }
 
-</style>
+</style>-->
 
 
-<div class="container">
-    <h2 style="text-align:center">My Bar List <span class="glyphicons glyphicons-glass"></span></h2>
+<div class="parallax-two">
+    <div class="myBars">
 
-<ul class="rounded-list">
+        <h2 style="text-align: center">My Bar List <span class="glyphicons glyphicons-glass"></span></h2>
 
-    <li ng-repeat="bar in controller.userBars" style="font-size:18px">
+        <ul class="rounded-list">
 
-        <a ng-href="/barProfile/{{bar.id}}"><strong>{{bar.name}}</strong></a>
-        {{bar.happyHour}}
-        <!--needs to show reviews, happy hour, -->
-    </li> 
-</ul>
+            <li ng-repeat="bar in controller.userBars" style="font-size: 18px">
+
+                <a ng-href="/barProfile/{{bar.id}}"><strong>{{bar.name}}</strong></a>
+                {{bar.happyHour}}
+                <!--needs to show reviews, happy hour, -->
+            </li>
+        </ul>
+    </div>
 </div>
