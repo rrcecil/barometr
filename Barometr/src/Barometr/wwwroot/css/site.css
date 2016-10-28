@@ -57,9 +57,9 @@ body{
     background-image: url("../images/background.jpg");
     height: 100%;
     background-attachment: fixed;
-    background-position: right;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
 }
 
 .parallax-center{
