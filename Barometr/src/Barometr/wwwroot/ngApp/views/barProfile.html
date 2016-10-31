@@ -1,64 +1,102 @@
 ﻿<!--clicking on bar name will take user to this page-barProfile(bar details)-->
+<div class="parallax-one">
+    <div class="barProfile">
 
-<div class="container">
-    <h2 style="text-align:center">{{controller.bar.name}}</h2>
+        <div class="container">
+            <center>
+                <h2 style="text-align: center">{{controller.bar.name}}</h2>
+                <p>
+                    Overall Rating:&nbsp;
+                    <input-stars ng-model="controller.rating" icon-empty="fa fa-glass" icon-base="fa fa-glass" icon-full="fa-glass" max="5" readonly="true"></input-stars>
+                </p>
+                <label style="text-align: center; font-size: 10px;">Are you the Bar Owner?</label>
+                <button class="alert-success" aria-setsize="10px" ng-click="controller.claimBar(controller.bar.id)">Claim This Bar</button>
+            </center>
+            <br />
+            <br />
 
-    <h3>Are you the Bar Owner?</h3> <br />
-    <button class="alert-success" ng-click="controller.claimBar(controller.bars.id)">Claim This Bar</button>
-    <br />
-    <br />
-    <p>Overall Rating:</p>
-    <input-stars ng-model="controller.rating" icon-empty="fa fa-glass" icon-base="fa fa-glass" icon-full="fa-glass" max="5" readonly="true"></input-stars>
-    <table class="table table-striped">
-        <tr>
-            <th>Name</th>
-            <td>{{controller.bar.name}}</td>
-        </tr>
-        <tr>
-            <th>Price</th> <!--expensive or not-->
-            <td>{{controller.bars.price | currency}}</td>
-        </tr>
-        <tr>
-            <th>Hours Of Operation</th>
-            <td>{{controller.bars.hours}}</td>
-        </tr>
-        <tr>
-            <th>Location</th>   <!--google map marker-->
-            <td>{{controller.bars.location}}</td>
-        </tr>
-        <tr>
-            <th>Contact Information</th>
-            <td>{{controller.bars.contact}}</td>
-        </tr>
+            <div class="col-md-3">
+                <div class="details-barProfile">
 
-        <tr>
-            <th>Bar Menu</th> <!--link to bar menu-->
-            <td><button title="Menu" ui-sref="menu({id:menu.id})"><span class="glyphicon glyphicon-book"></span>Menu</button></td> <!--link to bar menu-->
-        </tr>
+                    <p>
+                        {{controller.bar.name}}
+                    </p>
+                    <p>
+                        Price Range: {{controller.bars.price | currency}}
+                    </p>
+                    <p>
+                        Hours Of Operation <br />
+                        {{controller.bars.hours}}
+                    </p>
+                    <p>
+                        Contact Information <br />
+                        {{controller.bars.contact}}
+                    </p>
 
-        <!--<tr>          stretch goal
+                    <!--  <th>Location</th> google map marker //TODO: Save For Top Left Corner
+                    <td>{{controller.bars.location}}</td>
+                    </tr>
 
-            <th>Top 3 drinkers</th>
-            <td></td>
+                    <tr>
+                    <th>Bar Menu</th> <!--link to bar menu
+                    <td><button title="Menu" ui-sref="menu({id:menu.id})"><span class="glyphicon glyphicon-book"></span>Menu</button></td> <!--link to bar menu
+                    </tr>
 
-        </tr>
-        <tr>
-            <th>Top 3 Popular Drinks </th>
-            <td></td>
-        </tr>-->
+                    <!--<tr> stretch goal
 
-    </table>
+                        <th>Top 3 drinkers</th>
+                        <td></td>
 
+                    </tr>
+                    <tr>
+                        <th>Top 3 Popular Drinks </th>
+                        <td></td>
+                    </tr>-->
 
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-one-barProfile">
+                    <br />
+                    <br />
+                    <center>
+                        Image Spot 1
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-two-barProfile">
+                    <br />
+                    <br />
+                    <center>
+                        Image Spot 2
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="image-three-barProfile">
+                    <br />
+                    <br />
+                    <center>
+                        Image Spot 3
+                    </center>
+                </div>
+            </div>
+            <div class="reviews-barProfile">
+                <div class="container-fluid">
+                    <h2>Reviews:</h2> <!--snippet from a top user review-->
+                    <ul>
+                        <li ng-repeat="review in controller.bar.reviews" style="list-style: disc">
+                            Rating: <input-stars ng-model="review.rating" icon-full="fa-glass" icon-base="fa fa-glass" max="{{review.rating}}" readonly="true"></input-stars>
+                            <br />
+                            Comments:{{review.comment}}
 
-<h2>Reviews:</h2> <!--snippet from a top user review-->
-<ul>
-    <li ng-repeat="review in controller.bar.reviews" style="list-style:disc">
-        Rating: <input-stars ng-model="review.rating" icon-full="fa-glass" icon-base="fa fa-glass" max="{{review.rating}}" readonly="true"></input-stars> 
-        <br />
-        Comments:{{review.comment}}
+                        </li>
+                    </ul>
+                    <button ng-click="controller.openReviewDialog()">Write a Review</button>
+                </div>
+            </div>
+        </div>
 
-    </li>
-</ul>
+    </div>
 </div>
-<button ng-click="controller.openReviewDialog()">Write a Review</button>

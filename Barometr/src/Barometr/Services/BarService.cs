@@ -99,6 +99,7 @@ namespace Barometr.Services
 
             var bar = new Bar
             {
+                Id = bardto.Id,
                 Name = bardto.Name,
                 Latitude = bardto.Latitude,
                 Longitude = bardto.Longitude,
@@ -137,6 +138,7 @@ namespace Barometr.Services
         public void UpdateBar(BarDTO bar)
         {
             var orig = _barRepo.GetBarById(bar.Id);
+            orig.Id = bar.Id;
             orig.Name = bar.Name;
             orig.Latitude = bar.Latitude;
             orig.Longitude = bar.Longitude;
