@@ -1,10 +1,10 @@
-body{
+body {
     width: 100%;
     margin: 0;
     font-family: 'Comfortaa', cursive;
 }
 
-.container-fluid{
+.container-fluid {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
@@ -15,23 +15,25 @@ body{
     width: 50%;
 }
 
-.navbar .navbar-nav{
+.navbar .navbar-nav {
     display: inline-block;
     float: none;
 }
 
-.navbar .navbar-collapse{
+.navbar .navbar-collapse {
     text-align: center;
 }
 
-.navbar{
+.navbar {
     margin: 0 !important;
     position: fixed !important;
     width: 100%;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 
-.navbar li{ color: #000}
+    .navbar li {
+        color: #000;
+    }
 
 .login-parallax-one {
     background-image: url("../images/background.jpg");
@@ -42,22 +44,22 @@ body{
     background-size: contain;
 }
 
-.login-parallax-center{
+.login-parallax-center {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
 }
 
-.login-parallax-center > div {
-    padding-top: 15%;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .login-parallax-center > div {
+        padding-top: 15%;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 
 .parallax-one {
@@ -70,7 +72,7 @@ body{
     background-size: 100%;
 }
 
-.parallax-center{
+.parallax-center {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -78,14 +80,14 @@ body{
     background-color: lightblue;
 }
 
-.parallax-center > div {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .parallax-center > div {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 .parallax-two {
     padding-top: -70px;
@@ -97,16 +99,20 @@ body{
     background-size: cover;
 }
 
-#footer-links{
+#footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#home-social-buttons{
+#home-social-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#footer {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -138,12 +144,12 @@ textarea {
     }
 }
 
-#map{
-    height:500px;
-    width:500px;
+#map {
+    height: 500px;
+    width: 500px;
 }
 
-.barResults{
+.barResults {
     margin-top: 10px;
 }
 
@@ -168,7 +174,6 @@ textarea {
     padding-left: 50px;
     padding-right: 50px;
     position: absolute;
-    
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 
@@ -208,12 +213,10 @@ textarea {
     padding-left: 50px;
     padding-right: 50px;
     position: absolute;
-    
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 
 .loginPage {
-
     align-content: center;
     left: 40%;
     width: 15%;
@@ -228,7 +231,6 @@ textarea {
 }
 
 .registerPage {
-
     align-content: center;
     left: 40%;
     width: 15%;
@@ -256,7 +258,7 @@ textarea {
 }
 
 .about {
-     left: 10%;
+    left: 10%;
     width: 75%;
     margin-top: 140px;
     margin-right: -90%;
@@ -274,11 +276,11 @@ textarea {
 }
 
 #viewport {
-  width: 315px;
-  height: 488px;
-  overflow-y: scroll;
+    width: 315px;
+    height: 488px;
+    overflow-y: scroll;
 }
 
-#viewport table {
-  width: 100%;
-}
+    #viewport table {
+        width: 100%;
+    }
