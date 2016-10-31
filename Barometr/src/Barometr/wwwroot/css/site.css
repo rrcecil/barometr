@@ -341,6 +341,14 @@ textarea {
     overflow-y: scroll;
 }
 
-    #viewport table {
-        width: 100%;
-    }
+
+#viewport table {
+  width: 100%;
+}
+
+.openimg {
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+}
+

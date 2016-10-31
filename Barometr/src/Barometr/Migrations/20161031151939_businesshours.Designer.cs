@@ -8,9 +8,10 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161031151939_businesshours")]
+    partial class businesshours
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -140,11 +141,11 @@ namespace Barometr.Migrations
 
                     b.Property<int>("BarId");
 
-                    b.Property<string>("CloseTime");
+                    b.Property<DateTime>("CloseTime");
 
                     b.Property<int>("Day");
 
-                    b.Property<string>("OpenTime");
+                    b.Property<DateTime>("OpenTime");
 
                     b.HasKey("Id");
 

@@ -69,9 +69,12 @@ namespace Barometr.Controllers {
                                 latitude: res.geometry.location.lat(),
                                 longitude: res.geometry.location.lng()
                             };
+                            
                             this.$http.post('api/bars', bar).then((res) => {
                                 bar['Id'] = res.data['barId'];
                             });
+                            bar['open_now'] = res['opening_hours'] ? res['opening_hours']['open_now'] : false;
+                            
                             this.bars.push(bar);
                             var marker = new google.maps.Marker({ position: res.geometry.location, map: this.map });
                         });
