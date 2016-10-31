@@ -19,12 +19,13 @@
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService) {
             $http.get(`api/DrinkReviews/myDrinkReviews`).then((res) => {
                 this.drinkReviews = res.data;
-                console.log("My drink reviews: " + this.drinkReviews);
+                console.log("My drink reviews: " + res.data);
 
             });
             $http.get(`api/BarReviews/myBarReviews`).then((res) => {
                 this.barReviews = res.data;
-                console.log("My bar reviews: " + this.barReviews);
+                console.log("My bar reviews: " + res.data);
+              
             });
         }
     }

@@ -130,7 +130,7 @@ namespace Barometr.Services
         }
 
         public string RandomDrink(string username)
-        {  //if user picks wine, display random drink based on user's preference
+        {  //if user picks spirit, display random drink based on user's preference
             var User = _drinkRepo.GetUserByUsername(username);
 
             Random random = new Random();
