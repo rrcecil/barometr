@@ -28,6 +28,7 @@ namespace Barometr.Services
                         Longitude = b.Longitude,
                         HappyHour = b.HappyHour,
                         GoogleBarId = b.GoogleBarId,
+                        PlaceId = b.PlaceId,
                         Reviews = (from r in b.Reviews
                                    select new BarReviewDTO()
                                    {
@@ -75,6 +76,7 @@ namespace Barometr.Services
                     HappyHour = b.HappyHour,
                     GoogleBarId = b.GoogleBarId,
                     Rating = GetAverageRating(b.Id),
+                    PlaceId = b.PlaceId,
                     Reviews = (from r in b.Reviews
                                select new BarReviewDTO()
                                {
@@ -104,6 +106,7 @@ namespace Barometr.Services
                 Latitude = bardto.Latitude,
                 Longitude = bardto.Longitude,
                 HappyHour = bardto.HappyHour,
+                PlaceId = bardto.PlaceId,
                 GoogleBarId = bardto.GoogleBarId
             };
 
@@ -176,6 +179,7 @@ namespace Barometr.Services
                 Latitude = bar.Latitude,
                 Longitude = bar.Longitude,
                 Name = bar.Name,
+                PlaceId = bar.PlaceId,
                 Reviews = (from r in bar.Reviews
                            select new BarReviewDTO()
                            {

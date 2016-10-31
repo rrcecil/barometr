@@ -19,16 +19,39 @@ namespace Barometr.Controllers {
         public drinks;
         public reviews;
         public rating;
+        public map;
+        public hours;
+        public mapOptions;
+        public result;
+        public mapDiv;
 
-        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService) {
+        constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $scope: ng.IScope) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
                 this.bar = res.data;
                 this.rating = this.bar.rating;
+            })
+            .then(() => {
+                this.mapOptions = {
+                    center: new google.maps.LatLng(29.790128, -95.402796),
+                    zoom: 13
+                };
+                this.result = document.getElementById('map');
+                this.mapDiv = angular.element(this.result);
+                this.map = new google.maps.Map(this.mapDiv[0], this.mapOptions);
+                var service = new google.maps.places.PlacesService(this.map);
+
+                service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
+                    $scope.$apply(() => {
+                        this.hours = res['opening_hours']['weekday_text'];
+                    });
+                });
             });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
-
             });
+            
+
+
         }
 
         public openReviewDialog() {
