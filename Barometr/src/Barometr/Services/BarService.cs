@@ -84,9 +84,9 @@ namespace Barometr.Services
                                }).ToList()
 
                 }).FirstOrDefault();
-            return bar;
+                return bar;
             }
-            
+
         }
 
         public Bar GetActualBarById(int id)
@@ -99,6 +99,7 @@ namespace Barometr.Services
 
             var bar = new Bar
             {
+                Id = bardto.Id,
                 Name = bardto.Name,
                 Latitude = bardto.Latitude,
                 Longitude = bardto.Longitude,
@@ -112,7 +113,8 @@ namespace Barometr.Services
                 _barRepo.SaveChanges();
                 int barId = bar.Id;
                 return barId;
-            } else
+            }
+            else
             {
                 int barId = _barRepo.List().FirstOrDefault(b => b.GoogleBarId == bardto.GoogleBarId).Id;
                 return barId;
@@ -122,10 +124,11 @@ namespace Barometr.Services
         private bool IsBarDuplicate(string gbi)
         {
             var barExists = _barRepo.List().FirstOrDefault(b => b.GoogleBarId == gbi);
-            if(barExists != null)
+            if (barExists != null)
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -135,6 +138,7 @@ namespace Barometr.Services
         public void UpdateBar(BarDTO bar)
         {
             var orig = _barRepo.GetBarById(bar.Id);
+            orig.Id = bar.Id;
             orig.Name = bar.Name;
             orig.Latitude = bar.Latitude;
             orig.Longitude = bar.Longitude;
@@ -155,7 +159,6 @@ namespace Barometr.Services
         {
             int num = (int)DateTime.Today.ToBinary();
             Random rand = new Random(num);
-            //Random random = new Random();
             int BarCount = (from b in _barRepo.List()
                             select b).Count();
             int randomBar = rand.Next(1, BarCount + 1);
@@ -176,6 +179,7 @@ namespace Barometr.Services
                 Reviews = (from r in bar.Reviews
                            select new BarReviewDTO()
                            {
+
                                Id = r.Id,
                                Comment = r.Comment,
                                Rating = r.Rating
