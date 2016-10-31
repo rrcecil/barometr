@@ -15,6 +15,15 @@ body{
     width: 50%;
 }
 
+.navbar .navbar-nav{
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse{
+    text-align: center;
+}
+
 .navbar{
     margin: 0 !important;
     position: fixed !important;

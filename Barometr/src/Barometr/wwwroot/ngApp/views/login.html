@@ -1,18 +1,18 @@
 <div class="parallax-one">
     <div class="loginPage">
-        <h3>Social Account</h3>
+        <h3 align="center">Social Account</h3>
         <div ng-repeat="externalLogin in account.externalLogins">
             <a ng-init="controller.loginBtn(externalLogin.displayName)" ng-class="{'btn btn-block btn-social btn-md btn-{{controller.prov}}' : externalLogin.displayName == '{{controller.Provider}}'}" target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}<span ng-class="'fa fa-{{controller.prov}}'"></span></a>
         </div>
         <div>
             <div>
-                <h3>Local Account</h3>
+                <h3 align="center">Local Account</h3>
                 <ul>
                     <li ng-repeat="error in controller.validationMessages">
                         {{error}}
                     </li>
                 </ul>
-                <form ng-submit="controller.login()">
+                <form ng-submit="controller.login()" align="center">
                     <div class="form-group">
                         <input ng-model="controller.loginUser.email" placeholder="Email" autofocus required />
                     </div>
