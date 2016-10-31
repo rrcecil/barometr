@@ -25,7 +25,7 @@
                                 <th>Add</th>
                             </tr>
                             <tr ng-repeat="bar in controller.bars | limitTo: limit">
-                                <td><a ng-href="/barProfile/{{bar.Id}}">{{bar.name}}</a></td>
+                                <td><a ng-href="/barProfile/{{bar.Id}}">{{bar.name}}<span ng-if="bar.open_now"><img class="openimg" src="/images/OpenImage.png" /></span></a></td>
                                 <td><button ng-disabled="bar.disabled" class="btn btn-success" ng-click="controller.addBar(bar)">Add</button></td>
                             </tr>
                         </tbody>

@@ -273,3 +273,9 @@ textarea {
 #viewport table {
   width: 100%;
 }
+
+.openimg {
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+}
