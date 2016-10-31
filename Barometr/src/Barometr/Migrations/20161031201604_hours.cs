@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Barometr.Migrations
 {
-    public partial class updatedbarreviewdto : Migration
+    public partial class hours : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -267,6 +267,7 @@ namespace Barometr.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(nullable: true),
                     BarDrinkBarId = table.Column<int>(nullable: true),
                     BarDrinkDrinkId = table.Column<int>(nullable: true),
                     GoogleBarId = table.Column<string>(nullable: true),
@@ -284,6 +285,28 @@ namespace Barometr.Migrations
                         principalTable: "BarDrinks",
                         principalColumns: new[] { "BarId", "DrinkId" },
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BusinessHours",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BarId = table.Column<int>(nullable: false),
+                    CloseTime = table.Column<string>(nullable: true),
+                    Day = table.Column<int>(nullable: false),
+                    OpenTime = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BusinessHours", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BusinessHours_Bars_BarId",
+                        column: x => x.BarId,
+                        principalTable: "Bars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -352,6 +375,11 @@ namespace Barometr.Migrations
                 name: "IX_BarReviews_UserId",
                 table: "BarReviews",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BusinessHours_BarId",
+                table: "BusinessHours",
+                column: "BarId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Drinks_BarId",
@@ -472,6 +500,9 @@ namespace Barometr.Migrations
 
             migrationBuilder.DropTable(
                 name: "BarReviews");
+
+            migrationBuilder.DropTable(
+                name: "BusinessHours");
 
             migrationBuilder.DropTable(
                 name: "DrinkReviews");
