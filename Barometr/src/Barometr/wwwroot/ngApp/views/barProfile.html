@@ -26,6 +26,9 @@
                     </p>
                     <p>
                         Hours Of Operation <br />
+                        <ul>
+                            <li ng-repeat="hour in controller.hours">{{hour}}</li>
+                        </ul>
                         {{controller.bars.hours}}
                     </p>
                     <p>
@@ -82,19 +85,22 @@
                     </center>
                 </div>
             </div>
-            <div class="reviews-barProfile">
-                <div class="container-fluid">
-                    <h2>Reviews:</h2> <!--snippet from a top user review-->
-                    <ul>
-                        <li ng-repeat="review in controller.bar.reviews" style="list-style: disc">
-                            Rating: <input-stars ng-model="review.rating" icon-full="fa-glass" icon-base="fa fa-glass" max="{{review.rating}}" readonly="true"></input-stars>
-                            <br />
-                            Comments:{{review.comment}}
+            <div layout="row">
+                <div class="reviews-barProfile">
+                        <h2>Reviews:</h2> <!--snippet from a top user review-->
+                        <ul>
+                            <li ng-repeat="review in controller.bar.reviews" style="list-style: disc">
+                                Rating: <input-stars ng-model="review.rating" icon-full="fa-glass" icon-base="fa fa-glass" max="{{review.rating}}" readonly="true"></input-stars>
+                                <br />
+                                Comments:{{review.comment}}
 
-                        </li>
-                    </ul>
-                    <button ng-click="controller.openReviewDialog()">Write a Review</button>
+                            </li>
+                        </ul>
+                        <button ng-click="controller.openReviewDialog()">Write a Review</button>
                 </div>
+            </div>
+            <div ng-hide="true" class="row">
+                <div id="map" style="width:100%; height:650px"></div>
             </div>
         </div>
 
