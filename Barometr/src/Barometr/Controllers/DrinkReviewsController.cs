@@ -27,6 +27,12 @@ namespace Barometr.Controllers
             return _service.GetMyReviews(UserId);
         }
 
+        [HttpGet("{DrinkReviews}")]
+        public IEnumerable<DrinkReviewDTO> GetReviewsByDrink(int DrinkId) {
+            return _service.GetReviewsByDrink(DrinkId);
+        }
+            
+
         // GET api/values/5
         [HttpGet("{myDrinkReviews}")]
         public ICollection<DrinkReviewDTO> GetByUser()

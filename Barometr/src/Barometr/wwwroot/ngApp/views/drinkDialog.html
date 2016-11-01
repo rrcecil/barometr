@@ -1,0 +1,15 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" ng-click="modal.closeModal()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Write a Review</h4>
+    </div>
+    <div class="modal-body">
+        <form ng-submit="modal.post(review)" id="review">
+            <textarea ng-model="dialog.drinkReview.comment" form="review" rows="5" cols="100" placeholder="Review"></textarea>
+            <br /><br />
+            <input-stars ng-model="dialog.drinkReviews.rating" max="5"></input-stars>
+            <input type="submit" value="Publish" form="review" ng-click="modal.closeModal()" />
+        </form>
+    </div>
+   
+</div>

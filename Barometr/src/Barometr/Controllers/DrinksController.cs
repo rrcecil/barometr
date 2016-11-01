@@ -65,9 +65,9 @@ namespace Barometr.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(DrinkDTO value)
+        public void Delete(int id)
         {
-            _service.DeleteDrink(value);
+            _service.DeleteDrink(id);
         }
 
         [HttpGet("randomDrink")]

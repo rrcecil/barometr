@@ -11,9 +11,10 @@
         <th>Ingredient</th>
         <th>Add To Menu</th>
     </tr>
+ 
     <tr ng-repeat="drink in controller.drinks">
         <td>{{drink.name}}</td>
-        <td>{{drink.abv}}</td>
+        <td>{{drink.abv}}%</td>
         <td>{{drink.type}}</td>
         <td>{{drink.ingredient}}</td>
         <td><button ng-click="controller.add(drink)">Add This Drink</button></td>

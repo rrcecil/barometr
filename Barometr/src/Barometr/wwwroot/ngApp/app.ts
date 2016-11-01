@@ -57,6 +57,12 @@ namespace Barometr {
                 controller: Barometr.Controllers.UserBarController,
                 controllerAs: 'controller'
             })
+            .state('drinkReviews', {
+                url: '/drinkReviews/:id',
+                templateUrl: '/ngApp/views/drinkReviews.html',
+                controller: Barometr.Controllers.AddToMenuController,
+                controllerAs: 'controller'
+            })
            
 
             .state('mybarlist', {
@@ -117,6 +123,13 @@ namespace Barometr {
                 controller: Barometr.Controllers.AddToMenuController,
                 controllerAs: 'controller'
             })
+            .state('myDrinks', {
+                url: '/myDrinks',
+                templateUrl: '/ngApp/views/myDrinks.html',
+                controller: Barometr.Controllers.AddToMenuController,
+                controllerAs: 'controller'
+            })
+           
             .state('requests', {
                 url: '/requests',
                 templateUrl: '/ngApp/views/requests.html',
