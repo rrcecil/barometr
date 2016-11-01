@@ -88,6 +88,8 @@ namespace Barometr.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("PlaceId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BarDrinkBarId", "BarDrinkDrinkId");

@@ -67,7 +67,8 @@ namespace Barometr.Controllers {
                                 name: res.name,
                                 googleBarId: res['id'],
                                 latitude: res.geometry.location.lat(),
-                                longitude: res.geometry.location.lng()
+                                longitude: res.geometry.location.lng(),
+                                placeId: res.place_id
                             };
                             
                             this.$http.post('api/bars', bar).then((res) => {

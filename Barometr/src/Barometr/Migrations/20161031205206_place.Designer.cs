@@ -8,8 +8,8 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161031181503_updatedbarreviewdto")]
-    partial class updatedbarreviewdto
+    [Migration("20161031205206_place")]
+    partial class place
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,8 @@ namespace Barometr.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Address");
+
                     b.Property<int?>("BarDrinkBarId");
 
                     b.Property<int?>("BarDrinkDrinkId");
@@ -86,6 +88,8 @@ namespace Barometr.Migrations
                     b.Property<decimal>("Longitude");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("PlaceId");
 
                     b.HasKey("Id");
 
@@ -130,6 +134,26 @@ namespace Barometr.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("BarReviews");
+                });
+
+            modelBuilder.Entity("Barometr.Models.BusinessHours", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BarId");
+
+                    b.Property<string>("CloseTime");
+
+                    b.Property<int>("Day");
+
+                    b.Property<string>("OpenTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BarId");
+
+                    b.ToTable("BusinessHours");
                 });
 
             modelBuilder.Entity("Barometr.Models.Drink", b =>
@@ -374,6 +398,14 @@ namespace Barometr.Migrations
                     b.HasOne("Barometr.Models.ApplicationUser", "User")
                         .WithMany("BarReviews")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Barometr.Models.BusinessHours", b =>
+                {
+                    b.HasOne("Barometr.Models.Bar", "Bar")
+                        .WithMany("BusinessHours")
+                        .HasForeignKey("BarId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
