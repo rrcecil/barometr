@@ -28,7 +28,8 @@
                 <br />
                 Happy Hour: {{controller.RandomBarService.randomBar.happyHour}}
                 <br />
-                Rating:
+                Rating:&nbsp;
+                <input-stars ng-model="controller.rating" icon-empty="fa fa-glass" icon-base="fa fa-glass" icon-full="fa-glass" max="5" readonly="true"></input-stars>
                 <br />
                 Address:<!--google map marker-->
                 <br />
@@ -38,7 +39,7 @@
                 </p>
                 Drink: {{controller.randomDrink}}
                 <br />
-                Type: {{controller.randomDrink.type}} <!--needs data and needs logic if we want just Bar name or Bar Object-->
+              
             </span>
         </div>
     </div>

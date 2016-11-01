@@ -1,0 +1,39 @@
+﻿<div class="parallax-one">
+    <div class="landingPage">
+        <h2 style="text-align:center"> My Drinks</h2>
+  
+
+            <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Alcohol By Volume</th>
+                <th>Type</th>
+                <th>Ingredient</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            <tr>
+                <td>GodFather</td>
+                <td>10%</td>
+                <td>Spirit</td>
+                <td>Scotch</td>
+            </tr>
+            <tr ng-repeat="drink in controller.drinks">
+                <td><a href="/drinkReviews/{{drink.id}}">{{drink.name}}</a></td>
+                <td>{{drink.abv}}%</td>
+                <td>{{drink.type}}</td>
+                <td>{{drink.ingredient}}</td>
+                <td> <button class="close" ng-click="controller.delete(drink.id)" title="Remove From My List">&times;</button></td>
+                <td>
+                    <a ng-click="controller.openDrinkDialog()"
+                       class="glyphicons glyphicons-pencil" title="Review">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                </td>
+
+        </table>
+            <button class="btn-primary" ng-click="controller.showModal()" title="Add Drink">Add Drink</button>
+</div>
+
+   

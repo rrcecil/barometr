@@ -48,6 +48,7 @@ namespace Barometr.Services
                 Menu = new List<Drink>()
             };
 
+
             return userOwner.Menu.Select(drink => new DrinkDTO
             {
                 Abv = drink.Abv,
@@ -110,12 +111,16 @@ namespace Barometr.Services
         }
 
     
-        public void DeleteDrink(DrinkDTO d)
+        public void DeleteDrink(int id)
         {
-
-            _drinkRepo.Delete(ProjectToModel(d));
+            var orig = _drinkRepo.GetDrinkById(id);
+            _drinkRepo.Delete(orig);
             _drinkRepo.SaveChanges();
-        }
+
+            //public void DeleteDrink(DrinkDTO ProjectToModel(d));
+            //_drinkRepo.Delete(ProjectToModel(d));
+            //_drinkRepo.SaveChanges();
+    }
 
         private DrinkDTO ProjectToViewModel(Drink d)
         {
@@ -128,17 +133,14 @@ namespace Barometr.Services
                 Type = d.Type
             };
         }
-
+//method: if user picks spirit, display random drink based on user's preference
         public string RandomDrink(string username)
-        {  //if user picks spirit, display random drink based on user's preference
+        {  
             var User = _drinkRepo.GetUserByUsername(username);
-
-            Random random = new Random();
-
+            int num = (int)DateTime.Today.ToBinary();
+            Random random = new Random(num);
             int DrinkCount = (from d in _drinkRepo.List()
                               select d).Count();
-        
-    
             var userFaction = _profileRepo.List().Where(p => p.UserId == User.Id).Select(p => p.Faction).FirstOrDefault();
 
             if (DrinkCount == 0)
@@ -152,8 +154,7 @@ namespace Barometr.Services
                 return "No drinks found with same faction.";
             }
             int randomDrink = random.Next(DrinkCount - 1);
-            return drinkList[randomDrink]; //needs to be fixed;
-            //return drinkList[1];
+            return drinkList[randomDrink];
 
         }
 

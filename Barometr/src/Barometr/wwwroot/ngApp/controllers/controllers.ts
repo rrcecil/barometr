@@ -4,15 +4,7 @@ namespace Barometr.Controllers {
 
     export class HomeController {
         public randomBar;
-        
-
-        //constructor(private RandomBarService: Barometr.Services.RandomBarService) {
-        //    let randomBar = RandomBarService.randomBar;
-        //    console.log("Random Bar " + randomBar);
-        //    this.randomBar = randomBar;
-        //}
     }
-
 
     export class BarController {
         public bar;
@@ -66,18 +58,7 @@ namespace Barometr.Controllers {
             });
         }
 
-        public openDrinkDialog() {
-            this.$uibModal.open({
-                templateUrl: 'ngApp/views/drinkdialog.html',
-                controller: 'DrinkDialogController',
-                controllerAs: 'modal',
-                resolve: {
-                    drinks: () => this.drinks
-                },
-                size: 'sm'
-            });
-        }
-
+       
         public claimBar(id) {
             console.log(id);
             this.$http.post(`api/requests/` + id, id).then((res) => {
@@ -126,7 +107,7 @@ namespace Barometr.Controllers {
                 this.randomDrink = res.data;
             });
 
-           
+
 
             this.showRequestNum = true;
         }
@@ -201,6 +182,9 @@ namespace Barometr.Controllers {
 
 
     export class DrinkDialogController {
+        
+        public drinks;
+
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public drink) { }
         public postDrink(drink) {
             this.$http.post('api/drinks', drink).then((res) => {
@@ -217,6 +201,9 @@ namespace Barometr.Controllers {
                 this.$state.reload();
             });
         }
+       
+
+
         public closeModal() {
             this.$uibModalInstance.close();
         }
@@ -226,6 +213,7 @@ namespace Barometr.Controllers {
     export class DrinkController {
         public bars;
         public randomDrink;
+        public drink;
 
         constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
             $http.get(`api/bars/drinks`).then((res) => {
@@ -237,55 +225,32 @@ namespace Barometr.Controllers {
                 this.randomDrink = res.data;
             });
         }
+    }
+       
 
+     
 
+    export class DrinkReviewController {
+        public drinkReviews;
+        public drink;
 
-        //    public postDrink(drink) {
-        //        this.$http.post('api/bars/drinks', drink).then((res) => {
-        //            this.$state.reload();
-        //        });
-        //    }
-        //    public deleteDrink(drink) {
-        //        this.$http.delete(`api/bars/drinks/${drink.id}`).then((res) => {
-        //            this.$state.reload();
-        //        });
-        //    }
-        //    public updateDrink(drink) {
+        constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
 
-        //        this.$http.put(`api/bars/drinks/${drink.id}`, drink).then((res) => {
-        //            this.$state.reload();
-        //        });
+            $http.get(`api/drinkReviews`).then((res) => {
+                this.drinkReviews = res.data;
+                console.log(this.drinkReviews);
+            });
 
-        //    }
-        //}
+        }
+        public post(review) {
+            console.log("drinkReviews");
+            this.$http.post(`api/drinkReviews`, review).then((res) => {
+                this.$state.reload();
+            });
+    
+            }
 
-        //export class ReviewController {
-        //    public bar;
-        //    public drink;
-
-        //    constructor(public $http: ng.IHttpService, public $stateParams: ng.ui.IStateParamsService, public $state: ng.ui.IStateService, private accountService: Barometr.Services.AccountService) {
-        //        $http.get(`api/bars/reviews`).then((res) => {
-        //            this.bar = res.data;
-        //            console.log(this.bar);
-        //        });
-
-        //    }
-        //    public postReview(review) {
-        //        this.$http.post(`api/bars/reviews`, review).then((res) => {
-        //            this.$state.reload();
-        //        });
-        //    }
-
-        //    public deleteReview(review) {
-        //        this.$http.delete(`api/bars/reviews/${review.id}`).then((res) => {
-        //            this.$state.reload();
-        //        });
-        //    }
-        //    public updateReview(review) {
-
-        //        this.$http.put(`api/bars/reviews/${review.id}`, review).then((res) => {
-        //            this.$state.reload();
-        //        });
+           
 
         //    }
         //    public validateUser(review) {
