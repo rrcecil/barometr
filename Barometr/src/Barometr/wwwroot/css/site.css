@@ -285,35 +285,19 @@ textarea {
 }
 
 .image-one-barProfile {
-    border: 5px solid white;
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 35px;
+    position: absolute;
+    padding-right: 15px;
     padding-left: 15px;
-    position: absolute;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/xQAAukB5vvocQUAAAAASUVORK5CYII=);
-}
-
-.image-two-barProfile {
-    border: 5px solid white;
-    width: 100%;
-    padding-bottom: 50px;
-    position: absolute;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/xQAAukB5vvocQUAAAAASUVORK5CYII=);
-}
-
-.image-three-barProfile {
-    border: 5px solid white;
-    width: 100%;
-    padding-bottom: 50px;
-    
-    position: absolute;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/xQAAukB5vvocQUAAAAASUVORK5CYII=);
 }
 
 .details-barProfile {
     border: 5px solid white;
-    width: 100%;
-    left: -10%;
+    width: 30%;
+    top: -30%;
+    left: -30%;
     padding-bottom: 50px;
     position: absolute;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/xQAAukB5vvocQUAAAAASUVORK5CYII=);
@@ -322,7 +306,7 @@ textarea {
 .reviews-barProfile {
     padding-bottom: 50px;
     position: absolute;
-    top: 55%;
+    top: 70%;
     left: 5%;
     width: 90%;
     padding-right: 15px;
