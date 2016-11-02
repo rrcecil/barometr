@@ -16,6 +16,7 @@ namespace Barometr.Controllers {
         public mapOptions;
         public result;
         public mapDiv;
+        public photos;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $scope: ng.IScope) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
@@ -35,9 +36,11 @@ namespace Barometr.Controllers {
                 service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
                     $scope.$apply(() => {
                         this.hours = res['opening_hours']['weekday_text'];
+                        this.photos = res.photos.map(item => item.getUrl({ maxHeight: 310, maxWidth: 350 }));
+                    });
+                    console.log(this.photos);
                     });
                 });
-            });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
             });

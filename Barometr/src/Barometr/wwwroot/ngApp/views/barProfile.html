@@ -15,7 +15,7 @@
             <br />
             <br />
 
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <div class="details-barProfile">
 
                     <p>
@@ -36,7 +36,7 @@
                         {{controller.bars.contact}}
                     </p>
 
-                    <!--  <th>Location</th> google map marker //TODO: Save For Top Left Corner
+                    <!-- <th>Location</th> google map marker //TODO: Save For Top Left Corner
                     <td>{{controller.bars.location}}</td>
                     </tr>
 
@@ -58,45 +58,29 @@
 
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="image-one-barProfile">
-                    <br />
-                    <br />
-                    <center>
-                        Image Spot 1
-                    </center>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="image-two-barProfile">
-                    <br />
-                    <br />
-                    <center>
-                        Image Spot 2
-                    </center>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="image-three-barProfile">
-                    <br />
-                    <br />
-                    <center>
-                        Image Spot 3
-                    </center>
+            <div class="col-md-12">
+                <div class="col-md-4" ng-repeat="photo in controller.photos | limitTo: 3">
+                    <div class="image-one-barProfile">
+                        <br />
+                        <br />
+                        <center>
+                            <img ng-src="{{photo}}">
+                        </center>
+                    </div>
                 </div>
             </div>
             <div layout="row">
                 <div class="reviews-barProfile">
-                        <h2>Reviews:</h2> <!--snippet from a top user review-->
-                        <ul>
-                            <li ng-repeat="review in controller.bar.reviews" style="list-style: disc">
-                                Rating: <input-stars ng-model="review.rating" icon-full="fa-glass" icon-base="fa fa-glass" max="{{review.rating}}" readonly="true"></input-stars>
-                                <br />
-                                Comments:{{review.comment}}
+                    <h2>Reviews:</h2> <!--snippet from a top user review-->
+                    <ul>
+                        <li ng-repeat="review in controller.bar.reviews" style="list-style: disc">
+                            Rating: <input-stars ng-model="review.rating" icon-full="fa-glass" icon-base="fa fa-glass" max="{{review.rating}}" readonly="true"></input-stars>
+                            <br />
+                            Comments:{{review.comment}}
 
-                            </li>
-                        </ul>
-                        <button ng-click="controller.openReviewDialog()">Write a Review</button>
+                        </li>
+                    </ul>
+                    <button ng-click="controller.openReviewDialog()">Write a Review</button>
                 </div>
             </div>
             <div ng-hide="true" class="row">
