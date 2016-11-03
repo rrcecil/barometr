@@ -144,11 +144,6 @@ textarea {
     }
 }
 
-#map {
-    height: 500px;
-    width: 500px;
-}
-
 .barResults {
     margin-top: 10px;
 }
@@ -320,19 +315,31 @@ textarea {
 }
 
 #viewport {
-    width: 315px;
-    height: 488px;
-    overflow-y: scroll;
+    max-height: 488px;
+    overflow-y: auto;
 }
 
 
 #viewport table {
-  width: 100%;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .openimg {
     height: 30px;
     width: 30px;
     padding: 2px;
+}
+
+#map {
+    height: 650px;
+}
+
+#map-container {
+    width: 100%;
+}
+
+.zipSearch {
+    padding-bottom: 20px;
 }
 
