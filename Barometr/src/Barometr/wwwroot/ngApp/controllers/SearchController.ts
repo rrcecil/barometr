@@ -22,6 +22,7 @@ namespace Barometr.Controllers {
                 zoom: 13
             };
             this.result = document.getElementById('map');
+            console.log(this.result);
             this.mapDiv = angular.element(this.result);
             this.map = new google.maps.Map(this.mapDiv[0], this.mapOptions);
         }

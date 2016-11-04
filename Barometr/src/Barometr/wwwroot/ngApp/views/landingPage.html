@@ -5,7 +5,7 @@
                 <p ng-show="controller.greet()" style="font-size: 25px">
                     <strong style="text-transform:capitalize">{{controller.greet()}}, {{account.getName()}}</strong>
                 </p>
-                <br/>
+                <br />
                 <table class="table table-responsive table-hover">
                     <tr>
                         <th>My Reviews</th>
@@ -22,16 +22,21 @@
                 </table>
             </div>
             <span class="landingPage2" style="font-size: 16px">
-                    <strong>Bar of the Day</strong><br/>
+                <strong>Bar of the Day</strong><br />
 
-                Name: <a>{{controller.RandomBarService.randomBar.name}}</a><br/>
+                Name:{{controller.RandomBarService.randomBar.name}}<span ng-if="bar.open_now"><img class="openimg" src="/images/OpenImage.png" /></span><br />
                 <br />
-                Happy Hour: {{controller.RandomBarService.randomBar.happyHour}}
+                Hour:{{controller.RandomBarService.randomBar.hour}}
                 <br />
                 Rating:&nbsp;
-                <input-stars ng-model="controller.rating" icon-empty="fa fa-glass" icon-base="fa fa-glass" icon-full="fa-glass" max="5" readonly="true"></input-stars>
+                <input-stars ng-model="controller.RandomBarService.randomBar.rating" icon-empty="fa fa-glass" icon-base="fa fa-glass" icon-full="fa-glass" max="5" readonly="true"></input-stars>
                 <br />
-                Address:<!--google map marker-->
+
+                
+                <div id="map" style="width:100%; height:300px"></div>
+
+
+
                 <br />
                 <br />
                 <p>
@@ -39,8 +44,8 @@
                 </p>
                 Drink: {{controller.randomDrink}}
                 <br />
-              
             </span>
+
         </div>
     </div>
 </div>
