@@ -37,7 +37,7 @@ namespace Barometr.Services {
                         title: this.randomBar.name
                     });
                 });
-        }
+        }            
     }
     angular.module('Barometr').service('RandomBarService', RandomBarService);
 }
