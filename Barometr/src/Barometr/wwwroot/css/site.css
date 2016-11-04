@@ -346,14 +346,14 @@ textarea {
 }
 
 #viewport {
-    width: 315px;
-    height: 488px;
-    overflow-y: scroll;
+    max-height: 488px;
+    overflow-y: auto;
 }
 
 
 #viewport table {
-  width: 100%;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .openimg {
@@ -362,3 +362,14 @@ textarea {
     padding: 2px;
 }
 
+#map {
+    height: 650px;
+}
+
+#map-container {
+    width: 100%;
+}
+
+.zipSearch {
+    padding-bottom: 20px;
+}
