@@ -121,6 +121,8 @@ namespace Barometr.Migrations
 
                     b.Property<string>("Comment");
 
+                    b.Property<DateTime>("DatePosted");
+
                     b.Property<double>("Rating");
 
                     b.Property<string>("UserId")

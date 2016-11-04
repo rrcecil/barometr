@@ -74,8 +74,8 @@ namespace Barometr.Services
                 Comment = r.Comment,
                 Rating = (int)r.Rating,
                 UserId = UserId,
-                BarId = r.BarId
-                
+                BarId = r.BarId,
+                DatePosted = DateTime.Now
             };
         }
         private BarReviewDTO ProjectToViewModel(BarReview r)
@@ -85,9 +85,24 @@ namespace Barometr.Services
                 Id = r.Id,
                 Comment = r.Comment,
                 Rating = r.Rating,
-                Username = r.User.UserName
+                Username = r.User.UserName,
+                DatePosted = GetPostTimelapse(r.DatePosted)
             };
         }
+
+        public string GetPostTimelapse(DateTime datePosted)
+        {
+            if (datePosted.Date >= DateTime.Now - TimeSpan.FromDays(1))
+                return "Today";
+            else if (datePosted.Date <= DateTime.Now - TimeSpan.FromDays(1) &&
+                     datePosted.Date >= DateTime.Now - TimeSpan.FromDays(2))
+                return "Yesterday";
+            else
+            {
+                return datePosted.ToShortDateString();
+            }
+        }
+
         public double GetAverageRating(int id)
         {
             var ratingAverage = _barReviewRepo.List().Where(r => r.BarId == id).Select(r => r.Rating).Average();
@@ -110,6 +125,7 @@ namespace Barometr.Services
                 Id = r.Id,
                 Rating = r.Rating,
                 Username = r.User.UserName,
+                DatePosted = GetPostTimelapse(r.DatePosted)
               
 
             }).ToList();

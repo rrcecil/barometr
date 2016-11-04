@@ -36,7 +36,7 @@ namespace Barometr.Controllers {
                 service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
                     $scope.$apply(() => {
                         this.hours = res['opening_hours']['weekday_text'];
-                        this.photos = res.photos.map(item => item.getUrl({ maxHeight: 310, maxWidth: 350 }));
+                        this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
                     });
                     console.log(this.photos);
                     });

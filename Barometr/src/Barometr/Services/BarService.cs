@@ -10,12 +10,14 @@ namespace Barometr.Services
 {
     public class BarService
     {
+        private BarReviewService _reviewService;
         private BarRepository _barRepo;
         private BarReviewRepository _reviewRepo;
-        public BarService(BarRepository repo, BarReviewRepository reviewRepo)
+        public BarService(BarRepository repo, BarReviewRepository reviewRepo, BarReviewService reviewService)
         {
             _barRepo = repo;
             _reviewRepo = reviewRepo;
+            _reviewService = reviewService;
         }
         public IList<BarDTO> GetBarDTO()
         {
@@ -80,6 +82,8 @@ namespace Barometr.Services
                     Reviews = (from r in b.Reviews
                                select new BarReviewDTO()
                                {
+                                   Username = r.User.Name,
+                                   DatePosted = _reviewService.GetPostTimelapse(r.DatePosted),
                                    Id = r.Id,
                                    Comment = r.Comment,
                                    Rating = (double)((int)r.Rating)
