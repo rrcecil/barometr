@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Barometr.Migrations
 {
-    public partial class hours : Migration
+    public partial class strt : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -274,7 +274,8 @@ namespace Barometr.Migrations
                     HappyHour = table.Column<string>(nullable: true),
                     Latitude = table.Column<decimal>(nullable: false),
                     Longitude = table.Column<decimal>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    PlaceId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
