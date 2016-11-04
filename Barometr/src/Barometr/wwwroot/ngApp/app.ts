@@ -5,6 +5,7 @@ namespace Barometr {
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
         $httpProvider: ng.IHttpProvider,
+   
         ngGPlacesAPIProvider
     ) => {
         // Define routes

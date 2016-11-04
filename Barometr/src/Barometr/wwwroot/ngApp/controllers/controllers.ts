@@ -78,12 +78,18 @@ namespace Barometr.Controllers {
         public greetings;
         public requests;
         public showRequestNum;
+        public mapOptions;
+        public map;
+        public result;
+        public mapDiv;
 
 
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService,
             public RandomBarService: Barometr.Services.RandomBarService
         ) {
+
+          
             $http.get(`api/UserMetric/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
 
@@ -110,11 +116,10 @@ namespace Barometr.Controllers {
                 this.randomDrink = res.data;
             });
 
-
-
             this.showRequestNum = true;
         }
 
+       
         public greet() {
             var myDate = new Date();
             var hrs = myDate.getHours();
