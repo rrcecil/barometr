@@ -36,7 +36,7 @@ namespace Barometr.Controllers {
                 service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
                     $scope.$apply(() => {
                         this.hours = res['opening_hours']['weekday_text'];
-                        this.photos = res.photos.map(item => item.getUrl({ maxHeight: 310, maxWidth: 350 }));
+                        this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
                     });
                     console.log(this.photos);
                     });
@@ -156,6 +156,8 @@ namespace Barometr.Controllers {
     export class ReviewDialogController {
         public reviews;
         public barId;
+        public newComment;
+        public newRating;
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public bar) {
             $http.get('api/barReviews').then((res) => {
                 this.reviews = res.data;
@@ -164,8 +166,13 @@ namespace Barometr.Controllers {
             this.barId = this.$stateParams['id'];
         }
 
-        public postReview(review) {
-            review.barId = this.barId;
+        public postReview() {
+
+            var review = {
+                barId: this.barId,
+                comment: this.newComment,
+                rating: this.newRating
+            };
             this.$http.post(`api/barReviews`, review).then((res) => {
                 this.$state.reload();
             });
