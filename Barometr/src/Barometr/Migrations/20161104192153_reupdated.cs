@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Barometr.Migrations
 {
-    public partial class update : Migration
+    public partial class reupdated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -195,6 +195,7 @@ namespace Barometr.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BarId = table.Column<int>(nullable: false),
                     Comment = table.Column<string>(nullable: true),
+                    DatePosted = table.Column<DateTime>(nullable: false),
                     Rating = table.Column<double>(nullable: false),
                     UserId = table.Column<string>(nullable: false)
                 },
