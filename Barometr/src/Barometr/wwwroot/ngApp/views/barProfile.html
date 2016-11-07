@@ -54,7 +54,7 @@
                                 </p>
                             </div>
                         </div>
-                        <br/>
+                        <br />
                     </div>
                 </div>
                 <button ng-click="controller.openReviewDialog()">Write a Review</button>
@@ -62,7 +62,7 @@
         </div>
         <div class="details-barProfile">
             <p>
-                <h4>Price Range: GET PRICE HERE {{controller.bars.price | currency}}</h4>
+                <h4>Price Level: </h4><span><input-stars icon-empty="fa fa-usd" icon-base="fa fa-usd" icon-full="fa-usd" readonly="true" ng-model="controller.priceLevel" max="5"></input-stars></span>
             </p>
             <p>
                 <h4>Hours Of Operation: <br /></h4>
@@ -72,9 +72,9 @@
                 {{controller.bars.hours}}
             </p>
             <p>
-                Contact Information <br/>
-                GET CONTACT INFORMATION HERE
-                {{controller.bars.contact}}
+                Contact Information: 
+                <br />
+                {{controller.phone}}
             </p>
             <p>
                 <span class="map-barProfile" id="map" style="width: 100%; height: 50%;"></span>
