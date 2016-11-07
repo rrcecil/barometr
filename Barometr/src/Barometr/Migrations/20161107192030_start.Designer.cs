@@ -8,8 +8,8 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161103153347_update")]
-    partial class update
+    [Migration("20161107192030_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,6 +122,8 @@ namespace Barometr.Migrations
 
                     b.Property<string>("Comment");
 
+                    b.Property<DateTime>("DatePosted");
+
                     b.Property<double>("Rating");
 
                     b.Property<string>("UserId")
@@ -205,6 +207,21 @@ namespace Barometr.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("DrinkReviews");
+                });
+
+            modelBuilder.Entity("Barometr.Models.FavoriteBar", b =>
+                {
+                    b.Property<int>("BarId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("BarId", "UserId");
+
+                    b.HasIndex("BarId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteBars");
                 });
 
             modelBuilder.Entity("Barometr.Models.Profile", b =>
@@ -429,6 +446,19 @@ namespace Barometr.Migrations
 
                     b.HasOne("Barometr.Models.ApplicationUser", "User")
                         .WithMany("DrinkReviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Barometr.Models.FavoriteBar", b =>
+                {
+                    b.HasOne("Barometr.Models.Bar", "Bar")
+                        .WithMany()
+                        .HasForeignKey("BarId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Barometr.Models.ApplicationUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

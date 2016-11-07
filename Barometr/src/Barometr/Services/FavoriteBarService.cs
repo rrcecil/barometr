@@ -1,19 +1,17 @@
-﻿using Barometr.Infrastructure;
-using Barometr.Models;
-using Barometr.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Barometr.Infrastructure;
+using Barometr.Models;
+using Barometr.ViewModels;
 
 namespace Barometr.Services
 {
-    public class UserBarService
+    public class FavoriteBarService
     {
         private BarReviewRepository _barReviewRepo;
         private BarRepository _barRepo;
-        private UserBarRepository _userBarRepo;
-        public UserBarService(UserBarRepository userBarRepo, BarRepository barRepo, BarReviewRepository barReviewRepo)
+        private FavoriteBarRepository _userBarRepo;
+        public FavoriteBarService(FavoriteBarRepository userBarRepo, BarRepository barRepo, BarReviewRepository barReviewRepo)
         {
             _userBarRepo = userBarRepo;
             _barRepo = barRepo;
@@ -27,7 +25,7 @@ namespace Barometr.Services
 
             var User = _userBarRepo.GetUserByUsername(Username);
             var UserId = User.Id;
-            var UserBar = new UserBar
+            var UserBar = new FavoriteBar
             {
                 UserId = UserId,
                 BarId = GetBarIdByGoogleBarId(GoogleBarId)
@@ -35,7 +33,7 @@ namespace Barometr.Services
             _userBarRepo.Add(UserBar);
             _userBarRepo.SaveChanges();
         }
-        public List<UserBar> GetUserBars(string UserId)
+        public List<FavoriteBar> GetUserBars(string UserId)
         {
             var result = _userBarRepo.List().Where(b => b.UserId == UserId).ToList();
             return result;
@@ -48,7 +46,7 @@ namespace Barometr.Services
         }
 
 
-        public void AddClaim(UserBar userBar)
+        public void AddClaim(FavoriteBar userBar)
         {
             _userBarRepo.Add(userBar);
             _userBarRepo.SaveChanges();
@@ -57,37 +55,17 @@ namespace Barometr.Services
         public List<BarDTO> GetBarByUser(string UserName)
         {
             var userId = _userBarRepo.GetUserByUsername(UserName).Id;
-            var userbar = _userBarRepo.List().Where(u => u.UserId == userId).Select(u =>u.BarId).ToList();
+            var userbar = _userBarRepo.List().Where(u => u.UserId == userId).Select(u => u.BarId).ToList();
             var bar = _barRepo.List().Where(b => userbar.Contains(b.Id)).Select(b => new BarDTO
             {
                 Id = b.Id,
                 Name = b.Name,
                 HappyHour = b.HappyHour,
 
-                
+
             }).ToList();
 
             return bar;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-            
-
-
-        
-
-
-
-
-
-

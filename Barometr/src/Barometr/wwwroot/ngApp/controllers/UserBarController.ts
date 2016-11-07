@@ -9,7 +9,7 @@
        
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $scope: ng.IScope) {
 
-            $http.get(`api/userBars/userBars`).then((res) => {
+            $http.get(`api/favoriteBar/favoriteBars`).then((res) => {
                 this.userBars = res.data;
                 })
                 .catch((response) => {

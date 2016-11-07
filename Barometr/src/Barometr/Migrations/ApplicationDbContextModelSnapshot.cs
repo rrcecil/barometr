@@ -208,6 +208,21 @@ namespace Barometr.Migrations
                     b.ToTable("DrinkReviews");
                 });
 
+            modelBuilder.Entity("Barometr.Models.FavoriteBar", b =>
+                {
+                    b.Property<int>("BarId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("BarId", "UserId");
+
+                    b.HasIndex("BarId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteBars");
+                });
+
             modelBuilder.Entity("Barometr.Models.Profile", b =>
                 {
                     b.Property<int>("Id")
@@ -430,6 +445,19 @@ namespace Barometr.Migrations
 
                     b.HasOne("Barometr.Models.ApplicationUser", "User")
                         .WithMany("DrinkReviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Barometr.Models.FavoriteBar", b =>
+                {
+                    b.HasOne("Barometr.Models.Bar", "Bar")
+                        .WithMany()
+                        .HasForeignKey("BarId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Barometr.Models.ApplicationUser", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
