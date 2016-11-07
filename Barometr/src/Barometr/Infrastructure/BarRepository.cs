@@ -28,8 +28,8 @@ namespace Barometr.Infrastructure
                 return new Bar
                 {
                     Name = "New Test Bar",
-                    Longitude = .001M,
-                    Latitude = .012M,
+                    Longitude = .001,
+                    Latitude = .012,
                     HappyHour = "5PM",
                     Menu = new List<Drink>(),
                     Reviews = new List<BarReview>()
