@@ -61,7 +61,9 @@ namespace Barometr.Services
                 Id = b.Id,
                 Name = b.Name,
                 HappyHour = b.HappyHour,
-
+                GoogleBarId = b.GoogleBarId,
+                Latitude = b.Latitude,
+                Longitude = b.Longitude
 
             }).ToList();
 
