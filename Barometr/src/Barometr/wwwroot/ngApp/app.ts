@@ -101,7 +101,7 @@ namespace Barometr {
                 templateUrl: '/ngApp/views/notFound.html'
             })
            .state('search', {
-               url: '/search',
+               url: '/search?zipcode',
                templateUrl: '/ngApp/views/search.html',
              controller: Barometr.Controllers.SearchController,
                controllerAs: 'controller'

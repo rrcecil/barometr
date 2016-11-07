@@ -73,10 +73,10 @@
                     </li>
                     <li><a ui-sref="userBars" ng-show="account.isLoggedIn()">Bars</a></li>
                 </ul>
-                <form class="navbar-form navbar-right" id="tfnewsearch" method="post" action="/search">
+                <form class="navbar-form navbar-right" id="tfnewsearch" ng-submit="account.searchSubmit(zipcode)">
                     <div class="form-group">
 
-                        <input type="search" class="form-control" placeholder="eg.Bar,Drink" aria-expanded="false" style="opacity: 0.5" />
+                        <input type="search" class="form-control" placeholder="zipcode" ng-model="zipcode" aria-expanded="false" style="opacity: 0.5" />
 
                     </div>
                     <button type="submit" title="Search" class="btn" aria-expanded="false" style="color: #7e7e7e"><i class="glyphicon glyphicon-search"></i></button>
@@ -110,6 +110,7 @@
     <script src="~/ngApp/controllers/menuController.js"></script>
     <script src="~/ngApp/controllers/requestsController.js"></script>
     <script src="/ngapp/services/services.js"></script>
+    <script src="~/ngApp/services/searchService.js"></script>
     <script src="~/ngApp/controllers/UserBarController.js"></script>
 
     <!-- Security -->

@@ -32,10 +32,15 @@ namespace Barometr.Controllers {
             return this.accountService.getExternalLogins();
         }
 
-        constructor(private accountService: Barometr.Services.AccountService, private $location: ng.ILocationService) {
+        constructor(private accountService: Barometr.Services.AccountService, private $location: ng.ILocationService, public $state: ng.ui.IStateService) {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
             });
+        }
+
+        public searchSubmit(zipcode) {
+            this.$state.go('search', { zipcode: zipcode });
+
         }
     }
 
