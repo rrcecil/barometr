@@ -19,6 +19,7 @@ namespace Barometr.Controllers {
         public photos;
         public priceLevel;
         public phone;
+        public ownBars;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $scope: ng.IScope) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
@@ -51,10 +52,15 @@ namespace Barometr.Controllers {
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
             });
-            
 
-
+            $http.get(`api/userBars/userBars`).then((res) => {
+                this.ownBars = res.data;
+                console.log("DATA INCOMING");
+                console.log(this.ownBars);
+            });
         }
+
+        public getUserBars() {}
 
         public openReviewDialog() {
             this.$uibModal.open({

@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Barometr.Models;
 using Barometr.Services;
 using Barometr.ViewModels;
-using Barometr.Models;
-
-// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Mvc;
 
 namespace Barometr.Controllers
 {
     [Route("api/[controller]")]
-    public class UserBarsController : Controller
+    public class FavoriteBarController : Controller
     {
-        private UserBarService _service;
-        public UserBarsController(UserBarService service)
+        private FavoriteBarService _service;
+        public FavoriteBarController(FavoriteBarService service)
         {
             _service = service;
         }
@@ -30,7 +25,7 @@ namespace Barometr.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public UserBar GetByBarId(int BarId)
+        public FavoriteBar GetByBarId(int BarId)
         {
             return null;
         }
@@ -54,12 +49,12 @@ namespace Barometr.Controllers
         {
         }
 
-        [HttpGet("userBars")]
+        [HttpGet("favoriteBars")]
         public IEnumerable<BarDTO> GetBarByUser()
         {
             var UserName = User.Identity.Name;
             return _service.GetBarByUser(UserName);
-           
+
         }
     }
 }

@@ -88,7 +88,7 @@ namespace Barometr.Services
             var user = _repo.GetUserById(request.UserId);
             var bar = _barRepo.GetBarById(request.BarId);
             //Adds claim to make the user a UserAdmin
-            var result = await _userManager.AddClaimAsync(user, new Claim("isUserAdmin", "true"));
+            var result = await _userManager.AddClaimAsync(user, new Claim("IsUserAdmin", "true"));
             //Create a new UserBar with the information from the request.
             UserBar userBar = new UserBar
             {

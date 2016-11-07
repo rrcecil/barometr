@@ -75,6 +75,16 @@ body {
 .background-one {
     padding-top: -5%;
     background-image: url("../images/Background2.jpeg");
+    height: 100%;
+    width: 200%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.background-long {
+    padding-top: -5%;
+    background-image: url("../images/Background2.jpeg");
     height: 200%;
     width: 200%;
     background-size: cover;
@@ -242,6 +252,19 @@ textarea {
     position: absolute;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
     overflow-y: scroll;
+}
+
+.myBarList {
+    left: 12%;
+    width: 75%;
+    margin-top: 140px;
+    margin-right: -90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: absolute;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8vxUAArkBtnNoqJ0AAAAASUVORK5CYII=);
 }
 
 .landingPage2 {
