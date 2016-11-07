@@ -8,8 +8,8 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161103153347_update")]
-    partial class update
+    [Migration("20161104192153_reupdated")]
+    partial class reupdated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -121,6 +121,8 @@ namespace Barometr.Migrations
                     b.Property<int>("BarId");
 
                     b.Property<string>("Comment");
+
+                    b.Property<DateTime>("DatePosted");
 
                     b.Property<double>("Rating");
 
