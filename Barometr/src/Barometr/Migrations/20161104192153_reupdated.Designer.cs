@@ -8,9 +8,10 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161104192153_reupdated")]
+    partial class reupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -82,9 +83,9 @@ namespace Barometr.Migrations
 
                     b.Property<string>("HappyHour");
 
-                    b.Property<double>("Latitude");
+                    b.Property<decimal>("Latitude");
 
-                    b.Property<double>("Longitude");
+                    b.Property<decimal>("Longitude");
 
                     b.Property<string>("Name");
 
@@ -206,21 +207,6 @@ namespace Barometr.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("DrinkReviews");
-                });
-
-            modelBuilder.Entity("Barometr.Models.FavoriteBar", b =>
-                {
-                    b.Property<int>("BarId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("BarId", "UserId");
-
-                    b.HasIndex("BarId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("FavoriteBars");
                 });
 
             modelBuilder.Entity("Barometr.Models.Profile", b =>
@@ -445,19 +431,6 @@ namespace Barometr.Migrations
 
                     b.HasOne("Barometr.Models.ApplicationUser", "User")
                         .WithMany("DrinkReviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Barometr.Models.FavoriteBar", b =>
-                {
-                    b.HasOne("Barometr.Models.Bar", "Bar")
-                        .WithMany()
-                        .HasForeignKey("BarId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Barometr.Models.ApplicationUser", "User")
-                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

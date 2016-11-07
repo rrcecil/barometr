@@ -24,14 +24,18 @@ namespace Barometr.Controllers {
                 this.bar = res.data;
                 this.rating = this.bar.rating;
             })
-            .then(() => {
+                .then((res) => {
+                    console.log(this.bar);
                 this.mapOptions = {
-                    center: new google.maps.LatLng(29.790128, -95.402796),
-                    zoom: 13
+                    center: new google.maps.LatLng(this.bar.latitude, this.bar.longitude),
+                    zoom: 12
                 };
                 this.result = document.getElementById('map');
                 this.mapDiv = angular.element(this.result);
                 this.map = new google.maps.Map(this.mapDiv[0], this.mapOptions);
+                var marker = new google.maps.Marker({
+                    position: { lat: this.bar.latitude, lng: this.bar.longitude }, map: this.map
+                });
                 var service = new google.maps.places.PlacesService(this.map);
 
                 service.getDetails({ placeId: this.bar['placeId'] }, (res) => {

@@ -283,7 +283,6 @@ textarea {
 .loginPage {
     align-content: center;
     left: 40%;
-    width: 15%;
     margin-top: 140px;
     margin-right: -90%;
     padding-top: 50px;
@@ -297,7 +296,6 @@ textarea {
 .registerPage {
     align-content: center;
     left: 40%;
-    width: 15%;
     margin-top: 140px;
     margin-right: -90%;
     padding-top: 50px;
