@@ -17,38 +17,38 @@ namespace Barometr.Controllers {
         public result;
         public mapDiv;
         public photos;
-        public priceLevel;
-        public phone;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $scope: ng.IScope) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
                 this.bar = res.data;
                 this.rating = this.bar.rating;
             })
-                .then(() => {
-                    this.mapOptions = {
-                        center: new google.maps.LatLng(29.790128, -95.402796),
-                        zoom: 13
-                    };
-                    this.result = document.getElementById('map');
-                    this.mapDiv = angular.element(this.result);
-                    this.map = new google.maps.Map(this.mapDiv[0], this.mapOptions);
-                    var service = new google.maps.places.PlacesService(this.map);
+                .then((res) => {
+                    console.log(this.bar);
+                this.mapOptions = {
+                    center: new google.maps.LatLng(this.bar.latitude, this.bar.longitude),
+                    zoom: 12
+                };
+                this.result = document.getElementById('map');
+                this.mapDiv = angular.element(this.result);
+                this.map = new google.maps.Map(this.mapDiv[0], this.mapOptions);
+                var marker = new google.maps.Marker({
+                    position: { lat: this.bar.latitude, lng: this.bar.longitude }, map: this.map
+                });
+                var service = new google.maps.places.PlacesService(this.map);
 
-                    service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
-                        $scope.$apply(() => {
-                            console.log(res);
-                            this.phone = res.formatted_phone_number ? res.formatted_phone_number : "N/A";
-                            this.priceLevel = res.price_level ? res.price_level : 0;
-                            this.hours = res['opening_hours']['weekday_text'];
-                            this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
-                        });
+                service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
+                    $scope.$apply(() => {
+                        this.hours = res['opening_hours']['weekday_text'];
+                        this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
+                    });
+                    console.log(this.photos);
                     });
                 });
             $http.get(`api/bars/drinks`).then((res) => {
                 this.drinks = res.data;
             });
-
+            
 
 
         }
@@ -65,7 +65,7 @@ namespace Barometr.Controllers {
             });
         }
 
-
+       
         public claimBar(id) {
             console.log(id);
             this.$http.post(`api/requests/` + id, id).then((res) => {
@@ -93,7 +93,7 @@ namespace Barometr.Controllers {
             public RandomBarService: Barometr.Services.RandomBarService
         ) {
 
-
+          
             $http.get(`api/UserMetric/barReviewCount`).then((res) => {
                 this.barReviewCount = res.data;
 
@@ -123,7 +123,7 @@ namespace Barometr.Controllers {
             this.showRequestNum = true;
         }
 
-
+       
         public greet() {
             var myDate = new Date();
             var hrs = myDate.getHours();
@@ -201,7 +201,7 @@ namespace Barometr.Controllers {
 
 
     export class DrinkDialogController {
-
+        
         public drinks;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $uibModal: angular.ui.bootstrap.IModalService, public $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, public drink) { }
@@ -220,7 +220,7 @@ namespace Barometr.Controllers {
                 this.$state.reload();
             });
         }
-
+       
 
 
         public closeModal() {
@@ -245,9 +245,9 @@ namespace Barometr.Controllers {
             });
         }
     }
+       
 
-
-
+     
 
     export class DrinkReviewController {
         public drinkReviews;
@@ -266,10 +266,10 @@ namespace Barometr.Controllers {
             this.$http.post(`api/drinkReviews`, review).then((res) => {
                 this.$state.reload();
             });
+    
+            }
 
-        }
-
-
+           
 
         //    }
         //    public validateUser(review) {
