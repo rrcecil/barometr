@@ -17,6 +17,8 @@ namespace Barometr.Controllers {
         public result;
         public mapDiv;
         public photos;
+        public priceLevel;
+        public phone;
 
         constructor(public $http: ng.IHttpService, public $state: ng.ui.IStateService, public $stateParams: ng.ui.IStateParamsService, public $uibModal: angular.ui.bootstrap.IModalService, public $scope: ng.IScope) {
             $http.get(`/api/bars/${$stateParams['id']}`).then((res) => {
@@ -24,7 +26,6 @@ namespace Barometr.Controllers {
                 this.rating = this.bar.rating;
             })
                 .then((res) => {
-                    console.log(this.bar);
                 this.mapOptions = {
                     center: new google.maps.LatLng(this.bar.latitude, this.bar.longitude),
                     zoom: 12
@@ -39,6 +40,8 @@ namespace Barometr.Controllers {
 
                 service.getDetails({ placeId: this.bar['placeId'] }, (res) => {
                     $scope.$apply(() => {
+                        this.phone = res.formatted_phone_number ? res.formatted_phone_number : "N/A";
+                        this.priceLevel = res.price_level ? res.price_level : 0;
                         this.hours = res['opening_hours']['weekday_text'];
                         this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
                     });
