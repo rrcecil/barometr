@@ -21,4 +21,5 @@
 /// <reference path="ngapp/controllers/searchcontroller.js" />
 /// <reference path="ngapp/controllers/userbarcontroller.js" />
 /// <reference path="ngapp/services/accountservice.js" />
+/// <reference path="ngapp/services/searchservice.js" />
 /// <reference path="ngapp/services/services.js" />
