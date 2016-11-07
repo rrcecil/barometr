@@ -19,6 +19,7 @@ namespace Barometr.Data
         public DbSet<BarDrink> BarDrinks { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<BusinessHours> BusinessHours { get; set; }
+        public DbSet<FavoriteBar> FavoriteBars { get; set; } 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -35,6 +36,7 @@ namespace Barometr.Data
             builder.Entity<Bar>().HasMany(h => h.BusinessHours).WithOne(h => h.Bar);
 
             builder.Entity<UserBar>().HasKey(x => new { x.BarId, x.UserId });
+            builder.Entity<FavoriteBar>().HasKey(x => new { x.BarId, x.UserId });
             builder.Entity<BarDrink>().HasKey(x => new { x.BarId, x.DrinkId });
 
 
