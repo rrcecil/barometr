@@ -1,14 +1,16 @@
 ﻿<div class="parallax-one">
-    <div class="landingPage">
+    <div class="myBarReviews">
 
         <h3 style="text-align:center"> My Bar Reviews</h3>
         <br />
         <br />
 
         <table class="table table-hover">
+            
             <tr>
                 <th>Bar Name</th>
-                <th>My Comment</th>
+                <th><center>My Comment</center></th>
+                <th>Posted On</th>
                 <th>My Ratings</th>
 
             </tr>
@@ -17,6 +19,7 @@
                 <td>{{review.bar.name}}</td>
 
                 <td>{{review.comment}}</td>
+                <td>{{review.datePosted}}</td>
                 <td><input-stars ng-model="review.rating" icon-empty="fa fa-glass" icon-base="fa fa-glass" icon-full="fa-glass" max="5" readonly="true"></input-stars></td>
 
             </tr>
