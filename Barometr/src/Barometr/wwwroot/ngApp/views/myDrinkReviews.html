@@ -8,11 +8,13 @@
 
 
             <tr>
+                <th>Drink Name</th>
                 <th>Comment</th>
                 <th>Rating</th>
                
             </tr>
             <tr ng-repeat="review in controller.drinkReviews">
+                <td>{{review.drink.name}}</td>
                 <td>{{review.comment}}</td>
                 <td>{{review.rating}}</td>
             

@@ -17,6 +17,7 @@ namespace Barometr.Services {
             this.$http.get(`/api/bars/random`).then((res) => {
                 this.randomBar = res.data;
                 console.log(this.randomBar);
+                this.hours = res['opening_hours']['weekday_text'];
             })
                 .then(() => {
                     this.mapOptions = {
