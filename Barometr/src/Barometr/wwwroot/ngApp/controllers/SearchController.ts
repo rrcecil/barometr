@@ -17,12 +17,12 @@ namespace Barometr.Controllers {
         }
 
         public getBars(zipCode) {
-            
+
             var bars = this.SearchService.getBars(zipCode);
-                bars.then((res) => {
-                    this.bars = res;
-                });
-           
+            bars.then((res) => {
+                this.bars = res;
+            });
+
         }
 
         public addBar(bar) {
