@@ -32,8 +32,13 @@
 
         public getBars(zipCode) {
 
+            this.map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 29.7604, lng: -95.3698 },
+                zoom: 13
+            });
+            
+            var deferred = this.$q.defer();
             var coords = this.getLatLong(zipCode);
-            console.log(coords);
             coords.then((res) => {
                 var location = new google.maps.LatLng(res['lat'](), res['lng']());
                 var service = new google.maps.places.PlacesService(this.map);
@@ -42,7 +47,8 @@
                     radius: 7000,
                     types: ['bar']
                 };
-                
+                this.map.setCenter(location);
+                this.map.setZoom(12);
                 this.bars = [];
 
                 service.nearbySearch(request, (res, stat) => {
@@ -65,10 +71,12 @@
                             this.bars.push(bar);
                             var marker = new google.maps.Marker({ position: res.geometry.location, map: this.map });
                         });
-                        return this.bars;
+                        deferred.resolve(this.bars);
                     }
                 });
             });
+            return deferred.promise;
+
         }
     }
     angular.module('Barometr').service('SearchService', SearchService);
