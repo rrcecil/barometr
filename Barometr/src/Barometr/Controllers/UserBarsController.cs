@@ -20,13 +20,13 @@ namespace Barometr.Controllers
             _service = service;
         }
 
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<UserBar> GetUserBars(string UserId)
-        {
-            var username = User.Identity.Name;
-            return _service.GetUserBars(username);
-        }
+        //// GET: api/values
+        //[HttpGet]
+        //public IEnumerable<UserBar> GetUserBars(string UserId)
+        //{
+        //    var username = User.Identity.Name;
+        //    return _service.GetUserBars(username);
+        //}
 
         // GET api/values/5
         [HttpGet("{id}")]

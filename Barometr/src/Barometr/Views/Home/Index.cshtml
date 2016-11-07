@@ -38,7 +38,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
                 <a href="#" class="navbar-brand"></a>
-                <a class="navbar-brand" href="/"><span><img src="~/images/RatingImages/BarometerLogo.png" alt="Barometr logo" style="max-height: 110%; max-width: 110%;" />Barometr</span></a>
+                <a class="navbar-brand" ui-sref="home"><span><img src="~/images/RatingImages/BarometerLogo.png" alt="Barometr logo" style="max-height: 110%; max-width: 110%;" />|Barometr</span></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="navbar-li">
@@ -71,7 +71,8 @@
 
                         </ul>
                     </li>
-                    <li><a ui-sref="userBars" ng-show="account.isLoggedIn()">Bars</a></li>
+                    <li><a ui-sref="userBars" ng-show="account.isLoggedIn()">My Favorites</a></li>
+                    <li><a ui-sref="myBarsPage" ng-show="account.getClaim('IsUserAdmin')">My Bars</a></li>
                 </ul>
                 <form class="navbar-form navbar-right" id="tfnewsearch" method="post" action="/search">
                     <div class="form-group">

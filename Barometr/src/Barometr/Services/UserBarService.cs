@@ -69,6 +69,11 @@ namespace Barometr.Services
 
             return bar;
         }
+
+        public IEnumerable<BarDTO> GetMyBarsByUser(string userName)
+        {
+            var userId = _userBarRepo.GetUserByUsername(userName).Id;
+        }
     }
 }
 
