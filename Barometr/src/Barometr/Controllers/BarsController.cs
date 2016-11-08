@@ -55,6 +55,14 @@ namespace Barometr.Controllers
             _service.UpdateBar(value);
         }
 
+        // PUT api/values/5
+        
+        [HttpPut("phone/{id}")]
+        public void Put(int id, [FromBody]string phoneNumber)
+        {
+            _service.UpdateBar(id, phoneNumber);
+        }
+
         // DELETE api/values/5
         [HttpDelete("{id}")]
         [Authorize]

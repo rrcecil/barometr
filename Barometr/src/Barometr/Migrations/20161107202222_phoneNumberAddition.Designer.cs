@@ -8,8 +8,8 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161107192030_start")]
-    partial class start
+    [Migration("20161107202222_phoneNumberAddition")]
+    partial class phoneNumberAddition
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,11 +83,13 @@ namespace Barometr.Migrations
 
                     b.Property<string>("HappyHour");
 
-                    b.Property<decimal>("Latitude");
+                    b.Property<double>("Latitude");
 
-                    b.Property<decimal>("Longitude");
+                    b.Property<double>("Longitude");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("PhoneNumber");
 
                     b.Property<string>("PlaceId");
 

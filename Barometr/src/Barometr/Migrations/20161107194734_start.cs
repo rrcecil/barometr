@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Barometr.Migrations
 {
-    public partial class reupdated : Migration
+    public partial class start : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -233,6 +233,24 @@ namespace Barometr.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FavoriteBars",
+                columns: table => new
+                {
+                    BarId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavoriteBars", x => new { x.BarId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_FavoriteBars_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserBars",
                 columns: table => new
                 {
@@ -273,8 +291,8 @@ namespace Barometr.Migrations
                     BarDrinkDrinkId = table.Column<int>(nullable: true),
                     GoogleBarId = table.Column<string>(nullable: true),
                     HappyHour = table.Column<string>(nullable: true),
-                    Latitude = table.Column<decimal>(nullable: false),
-                    Longitude = table.Column<decimal>(nullable: false),
+                    Latitude = table.Column<double>(nullable: false),
+                    Longitude = table.Column<double>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     PlaceId = table.Column<string>(nullable: true)
                 },
@@ -404,6 +422,16 @@ namespace Barometr.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_FavoriteBars_BarId",
+                table: "FavoriteBars",
+                column: "BarId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FavoriteBars_UserId",
+                table: "FavoriteBars",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Profiles_UserId",
                 table: "Profiles",
                 column: "UserId",
@@ -466,6 +494,14 @@ namespace Barometr.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
+                name: "FK_FavoriteBars_Bars_BarId",
+                table: "FavoriteBars",
+                column: "BarId",
+                principalTable: "Bars",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
                 name: "FK_UserBars_Bars_BarId",
                 table: "UserBars",
                 column: "BarId",
@@ -508,6 +544,9 @@ namespace Barometr.Migrations
 
             migrationBuilder.DropTable(
                 name: "DrinkReviews");
+
+            migrationBuilder.DropTable(
+                name: "FavoriteBars");
 
             migrationBuilder.DropTable(
                 name: "Profiles");

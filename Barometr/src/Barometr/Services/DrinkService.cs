@@ -43,6 +43,7 @@ namespace Barometr.Services
             {
                 HappyHour = "false",
                 Name = "New Test Bar",
+                PhoneNumber = "",
                 Longitude = .001,
                 Latitude = .012,
                 Menu = new List<Drink>()

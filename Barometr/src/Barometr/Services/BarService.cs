@@ -26,6 +26,7 @@ namespace Barometr.Services
                     {
                         Id = b.Id,
                         Name = b.Name,
+                        PhoneNumber = b.PhoneNumber,
                         Latitude = b.Latitude,
                         Longitude = b.Longitude,
                         HappyHour = b.HappyHour,
@@ -73,6 +74,7 @@ namespace Barometr.Services
                 {
                     Id = b.Id,
                     Name = b.Name,
+                    PhoneNumber = b.PhoneNumber,
                     Latitude = b.Latitude,
                     Longitude = b.Longitude,
                     HappyHour = b.HappyHour,
@@ -107,6 +109,7 @@ namespace Barometr.Services
             {
                 Id = bardto.Id,
                 Name = bardto.Name,
+                PhoneNumber = bardto.PhoneNumber,
                 Latitude = bardto.Latitude,
                 Longitude = bardto.Longitude,
                 HappyHour = bardto.HappyHour,
@@ -147,9 +150,18 @@ namespace Barometr.Services
             var orig = _barRepo.GetBarById(bar.Id);
             orig.Id = bar.Id;
             orig.Name = bar.Name;
+            orig.PhoneNumber = bar.PhoneNumber;
             orig.Latitude = bar.Latitude;
             orig.Longitude = bar.Longitude;
             orig.HappyHour = bar.HappyHour;
+            _barRepo.SaveChanges();
+        }
+
+        // update method
+        public void UpdateBar(int id, string phoneNumber)
+        {
+            var orig = _barRepo.GetBarById(id);
+            orig.PhoneNumber = phoneNumber;
             _barRepo.SaveChanges();
         }
 
@@ -183,6 +195,7 @@ namespace Barometr.Services
                 Latitude = bar.Latitude,
                 Longitude = bar.Longitude,
                 Name = bar.Name,
+                PhoneNumber = bar.PhoneNumber,
                 PlaceId = bar.PlaceId,
                 Reviews = (from r in bar.Reviews
                            select new BarReviewDTO()
