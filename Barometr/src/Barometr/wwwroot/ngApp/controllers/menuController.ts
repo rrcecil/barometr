@@ -16,6 +16,8 @@
             });
         }
     }
+    angular.module("Barometr").controller('MenuController', MenuController);
+
     export class AddToMenuController {
         public drink;
         public drinks;
@@ -67,6 +69,8 @@
             });
         }
     }
+    angular.module("Barometr").controller('AddToMenuController', AddToMenuController);
+
     export class DialogMenuController {
         public drink;
         public drinkReviews;
