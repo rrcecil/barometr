@@ -5,9 +5,9 @@
     </div>
     <div class="modal-body">
         <form ng-submit="modal.post(review)" id="review">
-            <textarea ng-model="dialog.drinkReview.comment" form="review" rows="5" cols="100" placeholder="Review"></textarea>
+            <textarea ng-model="dialog.review.comment" form="review" rows="5" cols="100" placeholder="Review"></textarea>
             <br /><br />
-            <input-stars ng-model="dialog.drinkReviews.rating" max="5"></input-stars>
+            <input-stars ng-model="dialog.review.rating" max="5"></input-stars>
             <input type="submit" value="Publish" form="review" ng-click="modal.closeModal()" />
         </form>
     </div>

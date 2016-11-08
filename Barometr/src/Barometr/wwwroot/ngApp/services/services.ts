@@ -12,17 +12,14 @@ namespace Barometr.Services {
 
 
         constructor(private $http: ng.IHttpService) {
-
-
             this.$http.get(`/api/bars/random`).then((res) => {
                 this.randomBar = res.data;
-                console.log(this.randomBar);
             })
                 .then(() => {
                     this.mapOptions = {
                        
-                        center: new google.maps.LatLng(this.randomBar.latitude, this.randomBar.longitude),
-                        zoom: 8
+                    center: new google.maps.LatLng(this.randomBar.latitude, this.randomBar.longitude),
+                    zoom: 12
                     };
                     this.result = document.getElementById('map');
                     this.mapDiv = angular.element(this.result);
@@ -34,7 +31,7 @@ namespace Barometr.Services {
                         map: this.map,
                         position: new google.maps.LatLng(latitude, longitude),
                         animation: google.maps.Animation.DROP,
-                        title: this.randomBar.name
+                        title: this.randomBar.name,
                     });
                 });
         }            

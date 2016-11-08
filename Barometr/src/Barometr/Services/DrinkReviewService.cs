@@ -17,12 +17,12 @@ namespace Barometr.Services
             _repo = repo;
         }
 
-        public List<DrinkReviewDTO> GetReviewsByDrink(int DrinkId)
-        {
-            var result = _repo.List().Where(r => r.DrinkId == DrinkId).Select(r => ProjectToViewModel(r)).ToList();
+        //public List<DrinkReviewDTO> GetReviewsByDrink(int DrinkId)
+        //{
+        //    var result = _repo.List().Where(r => r.DrinkId == DrinkId).Select(r => ProjectToViewModel(r)).ToList();
 
-            return result;
-        }
+        //    return result;
+        //}
         public List<DrinkReviewDTO> GetMyReviews(string UserId)
         {
             var result = _repo.List().Where(r => r.UserId == UserId).Select(r => ProjectToViewModel(r)).ToList();
@@ -39,7 +39,7 @@ namespace Barometr.Services
 
         public List<DrinkReviewDTO> GetReviewsByBar(int BarId)
         {
-            var result = _repo.List().Where(r => r.DrinkId == BarId).Select(r => ProjectToViewModel(r)).ToList();                   //added this
+            var result = _repo.List().Where(r => r.DrinkId == BarId).Select(r => ProjectToViewModel(r)).ToList();                
             return result;
         }
 
@@ -69,7 +69,7 @@ namespace Barometr.Services
             _repo.Delete(ProjectToModel(r, User.Id));
             _repo.SaveChanges();
         }
-        //TODO: Needs logic to determine if review is drink or bar review
+        
         private DrinkReview ProjectToModel(DrinkReviewDTO r, string UserId)
         {
             return new DrinkReview
@@ -95,6 +95,10 @@ namespace Barometr.Services
         {
             var drinkreview = _repo.List().Where(r => r.User.UserName == user).Select(r => new DrinkReviewDTO
             {
+                Drink = new DrinkDTO()
+                {
+                    Name = r.Drink.Name
+                },
                 Comment = r.Comment,
                 Id = r.Id,
                 Rating = r.Rating,
