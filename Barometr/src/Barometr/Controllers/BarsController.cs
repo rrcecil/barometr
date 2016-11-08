@@ -43,6 +43,7 @@ namespace Barometr.Controllers
 
         // POST api/values
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody]BarDTO value)
         {
             return Json(new { barId = _service.AddBar(value) });

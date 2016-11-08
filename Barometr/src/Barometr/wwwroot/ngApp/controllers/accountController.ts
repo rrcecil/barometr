@@ -63,7 +63,6 @@ namespace Barometr.Controllers {
         }
 
         public loginBtn(socialBtn) {
-            console.log(socialBtn);
             if (socialBtn === "Facebook") {
                 this.prov = "facebook";
                 this.Provider = "Facebook";
