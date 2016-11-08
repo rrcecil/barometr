@@ -6,6 +6,7 @@
         <table class="table table-striped" id="requests">
             <tr>
                 <th>User Name</th>
+                <th>User Phone Number</th>
                 <th>User Email</th>
                 <th>Business Name</th>
                 <th>Date Requested</th>
@@ -14,6 +15,7 @@
             </tr>
             <tr ng-repeat="request in controller.requests track by $index">
                 <td>{{request.userName}}</td>
+                <td>{{request.phoneNumber}}</td>
                 <td>{{request.userEmail}}</td>
                 <td>{{request.barName}}</td>
                 <td>{{request.dateRequested}}</td>

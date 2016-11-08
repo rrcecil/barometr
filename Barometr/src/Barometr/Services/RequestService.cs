@@ -40,6 +40,7 @@ namespace Barometr.Services
                     Id = request.Id,
                     UserName = user.UserName,
                     UserEmail = user.Email,
+                    PhoneNumber = bar.PhoneNumber,
                     BarName = bar.Name,
                     DateRequested = request.DateRequested
                 };

@@ -45,8 +45,11 @@ namespace Barometr.Controllers {
                         this.priceLevel = res.price_level ? res.price_level : 0;
                         this.hours = res['opening_hours']['weekday_text'];
                         this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
+
+                        console.log(this.phone);
+                        $http.put(`api/bars/phone/${$stateParams['id']}`, `"${this.phone}"`).then((res) => {
+                        });
                     });
-                    console.log(this.photos);
                     });
                 });
             $http.get(`api/bars/drinks`).then((res) => {
@@ -55,8 +58,6 @@ namespace Barometr.Controllers {
 
             $http.get(`api/userBars/userBars`).then((res) => {
                 this.ownBars = res.data;
-                console.log("DATA INCOMING");
-                console.log(this.ownBars);
             });
         }
 

@@ -28,6 +28,7 @@ namespace Barometr.Infrastructure
                 return new Bar
                 {
                     Name = "New Test Bar",
+                    PhoneNumber = "",
                     Longitude = .001,
                     Latitude = .012,
                     HappyHour = "5PM",
