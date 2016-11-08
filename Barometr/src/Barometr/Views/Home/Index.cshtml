@@ -74,11 +74,9 @@
                     <li><a ui-sref="userBars" ng-show="account.isLoggedIn()">My Favorites</a></li>
                     <li><a ui-sref="myBarsPage" ng-show="account.getClaim('IsUserAdmin')">My Bars</a></li>
                 </ul>
-                <form class="navbar-form navbar-right" id="tfnewsearch" ng-submit="account.searchSubmit(zipcode)">
+                <form name="zipcodeForm" class="navbar-form navbar-right" id="tfnewsearch" ng-submit="zipcodeForm.$valid && account.searchSubmit(zipcode)" novalidate>
                     <div class="form-group">
-
-                        <input type="search" class="form-control" placeholder="zipcode" ng-model="zipcode" aria-expanded="false" style="opacity: 0.5" />
-
+                        <input type="search" class="form-control ng-pristine ng-invalid" placeholder="zipcode" ng-model="zipcode" ng-minlength="5" ng-maxlength="5" aria-expanded="false" style="opacity: 0.5" required />
                     </div>
                     <button type="submit" title="Search" class="btn" aria-expanded="false" style="color: #7e7e7e"><i class="glyphicon glyphicon-search"></i></button>
                 </form>

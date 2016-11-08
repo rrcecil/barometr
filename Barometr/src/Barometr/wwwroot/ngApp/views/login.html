@@ -6,20 +6,20 @@
         </div>
         <div>
             <div>
-                <h3 align="center">Local Account</h3>
+                <h3 align="center">Barometr Account</h3>
                 <ul>
                     <li ng-repeat="error in controller.validationMessages">
                         {{error}}
                     </li>
                 </ul>
-                <form ng-submit="controller.login()" align="center">
+                <form name="loginForm" ng-submit="loginForm.$valid && controller.login()" align="center" novalidate>
                     <div class="form-group">
-                        <input ng-model="controller.loginUser.email" placeholder="Email" autofocus required />
+                        <input ng-model="controller.loginUser.email" type="email" class="form-control ng-pristine ng-invalid" placeholder="Email" autofocus required />
                     </div>
                     <div class="form-group">
-                        <input ng-model="controller.loginUser.password" placeholder="Password" type="password" required />
+                        <input ng-model="controller.loginUser.password" class="form-control ng-pristine ng-invalid" placeholder="Password" type="password" required />
                     </div>
-                    <input class="btn btn-default" type="submit" value="Login" />
+                    <input class="btn btn-success" type="submit" value="Login" />
                     <a href="/register">Register</a>
                 </form>
             </div>

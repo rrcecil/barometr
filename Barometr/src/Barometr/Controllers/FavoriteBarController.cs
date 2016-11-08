@@ -3,6 +3,7 @@ using Barometr.Models;
 using Barometr.Services;
 using Barometr.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Barometr.Controllers
 {
@@ -50,6 +51,7 @@ namespace Barometr.Controllers
         }
 
         [HttpGet("favoriteBars")]
+        [Authorize]
         public IEnumerable<BarDTO> GetBarByUser()
         {
             var UserName = User.Identity.Name;

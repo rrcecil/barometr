@@ -427,3 +427,11 @@ textarea {
 .zipSearch {
     padding-bottom: 20px;
 }
+
+.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty{
+    border-color: #78FA89;
+}

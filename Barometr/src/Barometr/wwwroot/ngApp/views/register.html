@@ -9,28 +9,28 @@
                     </li>
                 </ul>
 
-                <form ng-submit="controller.register()">
+                <form name="registerForm" ng-submit="registerForm.$valid && controller.register()" novalidate>
                     <div class="form-group">
-                        <input ng-model="controller.registerUser.name" style="text-transform: capitalize;" required placeholder="Username" />
+                        <input ng-model="controller.registerUser.name" style="text-transform: capitalize;" class="form-control ng-pristine ng-invalid" required placeholder="Username" />
                     </div>
                     <div class="form-group">
-                        <input ng-model="controller.registerUser.email" required placeholder="Email Address" />
+                        <input ng-model="controller.registerUser.email" required type="email" class="form-control ng-pristine ng-invalid" placeholder="Email Address" />
                     </div>
                     <div class="form-group">
-                        <input ng-model="controller.registerUser.password" type="password" required placeholder="Password" />
+                        <input ng-model="controller.registerUser.password" type="password" class="form-control ng-pristine ng-invalid" required placeholder="Password" />
                     </div>
                     <div class="form-group">
-                        <input ng-model="controller.registerUser.confirmPassword" type="password" required placeholder="Confirm Password" />
+                        <input ng-model="controller.registerUser.confirmPassword" type="password" class="form-control ng-pristine ng-invalid" required placeholder="Confirm Password" />
                     </div>
                     <div class="form-group">
-                        <input ng-model="controller.registerUser.location" placeholder="City"/>
+                        <input ng-model="controller.registerUser.location" required class="form-control ng-pristine ng-invalid" placeholder="City"/>
                     </div>
                     <div class="form-group">
                         <label>Date Of Birth</label>
-                        <input type="date" ng-model="controller.registerUser.dob" required placeholder="Date Of Birth"/>
+                        <input type="date" ng-model="controller.registerUser.dob" required class="form-control ng-pristine ng-invalid" placeholder="Date Of Birth"/>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" required>
                         <label>Choose A Faction:</label><br/>
                         <span>
                             <input type="radio" name="faction" value="beer" ng-model="controller.registerUser.faction" />
