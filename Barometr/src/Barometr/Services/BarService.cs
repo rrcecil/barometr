@@ -27,6 +27,7 @@ namespace Barometr.Services
                         Id = b.Id,
                         Name = b.Name,
                         PhoneNumber = b.PhoneNumber,
+                        Photo = b.Photo,
                         Latitude = b.Latitude,
                         Longitude = b.Longitude,
                         HappyHour = b.HappyHour,
@@ -75,6 +76,7 @@ namespace Barometr.Services
                     Id = b.Id,
                     Name = b.Name,
                     PhoneNumber = b.PhoneNumber,
+                    Photo = b.Photo,
                     Latitude = b.Latitude,
                     Longitude = b.Longitude,
                     HappyHour = b.HappyHour,
@@ -114,7 +116,8 @@ namespace Barometr.Services
                 Longitude = bardto.Longitude,
                 HappyHour = bardto.HappyHour,
                 PlaceId = bardto.PlaceId,
-                GoogleBarId = bardto.GoogleBarId
+                GoogleBarId = bardto.GoogleBarId,
+                Photo = bardto.Photo
             };
 
             if (!IsBarDuplicate(bardto.GoogleBarId))
@@ -150,6 +153,7 @@ namespace Barometr.Services
             var orig = _barRepo.GetBarById(bar.Id);
             orig.Id = bar.Id;
             orig.Name = bar.Name;
+            orig.Photo = bar.Photo;
             orig.PhoneNumber = bar.PhoneNumber;
             orig.Latitude = bar.Latitude;
             orig.Longitude = bar.Longitude;
@@ -195,6 +199,7 @@ namespace Barometr.Services
                 Latitude = bar.Latitude,
                 Longitude = bar.Longitude,
                 Name = bar.Name,
+                Photo = bar.Photo,
                 PhoneNumber = bar.PhoneNumber,
                 PlaceId = bar.PlaceId,
                 Reviews = (from r in bar.Reviews

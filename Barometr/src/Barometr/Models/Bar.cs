@@ -17,6 +17,7 @@ namespace Barometr.Models
         public List<Drink> Menu { get; set; } 
         public string GoogleBarId { get; set; }
         public string PlaceId { get; set; }
+        public string Photo { get; set; }
 
         public ICollection<BusinessHours> BusinessHours { get; set; }
         public ICollection<BarReview> Reviews { get; set; }

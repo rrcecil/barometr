@@ -44,6 +44,7 @@ namespace Barometr.Services
                 HappyHour = "false",
                 Name = "New Test Bar",
                 PhoneNumber = "",
+                Photo = "",
                 Longitude = .001,
                 Latitude = .012,
                 Menu = new List<Drink>()

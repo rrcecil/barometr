@@ -16,6 +16,7 @@ namespace Barometr.ViewModels
         public string GoogleBarId { get; set; }
         public double Rating { get; set; }
         public string PlaceId { get; set; }
+        public string Photo { get; set; }
 
         public ICollection<BarReviewDTO> Reviews { get; set; } 
 

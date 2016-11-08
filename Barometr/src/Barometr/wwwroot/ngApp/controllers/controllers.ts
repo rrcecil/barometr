@@ -46,7 +46,6 @@ namespace Barometr.Controllers {
                         this.hours = res['opening_hours']['weekday_text'];
                         this.photos = res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }));
 
-                        console.log(this.phone);
                         $http.put(`api/bars/phone/${$stateParams['id']}`, `"${this.phone}"`).then((res) => {
                         });
                     });

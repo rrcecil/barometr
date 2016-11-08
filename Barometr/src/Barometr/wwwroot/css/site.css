@@ -4,6 +4,14 @@ body {
     font-family: 'Comfortaa', cursive;
 }
 
+html {
+    background: url('../images/background2.jpeg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .container-fluid {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -64,12 +72,18 @@ body {
 
 .parallax-one {
     background-image: url("../images/background.jpg");
-    max-height: 500%;
-    height: 100%;
-    width: 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    min-height: 100%;
+    min-width: 1024px;
+    overflow-y: scroll;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .background-one {
@@ -112,11 +126,18 @@ body {
 .parallax-two {
     padding-top: -5%;
     background-image: url("../images/background2.jpeg");
-    height: 100%;
-    width: 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    min-height: 100%;
+    min-width: 1024px;
+    overflow-y: scroll;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #footer-links {
@@ -384,14 +405,14 @@ textarea {
 
 .individual-bar-userbars {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/xQAAukB5vvocQUAAAAASUVORK5CYII=);
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 1%;
     margin-bottom: 5%;
     margin-top: 5%;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 300px;
 }
 
 .panel-body {

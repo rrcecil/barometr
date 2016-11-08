@@ -119,7 +119,8 @@ namespace Barometr.Services
           bar  = new BarDTO()
           {
               Name = r.Bar.Name,
-              PhoneNumber = r.Bar.PhoneNumber
+              PhoneNumber = r.Bar.PhoneNumber,
+              Photo = r.Bar.Photo
           },
 
                 Comment = r.Comment,
