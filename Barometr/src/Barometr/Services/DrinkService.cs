@@ -50,6 +50,9 @@ namespace Barometr.Services
                 Menu = new List<Drink>()
             };
 
+            //Prevent Null Reference Errors
+            if (userOwner.Menu == null)
+                userOwner.Menu = new List<Drink>();
 
             return userOwner.Menu.Select(drink => new DrinkDTO
             {
