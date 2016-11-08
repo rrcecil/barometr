@@ -90,6 +90,8 @@ namespace Barometr.Migrations
 
                     b.Property<string>("PhoneNumber");
 
+                    b.Property<string>("Photo");
+
                     b.Property<string>("PlaceId");
 
                     b.HasKey("Id");

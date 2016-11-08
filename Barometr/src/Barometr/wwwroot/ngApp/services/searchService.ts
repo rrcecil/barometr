@@ -3,6 +3,7 @@
         public displayMap;
         public bars;
         public map;
+        public photo;
 
         constructor(public $q: ng.IQService, public $http: ng.IHttpService) {
             this.map = new google.maps.Map(document.getElementById('map'), {
@@ -60,9 +61,9 @@
                                 googleBarId: res['id'],
                                 latitude: res.geometry.location.lat(),
                                 longitude: res.geometry.location.lng(),
-                                placeId: res.place_id
+                                placeId: res.place_id,
+                                photo: res.photos != null ? res.photos.map(item => item.getUrl({ maxHeight: 190, maxWidth: 350 }))[0] : "http://images.clipartpanda.com/restaurant-clip-art-9cpjLEgcE.png"
                             };
-
                             this.$http.post('api/bars', bar).then((res) => {
                                 bar['Id'] = res.data['barId'];
                             });

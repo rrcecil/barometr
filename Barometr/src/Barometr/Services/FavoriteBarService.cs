@@ -61,6 +61,7 @@ namespace Barometr.Services
                 Id = b.Id,
                 Name = b.Name,
                 PhoneNumber = b.PhoneNumber,
+                Photo = b.Photo,
                 HappyHour = b.HappyHour,
                 GoogleBarId = b.GoogleBarId,
                 Latitude = b.Latitude,
