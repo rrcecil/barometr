@@ -202,14 +202,14 @@ namespace Barometr.Services
                 Photo = bar.Photo,
                 PhoneNumber = bar.PhoneNumber,
                 PlaceId = bar.PlaceId,
-                Reviews = (from r in bar.Reviews
-                           select new BarReviewDTO()
-                           {
+                //Reviews = (from r in bar.Reviews
+                //           select new BarReviewDTO()
+                //           {
 
-                               Id = r.Id,
-                               Comment = r.Comment,
-                               Rating = r.Rating
-                           }).ToList()
+                //               Id = r.Id,
+                //               Comment = r.Comment,
+                //               Rating = r.Rating
+                //           }).ToList()
             };
         }
     }

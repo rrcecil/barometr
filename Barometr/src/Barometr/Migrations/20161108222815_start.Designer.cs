@@ -8,7 +8,7 @@ using Barometr.Data;
 namespace Barometr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161108200521_start")]
+    [Migration("20161108222815_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
