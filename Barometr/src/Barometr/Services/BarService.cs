@@ -117,7 +117,8 @@ namespace Barometr.Services
                 HappyHour = bardto.HappyHour,
                 PlaceId = bardto.PlaceId,
                 GoogleBarId = bardto.GoogleBarId,
-                Photo = bardto.Photo
+                Photo = bardto.Photo,
+                Menu = new List<Drink>()
             };
 
             if (!IsBarDuplicate(bardto.GoogleBarId))
