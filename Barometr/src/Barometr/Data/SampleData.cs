@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
@@ -19,7 +20,7 @@ namespace Barometr.Data
             context.Database.EnsureCreated();
 
             // Ensure Stephen (IsAdmin)
-            var admin = await userManager.FindByNameAsync("Admin@Barometr.com");
+            var admin = await userManager.FindByEmailAsync("Admin@Barometr.com");
             if (admin == null)
             {
                 // create user
@@ -34,13 +35,16 @@ namespace Barometr.Data
                             Faction = "Beer",
                             DOB = DateTime.UtcNow,
                             Location = "Multiverse"
-                        }
+                        },
+                    UserBar = new List<UserBar>(),
+                    BarReviews = new List<BarReview>(),
+                    DrinkReviews = new List<DrinkReview>()
+
                 };
                 await userManager.CreateAsync(admin, "Password123!");
 
                 // add claims
                 await userManager.AddClaimAsync(admin, new Claim("IsAdmin", "true"));
-                await userManager.AddClaimAsync(admin, new Claim("IsUserAdmin", "true"));
             }
         }
 

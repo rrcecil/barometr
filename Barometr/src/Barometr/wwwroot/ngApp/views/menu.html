@@ -1,22 +1,29 @@
 ﻿
 
-<h2 ng-controller="UserBarController as controller">{{controller.bar.name}}</h2>
+<div class="background-one">
+    <div class="menu">
 
-<button class="btn-group-lg" ui-sref="addToMenu">Add Items To Menu</button>
+
+        <h2 ng-controller="MenuController as controller">{{controller.bar.name}}</h2>
+
+        <button class="btn-group-lg" ui-sref="addToMenu">Add Items To Menu</button>
 
 
-<div style="text-align: center;" ><h2>My Menu Items </h2></div>
-<table class="table table-striped">
-    <tr>
-        <th>Name</th>
-        <th>Alcohol By Volume</th>
-        <th>Type</th>
-        <th>Ingredient</th>
-    </tr>
-    <tr ng-repeat="drink in controller.drinks">
-        <td>{{drink.name}}</td>
-        <td>{{drink.abv}}</td>
-        <td>{{drink.type}}</td>
-        <td>{{drink.ingredient}}</td>
-    </tr>
-</table>
+        <div style="text-align: center;"><h2>My Menu Items </h2></div>
+        <table class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Alcohol By Volume</th>
+                <th>Type</th>
+                <th>Ingredient</th>
+            </tr>
+            <tr ng-repeat="drink in controller.drinks">
+                <td>{{drink.name}}</td>
+                <td>{{drink.abv}}</td>
+                <td>{{drink.type}}</td>
+                <td>{{drink.ingredient}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>

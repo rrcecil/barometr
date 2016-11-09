@@ -291,6 +291,8 @@ namespace Barometr.Controllers {
         //    }
     }
 
+    angular.module('Barometr').controller('UserMetricController', UserMetricController);
+
     export class SecretController {
         public secrets;
 
